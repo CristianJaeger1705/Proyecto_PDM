@@ -1,4 +1,4 @@
-package sv.edu.ues.fia.proyecto_pdm;
+package sv.edu.ues.fia.proyecto_pdm.ubicacion;
 
 import java.time.LocalDate;
 

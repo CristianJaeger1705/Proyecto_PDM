@@ -1,4 +1,4 @@
-package sv.edu.ues.fia.proyecto_pdm;
+package sv.edu.ues.fia.proyecto_pdm.bodega;
 
 public class Bodega {
     private int idBodega;
