@@ -6,12 +6,13 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ico"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/ico"
         android:supportsRtl="true"
         android:theme="@style/Theme.Proyecto_PDM">
         <activity
+            android:name=".LoginActivity"
             android:name=".ubicacion.UbicacionConsultarActivity"
             android:exported="false" />
         <activity
@@ -61,10 +62,33 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".transporte.GestionTransporteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".movimientos.MovimientosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".movimientos.GestionMovimientosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ventas.GestionVentasActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ventas.InsertarVentaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".movimientos.InsertarMovimientoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".transporte.InsertarMedioTransporteActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

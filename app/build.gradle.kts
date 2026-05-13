@@ -33,6 +33,18 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
+    sourceSets {
+        getByName("main") {
+            res.srcDirs(
+                "src/main/res-layouts/generales",
+                "src/main/res-layouts/transporte",
+                "src/main/res-layouts/movimientos",
+                "src/main/res-layouts/ventas",
+                "src/main/res"
+            )
+        }
+    }
 }
 
 dependencies {

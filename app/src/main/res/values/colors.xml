@@ -2,4 +2,11 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="auto_import_red">#E94560</color>
+    <color name="auto_import_dark">#1A1A2E</color>
+    <color name="auto_import_grey">#F1F1F1</color>
+    <color name="auto_import_text_dark">#2D3436</color>
+    <color name="auto_import_border_grey">#CCCCCC</color>
+    <color name="app_background">#F7F9FC</color>
+    <color name="hub_button_bg">#E0E0E0</color>
 </resources>

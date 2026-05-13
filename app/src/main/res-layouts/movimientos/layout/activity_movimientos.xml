@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/app_background">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="24dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MENÚ MOVIMIENTOS"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/auto_import_dark"
+            android:layout_centerVertical="true"/>
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:src="@drawable/logo"
+            android:scaleType="fitCenter"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="Logo" />
+    </RelativeLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:padding="24dp"
+        android:alignmentMode="alignMargins">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_margin="8dp">
+            <ImageButton
+                android:id="@+id/btnOpcionMedios"
+                style="@style/HubIconButton"
+                android:src="@drawable/ic_transportes"
+                android:contentDescription="Medios"
+                app:tint="@color/auto_import_dark" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TRANSPORTES"
+                android:textStyle="bold"
+                android:textSize="11sp"
+                android:textColor="@color/auto_import_text_dark"
+                android:layout_marginTop="8dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_margin="8dp">
+            <ImageButton
+                android:id="@+id/btnOpcionMovimientos"
+                style="@style/HubIconButton"
+                android:src="@drawable/ic_gestion"
+                android:contentDescription="Gestion"
+                app:tint="@color/auto_import_dark" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="GESTIÓN"
+                android:textStyle="bold"
+                android:textSize="11sp"
+                android:textColor="@color/auto_import_text_dark"
+                android:layout_marginTop="8dp"/>
+        </LinearLayout>
+
+    </GridLayout>
+
+</LinearLayout>
