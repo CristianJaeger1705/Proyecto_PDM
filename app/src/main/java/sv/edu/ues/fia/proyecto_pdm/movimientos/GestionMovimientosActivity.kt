@@ -47,7 +47,6 @@ class GestionMovimientosActivity : AppCompatActivity() {
         val btnActualizar = findViewById<Button>(R.id.btnActualizarMov)
         val btnEliminar = findViewById<Button>(R.id.btnEliminarMov)
 
-        val editVehId = findViewById<EditText>(R.id.editVehIdAsignar)
         val btnAsignar = findViewById<Button>(R.id.btnAsignarVehiculo)
 
         // Cargar Medios
@@ -139,32 +138,21 @@ class GestionMovimientosActivity : AppCompatActivity() {
 
         btnAsignar.setOnClickListener {
             if (movActual != null) {
-                val vehIdStr = editVehId.text.toString()
-                if (vehIdStr.isNotEmpty()) {
-                    val vehId = vehIdStr.toInt()
-                    val veh = vehHandler.buscar(vehId)
-                    if (veh != null) {
-                        try {
-                            val res = movHandler.agregarVehiculoAMovimiento(movActual!!.idMovimiento, vehId)
-                            if (res != -1L) {
-                                Toast.makeText(this, "Vehículo agregado", Toast.LENGTH_SHORT).show()
-                                actualizarListaVehiculos(movActual!!.idMovimiento, txtVehiculos)
-                            }
-                        } catch (e: Exception) {
-                            val msg = e.message ?: ""
-                            if (msg.contains("Capacidad máxima", ignoreCase = true)) {
-                                Toast.makeText(this, "ERROR: Se ha alcanzado el límite de capacidad", Toast.LENGTH_LONG).show()
-                            } else if (msg.contains("UNIQUE constraint failed", ignoreCase = true) || msg.contains("PRIMARY KEY constraint failed", ignoreCase = true)) {
-                                Toast.makeText(this, "ERROR: Este vehículo ya se agregó a este movimiento", Toast.LENGTH_LONG).show()
-                            } else {
-                                Toast.makeText(this, "ERROR: " + e.message, Toast.LENGTH_LONG).show()
-                            }
-                        }
-                    } else {
-                        Toast.makeText(this, "El vehículo no existe", Toast.LENGTH_SHORT).show()
-                    }
-                }
+                val intent = Intent(this, GestionVehiculosMovimientoActivity::class.java)
+                intent.putExtra("ID_MOVIMIENTO", movActual!!.idMovimiento)
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "Primero debe buscar o seleccionar un movimiento", Toast.LENGTH_SHORT).show()
             }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // Actualizar la lista de vehículos si ya hay un movimiento buscado
+        movActual?.let {
+            val txtVehiculos = findViewById<TextView>(R.id.txtVehiculosAsignados)
+            actualizarListaVehiculos(it.idMovimiento, txtVehiculos)
         }
     }
 

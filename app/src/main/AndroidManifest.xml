@@ -14,7 +14,12 @@
 
         <activity
             android:name=".LoginActivity"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
 
         <activity
@@ -79,12 +84,7 @@
 
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false" />
 
         <activity
             android:name=".transporte.GestionTransporteActivity"
@@ -115,6 +115,7 @@
             android:exported="false" />
 
         <activity
+            android:name=".movimientos.GestionVehiculosMovimientoActivity"
             android:name=".taller.TallerGestionActivity"
             android:exported="false" />
 

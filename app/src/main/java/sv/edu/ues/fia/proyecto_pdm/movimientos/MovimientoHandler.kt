@@ -98,4 +98,26 @@ class MovimientoHandler(context: Context) {
         cursor.close()
         return lista
     }
+
+    fun eliminarVehiculoDeMovimiento(idMovimiento: Int, idVehiculo: Int): Int {
+        val db = dbHelper.writableDatabase
+        return db.delete(
+            DatabaseContract.MovimientoVehiculoEntry.TABLE_NAME,
+            "${DatabaseContract.MovimientoVehiculoEntry.COLUMN_ID_MOVIMIENTO} = ? AND ${DatabaseContract.MovimientoVehiculoEntry.COLUMN_ID_VEHICULO} = ?",
+            arrayOf(idMovimiento.toString(), idVehiculo.toString())
+        )
+    }
+
+    fun actualizarVehiculoDeMovimiento(idMovimiento: Int, idVehiculoAnterior: Int, idVehiculoNuevo: Int): Int {
+        val db = dbHelper.writableDatabase
+        val values = ContentValues().apply {
+            put(DatabaseContract.MovimientoVehiculoEntry.COLUMN_ID_VEHICULO, idVehiculoNuevo)
+        }
+        return db.update(
+            DatabaseContract.MovimientoVehiculoEntry.TABLE_NAME,
+            values,
+            "${DatabaseContract.MovimientoVehiculoEntry.COLUMN_ID_MOVIMIENTO} = ? AND ${DatabaseContract.MovimientoVehiculoEntry.COLUMN_ID_VEHICULO} = ?",
+            arrayOf(idMovimiento.toString(), idVehiculoAnterior.toString())
+        )
+    }
 }
