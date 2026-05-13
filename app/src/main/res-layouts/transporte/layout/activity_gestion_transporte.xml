@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GESTIÓN DE TRANSPORTE"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/auto_import_dark"
+            android:layout_marginBottom="24dp"/>
+
+        <Button
+            android:id="@+id/btnIrACrear"
+            style="@style/AutoImportButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="NUEVO TRANSPORTE"
+            android:layout_marginBottom="32dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ID A BUSCAR"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginBottom="4dp"/>
+
+        <EditText
+            android:id="@+id/editBusquedaId"
+            style="@style/AutoImportEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number" />
+
+        <Button
+            android:id="@+id/btnBuscar"
+            style="@style/AutoImportButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="BUSCAR REGISTRO" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/auto_import_border_grey"
+            android:layout_marginVertical="24dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TIPO"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginBottom="4dp"/>
+        <EditText
+            android:id="@+id/editTipo"
+            style="@style/AutoImportEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CAPACIDAD MÁXIMA"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginBottom="4dp"/>
+        <EditText
+            android:id="@+id/editCapacidad"
+            style="@style/AutoImportEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnActualizar"
+                style="@style/AutoImportButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="ACTUALIZAR"
+                android:layout_marginEnd="8dp"/>
+
+            <Button
+                android:id="@+id/btnEliminar"
+                style="@style/AutoImportButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="ELIMINAR"
+                android:backgroundTint="#888888"
+                android:layout_marginStart="8dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
