@@ -41,6 +41,7 @@ android {
                 "src/main/res-layouts/transporte",
                 "src/main/res-layouts/movimientos",
                 "src/main/res-layouts/ventas",
+                "src/main/res-layouts/taller",
                 "src/main/res"
             )
         }

@@ -84,4 +84,25 @@ object DatabaseContract {
         const val COLUMN_FECHA = "FechaAsignacion"
         const val COLUMN_ACTIVA = "Activa"
     }
+
+    object TallerEntry {
+        const val TABLE_NAME = "Taller"
+        const val COLUMN_ID = "IdTaller"
+        const val COLUMN_NOMBRE = "NombreTaller"
+        const val COLUMN_DIRECCION = "Direccion"
+        const val COLUMN_TELEFONO = "Telefono"
+        const val COLUMN_AUTORIZADO = "Autorizado"
+    }
+
+    object ReparacionEntry {
+        const val TABLE_NAME = "Reparacion"
+        const val COLUMN_ID = "IdReparacion"
+        const val COLUMN_ID_TALLER = "IdTaller"
+        const val COLUMN_ID_VEHICULO = "IdVehiculo"
+        const val COLUMN_FECHA_ENTRADA = "FechaEntrada"
+        const val COLUMN_FECHA_SALIDA = "FechaSalida"
+        const val COLUMN_DESCRIPCION = "DescripcionTrabajo"
+        const val COLUMN_APTO = "AptoParaVenta"
+        const val COLUMN_COSTO = "Costo"
+    }
 }

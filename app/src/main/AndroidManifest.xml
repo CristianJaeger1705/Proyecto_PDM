@@ -116,6 +116,19 @@
 
         <activity
             android:name=".movimientos.GestionVehiculosMovimientoActivity"
+            android:name=".taller.TallerGestionActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".taller.TallerInsertarActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".reparacion.ReparacionGestionActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".reparacion.ReparacionInsertarActivity"
             android:exported="false" />
 
         <activity
@@ -137,9 +150,6 @@
         <activity
             android:name=".importador.ImportadorEliminarActivity"
             android:exported="false" />
-
-
-
     </application>
 
 </manifest>

@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Proyecto_PDM</string>
+    <string name="menu_talleres">TALLERES</string>
+    <string name="desc_talleres">Talleres</string>
+    <string name="id_label">ID: %1$d</string>
+    <string name="listado_talleres">LISTADO DE TALLERES</string>
+    <string name="menu_reparaciones">REPARACIONES</string>
+    <string name="desc_reparaciones">Reparaciones</string>
+    <string name="listado_reparaciones">LISTADO DE REPARACIONES</string>
+    <string name="rep_detalles">Taller: %1$d | Vehículo: %2$d</string>
+    <string name="rep_fecha">Entrada: %1$s</string>
+    <string name="rep_costo">$%1$.2f</string>
 </resources>

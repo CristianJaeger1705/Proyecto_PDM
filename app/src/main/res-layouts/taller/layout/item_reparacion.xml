@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@drawable/bg_edittext_rounded"
+    android:layout_marginBottom="12dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtItemRepDescripcion"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Descripción de la reparación"
+            android:textStyle="bold"
+            android:textColor="@color/auto_import_dark"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/txtItemRepId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="#ID"
+            android:textColor="@color/auto_import_red"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtItemRepDetalles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Taller: ID | Vehículo: ID"
+        android:textColor="@color/auto_import_text_dark"
+        android:layout_marginTop="4dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="4dp">
+
+        <TextView
+            android:id="@+id/txtItemRepFecha"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Fecha: DD/MM/AAAA"
+            android:textColor="@color/auto_import_text_dark"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:id="@+id/txtItemRepCosto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$0.00"
+            android:textColor="@color/auto_import_dark"
+            android:textStyle="bold"
+            android:textSize="14sp"/>
+    </LinearLayout>
+
+</LinearLayout>
