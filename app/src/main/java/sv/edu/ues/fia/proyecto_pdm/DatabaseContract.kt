@@ -35,6 +35,13 @@ object DatabaseContract {
         const val TABLE_NAME = "Importador"
         const val COLUMN_NUI = "NUI"
         const val COLUMN_NOMBRE = "Nombre"
+        const val COLUMN_APELLIDO = "Apellido"
+        const val COLUMN_APELLIDO_CASADA = "ApellidoCasada"
+        const val COLUMN_GENERO = "Genero"
+        const val COLUMN_FECHA_NACIMIENTO = "FechaNacimiento"
+        const val COLUMN_DIRECCION = "Direccion"
+        const val COLUMN_CORREO = "CorreoElectronico"
+        const val COLUMN_NUI_RESPONSABLE = "NUI_Responsable"
     }
 
     object MovimientoEntry {

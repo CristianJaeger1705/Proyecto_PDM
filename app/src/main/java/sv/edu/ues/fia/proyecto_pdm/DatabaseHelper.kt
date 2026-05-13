@@ -19,8 +19,17 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         db.execSQL(createUsuarioTable)
 
         val createImportadorTable = "CREATE TABLE ${DatabaseContract.ImportadorEntry.TABLE_NAME} (" +
-                "${DatabaseContract.ImportadorEntry.COLUMN_NUI} TEXT(10) PRIMARY KEY, " +
-                "${DatabaseContract.ImportadorEntry.COLUMN_NOMBRE} TEXT)"
+                "${DatabaseContract.ImportadorEntry.COLUMN_NUI} TEXT PRIMARY KEY, " +
+                "${DatabaseContract.ImportadorEntry.COLUMN_NOMBRE} TEXT NOT NULL, " +
+                "${DatabaseContract.ImportadorEntry.COLUMN_APELLIDO} TEXT NOT NULL, " +
+                "${DatabaseContract.ImportadorEntry.COLUMN_APELLIDO_CASADA} TEXT, " +
+                "${DatabaseContract.ImportadorEntry.COLUMN_GENERO} TEXT NOT NULL, " +
+                "${DatabaseContract.ImportadorEntry.COLUMN_FECHA_NACIMIENTO} TEXT NOT NULL, " +
+                "${DatabaseContract.ImportadorEntry.COLUMN_DIRECCION} TEXT NOT NULL, " +
+                "${DatabaseContract.ImportadorEntry.COLUMN_CORREO} TEXT NOT NULL, " +
+                "${DatabaseContract.ImportadorEntry.COLUMN_NUI_RESPONSABLE} TEXT, " +
+                "FOREIGN KEY (${DatabaseContract.ImportadorEntry.COLUMN_NUI_RESPONSABLE}) " +
+                "REFERENCES ${DatabaseContract.ImportadorEntry.TABLE_NAME}(${DatabaseContract.ImportadorEntry.COLUMN_NUI}))"
         db.execSQL(createImportadorTable)
 
         val createVehiculoTable = "CREATE TABLE ${DatabaseContract.VehiculoEntry.TABLE_NAME} (" +
@@ -175,7 +184,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
 
     companion object {
         private const val DATABASE_NAME = "proyecto_pdm.db"
-        private const val DATABASE_VERSION = 13
+        private const val DATABASE_VERSION = 14
 
         @Volatile
         private var INSTANCE: DatabaseHelper? = null
