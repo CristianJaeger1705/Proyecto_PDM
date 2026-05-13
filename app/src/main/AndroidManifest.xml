@@ -113,6 +113,22 @@
             android:name=".transporte.InsertarMedioTransporteActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".taller.TallerGestionActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".taller.TallerInsertarActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".reparacion.ReparacionGestionActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".reparacion.ReparacionInsertarActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>

@@ -112,6 +112,56 @@
                 android:layout_marginTop="8dp"/>
         </LinearLayout>
 
+        <!-- Opción 4: TALLERES -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_margin="8dp">
+
+            <ImageButton
+                android:id="@+id/btnIrATaller"
+                style="@style/HubIconButton"
+                android:src="@drawable/ic_ventas"
+                android:contentDescription="@string/desc_talleres"
+                app:tint="@color/auto_import_dark"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/menu_talleres"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:textColor="@color/auto_import_text_dark"
+                android:layout_marginTop="8dp"/>
+        </LinearLayout>
+
+        <!-- Opción 5: REPARACIONES -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_margin="8dp">
+
+            <ImageButton
+                android:id="@+id/btnIrAReparaciones"
+                style="@style/HubIconButton"
+                android:src="@drawable/ic_movimientos"
+                android:contentDescription="@string/desc_reparaciones"
+                app:tint="@color/auto_import_dark"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/menu_reparaciones"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:textColor="@color/auto_import_text_dark"
+                android:layout_marginTop="8dp"/>
+        </LinearLayout>
+
     </GridLayout>
 
 </LinearLayout>

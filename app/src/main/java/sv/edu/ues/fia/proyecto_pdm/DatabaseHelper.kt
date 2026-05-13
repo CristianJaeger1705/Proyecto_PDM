@@ -83,6 +83,27 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                 "FOREIGN KEY (${DatabaseContract.UbicacionEntry.COLUMN_ID_SECCION}) REFERENCES ${DatabaseContract.SeccionEntry.TABLE_NAME}(${DatabaseContract.SeccionEntry.COLUMN_ID}) ON DELETE CASCADE)"
         db.execSQL(createUbicacionTable)
 
+        val createTallerTable = "CREATE TABLE ${DatabaseContract.TallerEntry.TABLE_NAME} (" +
+                "${DatabaseContract.TallerEntry.COLUMN_ID} INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "${DatabaseContract.TallerEntry.COLUMN_NOMBRE} TEXT, " +
+                "${DatabaseContract.TallerEntry.COLUMN_DIRECCION} TEXT, " +
+                "${DatabaseContract.TallerEntry.COLUMN_TELEFONO} TEXT, " +
+                "${DatabaseContract.TallerEntry.COLUMN_AUTORIZADO} TEXT)"
+        db.execSQL(createTallerTable)
+
+        val createReparacionTable = "CREATE TABLE ${DatabaseContract.ReparacionEntry.TABLE_NAME} (" +
+                "${DatabaseContract.ReparacionEntry.COLUMN_ID} INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "${DatabaseContract.ReparacionEntry.COLUMN_ID_TALLER} INTEGER, " +
+                "${DatabaseContract.ReparacionEntry.COLUMN_ID_VEHICULO} INTEGER, " +
+                "${DatabaseContract.ReparacionEntry.COLUMN_FECHA_ENTRADA} TEXT, " +
+                "${DatabaseContract.ReparacionEntry.COLUMN_FECHA_SALIDA} TEXT, " +
+                "${DatabaseContract.ReparacionEntry.COLUMN_DESCRIPCION} TEXT, " +
+                "${DatabaseContract.ReparacionEntry.COLUMN_APTO} TEXT, " +
+                "${DatabaseContract.ReparacionEntry.COLUMN_COSTO} REAL, " +
+                "FOREIGN KEY (${DatabaseContract.ReparacionEntry.COLUMN_ID_TALLER}) REFERENCES ${DatabaseContract.TallerEntry.TABLE_NAME}(${DatabaseContract.TallerEntry.COLUMN_ID}), " +
+                "FOREIGN KEY (${DatabaseContract.ReparacionEntry.COLUMN_ID_VEHICULO}) REFERENCES ${DatabaseContract.VehiculoEntry.TABLE_NAME}(${DatabaseContract.VehiculoEntry.COLUMN_ID}))"
+        db.execSQL(createReparacionTable)
+
         // TRIGGER 1: Descargo automático al vender
         val trVentaInsert = """
             CREATE TRIGGER tr_venta_descargo AFTER INSERT ON ${DatabaseContract.VentaEntry.TABLE_NAME}
@@ -170,12 +191,14 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         db.execSQL("DROP TABLE IF EXISTS ${DatabaseContract.UbicacionEntry.TABLE_NAME}")
         db.execSQL("DROP TABLE IF EXISTS ${DatabaseContract.SeccionEntry.TABLE_NAME}")
         db.execSQL("DROP TABLE IF EXISTS ${DatabaseContract.BodegaEntry.TABLE_NAME}")
+        db.execSQL("DROP TABLE IF EXISTS ${DatabaseContract.ReparacionEntry.TABLE_NAME}")
+        db.execSQL("DROP TABLE IF EXISTS ${DatabaseContract.TallerEntry.TABLE_NAME}")
         onCreate(db)
     }
 
     companion object {
         private const val DATABASE_NAME = "proyecto_pdm.db"
-        private const val DATABASE_VERSION = 13
+        private const val DATABASE_VERSION = 16
 
         @Volatile
         private var INSTANCE: DatabaseHelper? = null
