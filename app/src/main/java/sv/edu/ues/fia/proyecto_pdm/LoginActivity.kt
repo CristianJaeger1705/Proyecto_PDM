@@ -64,8 +64,28 @@ class LoginActivity : AppCompatActivity() {
         vehiculoHandler.insertar(Vehiculo(3, "Honda"))
 
         // Insertar algunos importadores de prueba (NUI de 10 caracteres)
-        importadorHandler.insertar(Importador("12345678-0", "Juan"))
-        importadorHandler.insertar(Importador("87654321-9", "Juan"))
+        importadorHandler.insertar(Importador(
+            nui = "12345678-0",
+            nombre = "Juan",
+            apellido = "Pérez",
+            apellidoCasada = null,
+            genero = "M",
+            fechaNacimiento = "1990-05-15",
+            direccion = "Col. Miramonte, San Salvador",
+            correoElectronico = "juan.perez@email.com",
+            nuiResponsable = null
+        ))
+        importadorHandler.insertar(Importador(
+            nui = "87654321-9",
+            nombre = "María",
+            apellido = "González",
+            apellidoCasada = "de López",
+            genero = "F",
+            fechaNacimiento = "1985-03-22",
+            direccion = "Res. Santa Elena, Santa Tecla",
+            correoElectronico = "maria.gonzalez@email.com",
+            nuiResponsable = null
+        ))
 
         Toast.makeText(this, "BD Llena. Usuario: admin, Pass: 123", Toast.LENGTH_LONG).show()
     }

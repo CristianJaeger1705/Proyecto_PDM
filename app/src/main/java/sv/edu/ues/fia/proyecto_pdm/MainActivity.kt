@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         val btnIrABodega = findViewById<ImageButton>(R.id.btnIrABodega)
         val btnIrATaller = findViewById<ImageButton>(R.id.btnIrATaller)
         val btnIrAReparaciones = findViewById<ImageButton>(R.id.btnIrAReparaciones)
+        val btnIrAImportadores = findViewById<ImageButton>(R.id.btnIrAImportadores)
 
         btnIrAMovimientosHub.setOnClickListener {
             val intent = Intent(this, MovimientosActivity::class.java)
@@ -45,6 +46,9 @@ class MainActivity : AppCompatActivity() {
         btnIrAReparaciones.setOnClickListener {
             val intent = Intent(this, ReparacionGestionActivity::class.java)
             startActivity(intent)
+        }
+        btnIrAImportadores.setOnClickListener {
+            startActivity(Intent(this, sv.edu.ues.fia.proyecto_pdm.importador.ImportadorMenuActivity::class.java))
         }
     }
 }

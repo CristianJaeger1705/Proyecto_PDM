@@ -16,6 +16,7 @@
             android:name=".LoginActivity"
             android:exported="false" />
 
+
         <activity
             android:name=".ubicacion.UbicacionConsultarActivity"
             android:exported="false" />
@@ -129,6 +130,25 @@
             android:name=".reparacion.ReparacionInsertarActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".importador.ImportadorMenuActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".importador.ImportadorInsertarActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".importador.ImportadorConsultarActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".importador.ImportadorActualizarActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".importador.ImportadorEliminarActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
