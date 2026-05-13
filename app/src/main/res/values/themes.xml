@@ -1,9 +1,34 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.Proyecto_PDM" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/auto_import_red</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="android:windowBackground">@color/white</item>
     </style>
 
     <style name="Theme.Proyecto_PDM" parent="Base.Theme.Proyecto_PDM" />
+
+    <!-- Custom Styles -->
+    <style name="AutoImportEditText">
+        <item name="android:background">@drawable/bg_edittext_rounded</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:textColor">@color/auto_import_text_dark</item>
+        <item name="android:layout_marginBottom">16dp</item>
+    </style>
+
+    <style name="AutoImportButton">
+        <item name="android:backgroundTint">@color/auto_import_red</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="cornerRadius">8dp</item>
+    </style>
+
+    <style name="HubIconButton">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="android:background">@drawable/bg_hub_button</item>
+        <item name="android:padding">20dp</item>
+        <item name="android:scaleType">fitCenter</item>
+    </style>
 </resources>

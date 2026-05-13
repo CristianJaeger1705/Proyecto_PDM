@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/app_background">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="24dp">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/logo"
+            android:layout_centerVertical="true"
+            android:contentDescription="Logo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AUTOIMPORT"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/auto_import_dark"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+
+    <!-- Rejilla de opciones -->
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:padding="24dp"
+        android:alignmentMode="alignMargins">
+
+        <!-- Opción 1: MOVIMIENTOS -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_margin="8dp">
+
+            <ImageButton
+                android:id="@+id/btnIrAMovimientosHub"
+                style="@style/HubIconButton"
+                android:src="@drawable/ic_movimientos"
+                android:contentDescription="Movimientos"
+                app:tint="@color/auto_import_dark"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MOVIMIENTOS"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:textColor="@color/auto_import_text_dark"
+                android:layout_marginTop="8dp"/>
+        </LinearLayout>
+
+        <!-- Opción 2: VENTA -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_margin="8dp">
+
+            <ImageButton
+                android:id="@+id/btnIrAVentas"
+                style="@style/HubIconButton"
+                android:src="@drawable/ic_ventas"
+                android:contentDescription="Ventas"
+                app:tint="@color/auto_import_dark"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="VENTA"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:textColor="@color/auto_import_text_dark"
+                android:layout_marginTop="8dp"/>
+        </LinearLayout>
+
+    </GridLayout>
+
+</LinearLayout>

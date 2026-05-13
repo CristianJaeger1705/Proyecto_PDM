@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@color/white">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NUEVO TRANSPORTE"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/auto_import_dark"
+        android:layout_marginBottom="32dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ID"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginBottom="4dp"/>
+    <EditText
+        android:id="@+id/editNuevoId"
+        style="@style/AutoImportEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TIPO"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginBottom="4dp"/>
+    <EditText
+        android:id="@+id/editNuevoTipo"
+        style="@style/AutoImportEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CAPACIDAD MÁXIMA"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginBottom="4dp"/>
+    <EditText
+        android:id="@+id/editNuevaCapacidad"
+        style="@style/AutoImportEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/btnGuardar"
+        style="@style/AutoImportButton"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="GUARDAR EN BASE DE DATOS"
+        android:layout_marginTop="16dp" />
+
+</LinearLayout>
