@@ -122,6 +122,15 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                 "FOREIGN KEY (${DatabaseContract.ReparacionEntry.COLUMN_ID_VEHICULO}) REFERENCES ${DatabaseContract.VehiculoEntry.TABLE_NAME}(${DatabaseContract.VehiculoEntry.COLUMN_ID}))"
         db.execSQL(createReparacionTable)
 
+        val createImportacionTable = "CREATE TABLE ${DatabaseContract.ImportacionEntry.TABLE_NAME} (" +
+                "${DatabaseContract.ImportacionEntry.COLUMN_ID} INTEGER PRIMARY KEY, " +
+                "${DatabaseContract.ImportacionEntry.COLUMN_ID_IMPORTADOR} TEXT, " +
+                "${DatabaseContract.ImportacionEntry.COLUMN_CANTIDAD_VEHICULOS} INTEGER, " +
+                "${DatabaseContract.ImportacionEntry.COLUMN_FECHA} TEXT, " +
+                "FOREIGN KEY (${DatabaseContract.ImportacionEntry.COLUMN_ID_IMPORTADOR}) " +
+                "REFERENCES ${DatabaseContract.ImportadorEntry.TABLE_NAME}(${DatabaseContract.ImportadorEntry.COLUMN_NUI}))"
+        db.execSQL(createImportacionTable)
+
         // TRIGGER 1: Descargo automático al vender
         val trVentaInsert = """
             CREATE TRIGGER tr_venta_descargo AFTER INSERT ON ${DatabaseContract.VentaEntry.TABLE_NAME}
@@ -212,13 +221,14 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         db.execSQL("DROP TABLE IF EXISTS ${DatabaseContract.ReparacionEntry.TABLE_NAME}")
         db.execSQL("DROP TABLE IF EXISTS ${DatabaseContract.TallerEntry.TABLE_NAME}")
         db.execSQL("DROP TABLE IF EXISTS ${DatabaseContract.TelefonoImportadorEntry.TABLE_NAME}")
+        db.execSQL("DROP TABLE IF EXISTS ${DatabaseContract.ImportacionEntry.TABLE_NAME}")
         onCreate(db)
     }
 
     companion object {
         private const val DATABASE_NAME = "proyecto_pdm.db"
       
-        private const val DATABASE_VERSION = 17
+        private const val DATABASE_VERSION = 18
 
         @Volatile
         private var INSTANCE: DatabaseHelper? = null

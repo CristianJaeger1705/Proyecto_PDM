@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".importacion.ImportacionInsertarActivity">
+
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Insertar Importación"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="24dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ID Importación"
+            android:textStyle="bold"/>
+        <EditText
+            android:id="@+id/editIdImportacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ingrese ID"
+            android:inputType="number"
+            android:layout_marginBottom="12dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ID Importador (NUI)"
+            android:textStyle="bold"/>
+        <EditText
+            android:id="@+id/editIdImportador"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ingrese NUI del Importador"
+            android:inputType="text"
+            android:layout_marginBottom="12dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cantidad de Vehículos"
+            android:textStyle="bold"/>
+        <EditText
+            android:id="@+id/editCantidadVehiculos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ingrese cantidad"
+            android:inputType="number"
+            android:layout_marginBottom="12dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fecha"
+            android:textStyle="bold"/>
+        <EditText
+            android:id="@+id/editFechaImportacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="YYYY-MM-DD"
+            android:inputType="date"
+            android:layout_marginBottom="24dp"/>
+
+        <Button
+            android:id="@+id/btnInsertarImportacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/AutoImportButton"
+            android:text="INSERTAR IMPORTACIÓN"/>
+
+        <Button
+            android:id="@+id/btnLimpiarImportacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LIMPIAR"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_marginTop="8dp"/>
+
+    </LinearLayout>
+</ScrollView>

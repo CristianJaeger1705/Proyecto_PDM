@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".importacion.ImportacionActualizarActivity">
+
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Actualizar Importación"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="24dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+            <EditText
+                android:id="@+id/editActualizarIdImportacion"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="ID Importación a buscar"
+                android:inputType="number"/>
+            <Button
+                android:id="@+id/btnCargarActualizar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cargar"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ID Importador (NUI)"
+            android:textStyle="bold"/>
+        <EditText
+            android:id="@+id/editActualizarIdImportador"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="NUI del Importador"
+            android:inputType="text"
+            android:layout_marginBottom="12dp"
+            android:enabled="false"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cantidad de Vehículos"
+            android:textStyle="bold"/>
+        <EditText
+            android:id="@+id/editActualizarCantidadVehiculos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Cantidad"
+            android:inputType="number"
+            android:layout_marginBottom="12dp"
+            android:enabled="false"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fecha"
+            android:textStyle="bold"/>
+        <EditText
+            android:id="@+id/editActualizarFecha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="YYYY-MM-DD"
+            android:inputType="date"
+            android:layout_marginBottom="24dp"
+            android:enabled="false"/>
+
+        <Button
+            android:id="@+id/btnActualizarImportacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="GUARDAR CAMBIOS"
+            android:enabled="false"/>
+
+        <Button
+            android:id="@+id/btnLimpiarActualizar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LIMPIAR"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_marginTop="8dp"/>
+
+    </LinearLayout>
+</ScrollView>

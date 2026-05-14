@@ -11,164 +11,141 @@
         android:roundIcon="@drawable/ico"
         android:supportsRtl="true"
         android:theme="@style/Theme.Proyecto_PDM">
-
+        <activity
+            android:name=".importacion.ImportacionMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".importacion.ImportacionActualizarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".importacion.ImportacionEliminarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".importacion.ImportacionConsultarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".importacion.ImportacionInsertarActivity"
+            android:exported="false" />
         <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
         <activity
             android:name=".ubicacion.UbicacionConsultarActivity"
             android:exported="false" />
-
         <activity
             android:name=".ubicacion.UbicacionActualizarActivity"
             android:exported="false" />
-
         <activity
             android:name=".ubicacion.UbicacionEliminarActivity"
             android:exported="false" />
-
         <activity
             android:name=".ubicacion.UbicacionInsertarActivity"
             android:exported="false" />
-
         <activity
             android:name=".seccion.SeccionConsultarActivity"
             android:exported="false" />
-
         <activity
             android:name=".seccion.SeccionActualizarActivity"
             android:exported="false" />
-
         <activity
             android:name=".seccion.SeccionEliminarActivity"
             android:exported="false" />
-
         <activity
             android:name=".seccion.SeccionInsertarActivity"
             android:exported="false" />
-
         <activity
             android:name=".bodega.BodegaConsultarActivity"
             android:exported="false" />
-
         <activity
             android:name=".bodega.BodegaActualizarActivity"
             android:exported="false" />
-
         <activity
             android:name=".bodega.BodegaEliminarActivity"
             android:exported="false" />
-
         <activity
             android:name=".bodega.BodegaInsertarActivity"
             android:exported="false" />
-
         <activity
             android:name=".ubicacion.UbicacionMenuActivity"
             android:exported="false" />
-
         <activity
             android:name=".seccion.SeccionMenuActivity"
             android:exported="false" />
-
         <activity
             android:name=".bodega.BodegaMenuActivity"
             android:exported="false" />
-
         <activity
             android:name=".MainActivity"
             android:exported="false" />
-
         <activity
             android:name=".transporte.GestionTransporteActivity"
             android:exported="false" />
-
         <activity
             android:name=".movimientos.MovimientosActivity"
             android:exported="false" />
-
         <activity
             android:name=".movimientos.GestionMovimientosActivity"
             android:exported="false" />
-
         <activity
             android:name=".ventas.GestionVentasActivity"
             android:exported="false" />
-
         <activity
             android:name=".ventas.InsertarVentaActivity"
             android:exported="false" />
-
         <activity
             android:name=".movimientos.InsertarMovimientoActivity"
             android:exported="false" />
-
         <activity
             android:name=".transporte.InsertarMedioTransporteActivity"
             android:exported="false" />
-
         <activity
             android:name=".movimientos.GestionVehiculosMovimientoActivity"
             android:exported="false" />
-
         <activity
             android:name=".taller.TallerGestionActivity"
             android:exported="false" />
-
         <activity
             android:name=".taller.TallerInsertarActivity"
             android:exported="false" />
-
         <activity
             android:name=".reparacion.ReparacionGestionActivity"
             android:exported="false" />
-
         <activity
             android:name=".reparacion.ReparacionInsertarActivity"
             android:exported="false" />
-
         <activity
             android:name=".importador.ImportadorMenuActivity"
             android:exported="false" />
-
         <activity
             android:name=".importador.ImportadorInsertarActivity"
             android:exported="false" />
-
         <activity
             android:name=".importador.ImportadorConsultarActivity"
             android:exported="false" />
-
         <activity
             android:name=".importador.ImportadorActualizarActivity"
             android:exported="false" />
-
         <activity
             android:name=".importador.ImportadorEliminarActivity"
             android:exported="false" />
         <activity
             android:name=".importador.TelefonoImportadorMenuActivity"
             android:exported="false" />
-
         <activity
             android:name=".importador.TelefonoImportadorInsertarActivity"
             android:exported="false" />
-
         <activity
             android:name=".importador.TelefonoImportadorConsultarActivity"
             android:exported="false" />
-
         <activity
             android:name=".importador.TelefonoImportadorActualizarActivity"
             android:exported="false" />
-
         <activity
             android:name=".importador.TelefonoImportadorEliminarActivity"
             android:exported="false" />

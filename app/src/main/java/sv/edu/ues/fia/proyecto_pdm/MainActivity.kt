@@ -9,6 +9,9 @@ import sv.edu.ues.fia.proyecto_pdm.ventas.GestionVentasActivity
 import sv.edu.ues.fia.proyecto_pdm.bodega.BodegaMenuActivity
 import sv.edu.ues.fia.proyecto_pdm.taller.TallerGestionActivity
 import sv.edu.ues.fia.proyecto_pdm.reparacion.ReparacionGestionActivity
+import sv.edu.ues.fia.proyecto_pdm.importacion.ImportacionMenuActivity
+
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,6 +25,8 @@ class MainActivity : AppCompatActivity() {
         val btnIrATaller = findViewById<ImageButton>(R.id.btnIrATaller)
         val btnIrAReparaciones = findViewById<ImageButton>(R.id.btnIrAReparaciones)
         val btnIrAImportadores = findViewById<ImageButton>(R.id.btnIrAImportadores)
+        val btnIrAImportaciones = findViewById<ImageButton>(R.id.btnIrAImportaciones)
+        
 
         btnIrAMovimientosHub.setOnClickListener {
             val intent = Intent(this, MovimientosActivity::class.java)
@@ -50,5 +55,10 @@ class MainActivity : AppCompatActivity() {
         btnIrAImportadores.setOnClickListener {
             startActivity(Intent(this, sv.edu.ues.fia.proyecto_pdm.importador.ImportadorMenuActivity::class.java))
         }
+
+        btnIrAImportaciones.setOnClickListener {
+            startActivity(Intent(this, ImportacionMenuActivity::class.java))
+        }
+        
     }
 }

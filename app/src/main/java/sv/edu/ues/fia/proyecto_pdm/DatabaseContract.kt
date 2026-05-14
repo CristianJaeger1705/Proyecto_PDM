@@ -113,4 +113,12 @@ object DatabaseContract {
         const val COLUMN_NUMERO = "Numero"
         const val COLUMN_TIPO = "TipoTelefono"
     }
+
+    object ImportacionEntry {
+        const val TABLE_NAME = "Importacion"
+        const val COLUMN_ID = "IdImportacion"
+        const val COLUMN_ID_IMPORTADOR = "NUIImportador"
+        const val COLUMN_CANTIDAD_VEHICULOS = "CantidadVehiculos"
+        const val COLUMN_FECHA = "FechaImportacion"
+    }
 }
