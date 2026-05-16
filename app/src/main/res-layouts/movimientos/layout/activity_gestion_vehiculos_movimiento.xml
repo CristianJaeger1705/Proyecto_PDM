@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="VEHÍCULOS DEL MOVIMIENTO"
+        android:text="@string/veh_mov_title"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="@color/auto_import_dark"
@@ -19,7 +19,7 @@
         android:id="@+id/txtIdMovimientoInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Movimiento ID: "
+        android:text="@string/mov_id_info"
         android:textSize="16sp"
         android:layout_marginBottom="16dp"/>
 
@@ -36,16 +36,17 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="ID Vehículo"
+            android:hint="@string/veh_id_hint"
             android:inputType="number"
-            android:layout_marginBottom="0dp" />
+            android:layout_marginBottom="0dp"
+            android:autofillHints="none" />
 
         <Button
             android:id="@+id/btnAgregarVeh"
             style="@style/AutoImportButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="AGREGAR"
+            android:text="@string/btn_add"
             android:layout_marginStart="8dp"/>
     </LinearLayout>
 
@@ -61,7 +62,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="ACTUALIZAR"
+            android:text="@string/btn_update"
             android:layout_marginEnd="4dp"/>
 
         <Button
@@ -70,7 +71,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="ELIMINAR"
+            android:text="@string/btn_delete"
             android:backgroundTint="#888888"
             android:layout_marginStart="4dp"/>
     </LinearLayout>
@@ -78,7 +79,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="VEHÍCULOS ASIGNADOS"
+        android:text="@string/assigned_vehicles_label"
         android:textStyle="bold"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"/>

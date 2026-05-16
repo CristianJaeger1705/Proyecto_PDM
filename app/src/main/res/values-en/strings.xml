@@ -1,0 +1,100 @@
+<resources>
+    <string name="app_name">Project_PDM</string>
+    <string name="menu_talleres">WORKSHOPS</string>
+    <string name="desc_talleres">Workshops</string>
+    <string name="id_label">ID: %1$d</string>
+    <string name="listado_talleres">LIST OF WORKSHOPS</string>
+    <string name="menu_reparaciones">REPAIRS</string>
+    <string name="desc_reparaciones">Repairs</string>
+    <string name="listado_reparaciones">LIST OF REPAIRS</string>
+    <string name="rep_detalles">Workshop: %1$d | Vehicle: %2$d</string>
+    <string name="rep_fecha">Entry: %1$s</string>
+    <string name="rep_costo">$%1$.2f</string>
+
+    <!-- Main Menu -->
+    <string name="menu_movimientos">MOVEMENTS</string>
+    <string name="menu_ventas">SALES</string>
+    <string name="menu_bodegas">WAREHOUSES</string>
+    <string name="menu_importadores">IMPORTING AGENTS</string>
+    <string name="menu_importaciones">IMPORTATIONS</string>
+    <string name="menu_vehiculos">VEHICLES</string>
+
+    <!-- Login -->
+    <string name="login_title">ENTER CREDENTIALS</string>
+    <string name="user_label">USER</string>
+    <string name="pass_label">PASSWORD</string>
+    <string name="btn_login">LOGIN</string>
+    <string name="btn_fill_db">Fill DB</string>
+    <string name="change_language">Change Language</string>
+    <string name="login_success">Login successful</string>
+    <string name="login_error">Incorrect credentials</string>
+    <string name="db_filled">DB Filled. User: admin, Pass: 123</string>
+
+    <!-- Transporte -->
+    <string name="transporte_title">TRANSPORT MANAGEMENT</string>
+    <string name="btn_new_transporte">NEW TRANSPORT</string>
+    <string name="search_id_label">ID TO SEARCH</string>
+    <string name="btn_search_record">SEARCH RECORD</string>
+    <string name="type_label">TYPE</string>
+    <string name="max_capacity_label">MAX CAPACITY</string>
+    <string name="btn_update">UPDATE</string>
+    <string name="btn_delete">DELETE</string>
+    <string name="btn_save">SAVE</string>
+    <string name="id_hint">ID</string>
+    <string name="type_hint">Type</string>
+    <string name="capacity_hint">Capacity</string>
+    <string name="record_found">Record found</string>
+    <string name="record_not_found">ID not found: %1$s</string>
+    <string name="search_id_required">Enter an ID to search</string>
+    <string name="update_success">Updated successfully</string>
+    <string name="update_error">Error updating</string>
+    <string name="delete_success">Deleted successfully</string>
+    <string name="delete_error">Error deleting</string>
+    <string name="search_required">Search for a record first</string>
+    <string name="insert_success">Inserted successfully. ID: %1$d</string>
+    <string name="insert_error">Error inserting (possible duplicate ID)</string>
+    <string name="fill_fields">Complete all fields</string>
+
+    <!-- Movimientos -->
+    <string name="movimientos_menu_title">MOVEMENTS MENU</string>
+    <string name="menu_transportes">TRANSPORT</string>
+    <string name="menu_gestion">MANAGEMENT</string>
+    <string name="gestion_movimientos_title">MOVEMENTS MANAGEMENT</string>
+    <string name="btn_new_movimiento">NEW MOVEMENT</string>
+    <string name="mov_id_label">MOVEMENT ID</string>
+    <string name="btn_search_movimiento">SEARCH MOVEMENT</string>
+    <string name="transport_type_label">TRANSPORT TYPE</string>
+    <string name="mov_type_label">MOVEMENT TYPE</string>
+    <string name="date_label">DATE</string>
+    <string name="time_label">TIME</string>
+    <string name="obs_label">OBSERVATIONS</string>
+    <string name="assigned_vehicles_label">ASSIGNED VEHICLES</string>
+    <string name="btn_manage_vehicles">MANAGE VEHICLES</string>
+    <string name="vehicles_label">Vehicles: </string>
+    <string name="mov_found">Found</string>
+    <string name="mov_not_found">Does not exist</string>
+    <string name="mov_update_success">Updated</string>
+    <string name="mov_delete_success">Deleted</string>
+    <string name="mov_search_required">Search or select a movement first</string>
+    <string name="mov_id_hint">Movement ID</string>
+    <string name="btn_save_mov">SAVE</string>
+    <string name="mov_save_success">Movement saved</string>
+    <string name="mov_save_error">Error: Movement ID already exists</string>
+    <string name="required_fields">Complete required fields</string>
+
+    <!-- Vehiculos en Movimiento -->
+    <string name="veh_mov_title">MOVEMENT VEHICLES</string>
+    <string name="mov_id_info">Movement ID: %1$d</string>
+    <string name="veh_id_hint">Vehicle ID</string>
+    <string name="btn_add">ADD</string>
+    <string name="error_no_mov_id">Error: No Movement ID received</string>
+    <string name="veh_selected">Selected ID: %1$d</string>
+    <string name="veh_added">Vehicle added</string>
+    <string name="association_updated">Association updated</string>
+    <string name="update_failed">Could not update</string>
+    <string name="veh_not_exists">Vehicle does not exist</string>
+    <string name="new_veh_not_exists">New vehicle does not exist</string>
+    <string name="select_veh_error">Select a vehicle from list and enter new ID</string>
+    <string name="veh_deleted_from_mov">Vehicle deleted from movement</string>
+    <string name="select_from_list">Select a vehicle from list</string>
+</resources>

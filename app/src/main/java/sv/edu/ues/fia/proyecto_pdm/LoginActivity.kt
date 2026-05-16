@@ -1,6 +1,8 @@
 package sv.edu.ues.fia.proyecto_pdm
 
+import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -9,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import sv.edu.ues.fia.proyecto_pdm.usuarios.UsuarioHandler
 import sv.edu.ues.fia.proyecto_pdm.transporte.MedioTransporteHandler
 import sv.edu.ues.fia.proyecto_pdm.transporte.MedioTransporte
+import java.util.Locale
 
 class LoginActivity : AppCompatActivity() {
 
@@ -30,33 +33,56 @@ class LoginActivity : AppCompatActivity() {
         val editPass = findViewById<EditText>(R.id.editPass)
         val btnLogin = findViewById<Button>(R.id.btnLogin)
         val btnLlenarBD = findViewById<Button>(R.id.btnLlenarBD)
+        val btnChangeLang = findViewById<Button>(R.id.btnChangeLang)
 
         btnLogin.setOnClickListener {
             val user = editUser.text.toString()
             val pass = editPass.text.toString()
 
             if (usuarioHandler.validarLogin(user, pass)) {
+                Toast.makeText(this, getString(R.string.login_success), Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish()
             } else {
-                Toast.makeText(this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.login_error), Toast.LENGTH_SHORT).show()
             }
         }
 
         btnLlenarBD.setOnClickListener {
             llenarBaseDatos()
         }
+
+        btnChangeLang.setOnClickListener {
+            toggleLanguage()
+        }
+    }
+
+    private fun toggleLanguage() {
+        val currentLocale = resources.configuration.locales.get(0).language
+        val newLang = if (currentLocale == "es") "en" else "es"
+        
+        val locale = Locale(newLang)
+        Locale.setDefault(locale)
+        val config = Configuration()
+        config.setLocale(locale)
+        
+        baseContext.resources.updateConfiguration(config, baseContext.resources.displayMetrics)
+        
+        // Restart activity to apply changes
+        val intent = intent
+        finish()
+        startActivity(intent)
     }
 
     private fun llenarBaseDatos() {
         // Insertar usuario de prueba
         usuarioHandler.insertarUsuario("admin", "123")
-        
+
         // Insertar algunos medios de transporte
         medioHandler.insertar(MedioTransporte(1, "Carro", 1))
         medioHandler.insertar(MedioTransporte(2, "Grua", 1))
-        medioHandler.insertar(MedioTransporte(3, "Coyote", 12))
+        medioHandler.insertar(MedioTransporte(3, "Tacuazina", 12))
 
         // Insertar algunos vehiculos de prueba
         vehiculoHandler.insertar(Vehiculo(1, "Toyota"))
@@ -86,7 +112,6 @@ class LoginActivity : AppCompatActivity() {
             correoElectronico = "maria.gonzalez@email.com",
             nuiResponsable = null
         ))
-
-        Toast.makeText(this, "BD Llena. Usuario: admin, Pass: 123", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, getString(R.string.db_filled), Toast.LENGTH_LONG).show()
     }
 }

@@ -42,13 +42,13 @@ class GestionTransporteActivity : AppCompatActivity() {
                 if (medioActual != null) {
                     editTipo.setText(medioActual?.tipo)
                     editCapacidad.setText(medioActual?.capacidadMax.toString())
-                    Toast.makeText(this, "Registro encontrado", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.record_found), Toast.LENGTH_SHORT).show()
                 } else {
                     limpiarCampos(editTipo, editCapacidad)
-                    Toast.makeText(this, "No se encontró el ID: $id", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.record_not_found, idStr), Toast.LENGTH_SHORT).show()
                 }
             } else {
-                Toast.makeText(this, "Ingrese un ID para buscar", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.search_id_required), Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -65,13 +65,13 @@ class GestionTransporteActivity : AppCompatActivity() {
                     )
                     val filasAfectadas = handler.actualizar(medioEditado)
                     if (filasAfectadas > 0) {
-                        Toast.makeText(this, "Actualizado correctamente", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, getString(R.string.update_success), Toast.LENGTH_SHORT).show()
                     } else {
-                        Toast.makeText(this, "Error al actualizar", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, getString(R.string.update_error), Toast.LENGTH_SHORT).show()
                     }
                 }
             } else {
-                Toast.makeText(this, "Primero busque un registro", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.search_required), Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -80,15 +80,15 @@ class GestionTransporteActivity : AppCompatActivity() {
                 val id = medioActual?.idMedio ?: -1
                 val filasEliminadas = handler.eliminar(id)
                 if (filasEliminadas > 0) {
-                    Toast.makeText(this, "Eliminado correctamente", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.delete_success), Toast.LENGTH_SHORT).show()
                     limpiarCampos(editTipo, editCapacidad)
                     editBusquedaId.text.clear()
                     medioActual = null
                 } else {
-                    Toast.makeText(this, "Error al eliminar", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.delete_error), Toast.LENGTH_SHORT).show()
                 }
             } else {
-                Toast.makeText(this, "Primero busque un registro", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.search_required), Toast.LENGTH_SHORT).show()
             }
         }
     }

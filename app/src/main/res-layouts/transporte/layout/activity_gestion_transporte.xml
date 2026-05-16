@@ -13,7 +13,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="GESTIÓN DE TRANSPORTE"
+            android:text="@string/transporte_title"
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="@color/auto_import_dark"
@@ -24,13 +24,13 @@
             style="@style/AutoImportButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="NUEVO TRANSPORTE"
+            android:text="@string/btn_new_transporte"
             android:layout_marginBottom="32dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ID A BUSCAR"
+            android:text="@string/search_id_label"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:layout_marginBottom="4dp"/>
@@ -40,14 +40,15 @@
             style="@style/AutoImportEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number" />
+            android:inputType="number"
+            android:autofillHints="none" />
 
         <Button
             android:id="@+id/btnBuscar"
             style="@style/AutoImportButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="BUSCAR REGISTRO" />
+            android:text="@string/btn_search_record" />
 
         <View
             android:layout_width="match_parent"
@@ -58,7 +59,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TIPO"
+            android:text="@string/type_label"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:layout_marginBottom="4dp"/>
@@ -66,12 +67,13 @@
             android:id="@+id/editTipo"
             style="@style/AutoImportEditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:autofillHints="none" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="CAPACIDAD MÁXIMA"
+            android:text="@string/max_capacity_label"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:layout_marginBottom="4dp"/>
@@ -80,7 +82,8 @@
             style="@style/AutoImportEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number" />
+            android:inputType="number"
+            android:autofillHints="none" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -93,7 +96,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="ACTUALIZAR"
+                android:text="@string/btn_update"
                 android:layout_marginEnd="8dp"/>
 
             <Button
@@ -102,7 +105,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="ELIMINAR"
+                android:text="@string/btn_delete"
                 android:backgroundTint="#888888"
                 android:layout_marginStart="8dp"/>
         </LinearLayout>

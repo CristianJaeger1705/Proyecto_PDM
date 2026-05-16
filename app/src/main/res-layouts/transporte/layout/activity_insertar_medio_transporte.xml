@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="NUEVO TRANSPORTE"
+        android:text="@string/btn_new_transporte"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="@color/auto_import_dark"
@@ -27,12 +27,14 @@
         style="@style/AutoImportEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="number" />
+        android:inputType="number"
+        android:hint="@string/id_hint"
+        android:autofillHints="none" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TIPO"
+        android:text="@string/type_label"
         android:textStyle="bold"
         android:textColor="@color/black"
         android:layout_marginBottom="4dp"/>
@@ -40,12 +42,14 @@
         android:id="@+id/editNuevoTipo"
         style="@style/AutoImportEditText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:hint="@string/type_hint"
+        android:autofillHints="none" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="CAPACIDAD MÁXIMA"
+        android:text="@string/max_capacity_label"
         android:textStyle="bold"
         android:textColor="@color/black"
         android:layout_marginBottom="4dp"/>
@@ -54,14 +58,16 @@
         style="@style/AutoImportEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="number" />
+        android:inputType="number"
+        android:hint="@string/capacity_hint"
+        android:autofillHints="none" />
 
     <Button
         android:id="@+id/btnGuardar"
         style="@style/AutoImportButton"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:text="GUARDAR EN BASE DE DATOS"
+        android:text="@string/btn_save"
         android:layout_marginTop="16dp" />
 
 </LinearLayout>

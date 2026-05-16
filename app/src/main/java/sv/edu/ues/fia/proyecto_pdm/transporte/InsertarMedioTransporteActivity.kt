@@ -34,13 +34,13 @@ class InsertarMedioTransporteActivity : AppCompatActivity() {
                 
                 val idResult = handler.insertar(nuevoMedio)
                 if (idResult != -1L) {
-                    Toast.makeText(this, "Insertado con éxito. ID: $idResult", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.insert_success, idResult), Toast.LENGTH_SHORT).show()
                     finish() // Regresar a la pantalla anterior
                 } else {
-                    Toast.makeText(this, "Error al insertar (posible ID duplicado)", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.insert_error), Toast.LENGTH_SHORT).show()
                 }
             } else {
-                Toast.makeText(this, "Complete todos los campos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.fill_fields), Toast.LENGTH_SHORT).show()
             }
         }
     }

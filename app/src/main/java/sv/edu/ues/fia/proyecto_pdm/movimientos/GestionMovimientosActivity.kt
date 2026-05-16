@@ -99,9 +99,9 @@ class GestionMovimientosActivity : AppCompatActivity() {
                     if (indexTipo != -1) spinnerTipo.setSelection(indexTipo)
                     
                     actualizarListaVehiculos(id, txtVehiculos)
-                    Toast.makeText(this, "Encontrado", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.mov_found), Toast.LENGTH_SHORT).show()
                 } else {
-                    Toast.makeText(this, "No existe", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.mov_not_found), Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -121,7 +121,7 @@ class GestionMovimientosActivity : AppCompatActivity() {
                         editObs.text.toString()
                     )
                     val res = movHandler.actualizar(movEditado)
-                    if (res > 0) Toast.makeText(this, "Actualizado", Toast.LENGTH_SHORT).show()
+                    if (res > 0) Toast.makeText(this, getString(R.string.mov_update_success), Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -130,7 +130,7 @@ class GestionMovimientosActivity : AppCompatActivity() {
             if (movActual != null) {
                 val res = movHandler.eliminar(movActual!!.idMovimiento)
                 if (res > 0) {
-                    Toast.makeText(this, "Eliminado", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.mov_delete_success), Toast.LENGTH_SHORT).show()
                     finish()
                 }
             }
@@ -142,9 +142,14 @@ class GestionMovimientosActivity : AppCompatActivity() {
                 intent.putExtra("ID_MOVIMIENTO", movActual!!.idMovimiento)
                 startActivity(intent)
             } else {
-                Toast.makeText(this, "Primero debe buscar o seleccionar un movimiento", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.mov_search_required), Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun actualizarListaVehiculos(movId: Int, textView: TextView) {
+        val vehiculos = movHandler.obtenerVehiculosDeMovimiento(movId)
+        textView.text = getString(R.string.vehicles_label) + vehiculos.joinToString(", ")
     }
 
     override fun onResume() {
@@ -154,10 +159,5 @@ class GestionMovimientosActivity : AppCompatActivity() {
             val txtVehiculos = findViewById<TextView>(R.id.txtVehiculosAsignados)
             actualizarListaVehiculos(it.idMovimiento, txtVehiculos)
         }
-    }
-
-    private fun actualizarListaVehiculos(movId: Int, textView: TextView) {
-        val vehiculos = movHandler.obtenerVehiculosDeMovimiento(movId)
-        textView.text = "Vehículos asignados (IDs): " + vehiculos.joinToString(", ")
     }
 }

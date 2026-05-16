@@ -13,7 +13,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="GESTIÓN DE MOVIMIENTOS"
+            android:text="@string/gestion_movimientos_title"
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="@color/auto_import_dark"
@@ -24,13 +24,13 @@
             style="@style/AutoImportButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="NUEVO MOVIMIENTO"
+            android:text="@string/btn_new_movimiento"
             android:layout_marginBottom="32dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ID MOVIMIENTO"
+            android:text="@string/mov_id_label"
             android:textStyle="bold"
             android:layout_marginBottom="4dp"/>
         <EditText
@@ -38,14 +38,15 @@
             style="@style/AutoImportEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number" />
+            android:inputType="number"
+            android:autofillHints="none" />
 
         <Button
             android:id="@+id/btnBuscarMov"
             style="@style/AutoImportButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="BUSCAR MOVIMIENTO" />
+            android:text="@string/btn_search_movimiento" />
 
         <View
             android:layout_width="match_parent"
@@ -56,7 +57,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TIPO DE TRANSPORTE"
+            android:text="@string/transport_type_label"
             android:textStyle="bold"
             android:layout_marginBottom="4dp"/>
         <Spinner
@@ -69,7 +70,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TIPO MOVIMIENTO"
+            android:text="@string/mov_type_label"
             android:textStyle="bold"
             android:layout_marginBottom="4dp"/>
         <Spinner
@@ -82,7 +83,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="FECHA"
+            android:text="@string/date_label"
             android:textStyle="bold"
             android:layout_marginBottom="4dp"/>
         <EditText
@@ -91,12 +92,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:focusable="false"
-            android:clickable="true" />
+            android:clickable="true"
+            android:autofillHints="none" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="HORA"
+            android:text="@string/time_label"
             android:textStyle="bold"
             android:layout_marginBottom="4dp"/>
         <EditText
@@ -105,19 +107,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:focusable="false"
-            android:clickable="true" />
+            android:clickable="true"
+            android:autofillHints="none" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="OBSERVACIONES"
+            android:text="@string/obs_label"
             android:textStyle="bold"
             android:layout_marginBottom="4dp"/>
         <EditText
             android:id="@+id/editMovObs"
             style="@style/AutoImportEditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:autofillHints="none" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -130,7 +134,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="ACTUALIZAR"
+                android:text="@string/btn_update"
                 android:layout_marginEnd="8dp"/>
 
             <Button
@@ -139,7 +143,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="ELIMINAR"
+                android:text="@string/btn_delete"
                 android:backgroundTint="#888888"
                 android:layout_marginStart="8dp"/>
         </LinearLayout>
@@ -153,7 +157,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="VEHÍCULOS ASIGNADOS"
+            android:text="@string/assigned_vehicles_label"
             android:textStyle="bold"
             android:textColor="@color/auto_import_red"
             android:layout_marginBottom="16dp"/>
@@ -163,13 +167,13 @@
             style="@style/AutoImportButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="GESTIONAR VEHÍCULOS" />
+            android:text="@string/btn_manage_vehicles" />
 
         <TextView
             android:id="@+id/txtVehiculosAsignados"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Vehículos: "
+            android:text="@string/vehicles_label"
             android:textStyle="italic"
             android:layout_marginTop="16dp"/>
 

@@ -1,110 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
     android:background="@color/white">
 
-    <LinearLayout
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_new_movimiento"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/auto_import_dark"
+        android:layout_marginBottom="32dp"/>
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="24dp">
+        android:text="@string/mov_id_label"
+        android:textStyle="bold"
+        android:layout_marginBottom="4dp"/>
+    <EditText
+        android:id="@+id/editNewMovId"
+        style="@style/AutoImportEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:hint="@string/mov_id_hint"
+        android:autofillHints="none" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="NUEVO MOVIMIENTO"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@color/auto_import_dark"
-            android:layout_marginBottom="32dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/transport_type_label"
+        android:textStyle="bold"
+        android:layout_marginBottom="4dp"/>
+    <Spinner
+        android:id="@+id/spinnerMedios"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:layout_marginBottom="16dp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="ID MOVIMIENTO"
-            android:textStyle="bold"
-            android:layout_marginBottom="4dp"/>
-        <EditText
-            android:id="@+id/editNewMovId"
-            style="@style/AutoImportEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mov_type_label"
+        android:textStyle="bold"
+        android:layout_marginBottom="4dp"/>
+    <Spinner
+        android:id="@+id/spinnerNewMovTipo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:layout_marginBottom="16dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="MEDIO DE TRANSPORTE"
-            android:textStyle="bold"
-            android:layout_marginBottom="4dp"/>
-        <Spinner
-            android:id="@+id/spinnerMedios"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="48dp"
-            android:layout_marginBottom="16dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/date_label"
+        android:textStyle="bold"
+        android:layout_marginBottom="4dp"/>
+    <EditText
+        android:id="@+id/editNewMovFecha"
+        style="@style/AutoImportEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="false"
+        android:clickable="true"
+        android:autofillHints="none" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TIPO DE MOVIMIENTO"
-            android:textStyle="bold"
-            android:layout_marginBottom="4dp"/>
-        <Spinner
-            android:id="@+id/spinnerNewMovTipo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="48dp"
-            android:layout_marginBottom="16dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/time_label"
+        android:textStyle="bold"
+        android:layout_marginBottom="4dp"/>
+    <EditText
+        android:id="@+id/editNewMovHora"
+        style="@style/AutoImportEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="false"
+        android:clickable="true"
+        android:autofillHints="none" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="FECHA"
-            android:textStyle="bold"
-            android:layout_marginBottom="4dp"/>
-        <EditText
-            android:id="@+id/editNewMovFecha"
-            style="@style/AutoImportEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:focusable="false"
-            android:clickable="true" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/obs_label"
+        android:textStyle="bold"
+        android:layout_marginBottom="4dp"/>
+    <EditText
+        android:id="@+id/editNewMovObs"
+        style="@style/AutoImportEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints="none" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="HORA"
-            android:textStyle="bold"
-            android:layout_marginBottom="4dp"/>
-        <EditText
-            android:id="@+id/editNewMovHora"
-            style="@style/AutoImportEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:focusable="false"
-            android:clickable="true" />
+    <Button
+        android:id="@+id/btnGuardarNuevoMov"
+        style="@style/AutoImportButton"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="@string/btn_save_mov"
+        android:layout_marginTop="16dp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="OBSERVACIONES"
-            android:textStyle="bold"
-            android:layout_marginBottom="4dp"/>
-        <EditText
-            android:id="@+id/editNewMovObs"
-            style="@style/AutoImportEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <Button
-            android:id="@+id/btnGuardarNuevoMov"
-            style="@style/AutoImportButton"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:text="GUARDAR MOVIMIENTO"
-            android:layout_marginTop="16dp" />
-
-    </LinearLayout>
-</ScrollView>
+</LinearLayout>

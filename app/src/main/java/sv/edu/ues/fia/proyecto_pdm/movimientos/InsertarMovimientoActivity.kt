@@ -76,13 +76,13 @@ class InsertarMovimientoActivity : AppCompatActivity() {
                 val nuevo = Movimiento(id, idMedio, tipo, fecha, hora, obs)
                 val res = movHandler.insertar(nuevo)
                 if (res != -1L) {
-                    Toast.makeText(this, "Movimiento guardado", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.mov_save_success), Toast.LENGTH_SHORT).show()
                     finish()
                 } else {
-                    Toast.makeText(this, "Error: ID Movimiento ya existe", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.mov_save_error), Toast.LENGTH_SHORT).show()
                 }
             } else {
-                Toast.makeText(this, "Complete los campos obligatorios", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.required_fields), Toast.LENGTH_SHORT).show()
             }
         }
     }

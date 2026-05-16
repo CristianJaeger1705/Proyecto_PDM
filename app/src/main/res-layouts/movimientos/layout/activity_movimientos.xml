@@ -13,7 +13,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="MENÚ MOVIMIENTOS"
+            android:text="@string/movimientos_menu_title"
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="@color/auto_import_dark"
@@ -51,7 +51,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TRANSPORTES"
+                android:text="@string/menu_transportes"
                 android:textStyle="bold"
                 android:textSize="11sp"
                 android:textColor="@color/auto_import_text_dark"
@@ -74,7 +74,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="GESTIÓN"
+                android:text="@string/menu_gestion"
                 android:textStyle="bold"
                 android:textSize="11sp"
                 android:textColor="@color/auto_import_text_dark"

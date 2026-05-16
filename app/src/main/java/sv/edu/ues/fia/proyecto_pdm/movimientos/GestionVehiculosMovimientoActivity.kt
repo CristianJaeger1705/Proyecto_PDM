@@ -22,13 +22,13 @@ class GestionVehiculosMovimientoActivity : AppCompatActivity() {
 
         idMovimiento = intent.getIntExtra("ID_MOVIMIENTO", -1)
         if (idMovimiento == -1) {
-            Toast.makeText(this, "Error: No se recibió ID de Movimiento", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.error_no_mov_id), Toast.LENGTH_SHORT).show()
             finish()
             return
         }
 
         val txtInfo = findViewById<TextView>(R.id.txtIdMovimientoInfo)
-        txtInfo.text = "Movimiento ID: $idMovimiento"
+        txtInfo.text = getString(R.string.mov_id_info, idMovimiento)
 
         val editVehId = findViewById<EditText>(R.id.editVehiculoId)
         val btnAgregar = findViewById<Button>(R.id.btnAgregarVeh)
@@ -42,7 +42,7 @@ class GestionVehiculosMovimientoActivity : AppCompatActivity() {
             val id = listVehiculos.adapter.getItem(position) as Int
             idVehiculoSeleccionado = id
             editVehId.setText(id.toString())
-            Toast.makeText(this, "Seleccionado ID: $id", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.veh_selected, id), Toast.LENGTH_SHORT).show()
         }
 
         btnAgregar.setOnClickListener {
@@ -54,7 +54,7 @@ class GestionVehiculosMovimientoActivity : AppCompatActivity() {
                     try {
                         val res = movHandler.agregarVehiculoAMovimiento(idMovimiento, vehId)
                         if (res != -1L) {
-                            Toast.makeText(this, "Vehículo agregado", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, getString(R.string.veh_added), Toast.LENGTH_SHORT).show()
                             cargarVehiculos(listVehiculos)
                             editVehId.text.clear()
                         }
@@ -62,7 +62,7 @@ class GestionVehiculosMovimientoActivity : AppCompatActivity() {
                         Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_LONG).show()
                     }
                 } else {
-                    Toast.makeText(this, "El vehículo no existe", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.veh_not_exists), Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -75,21 +75,21 @@ class GestionVehiculosMovimientoActivity : AppCompatActivity() {
                     try {
                         val res = movHandler.actualizarVehiculoDeMovimiento(idMovimiento, idVehiculoSeleccionado!!, vehIdNuevo)
                         if (res > 0) {
-                            Toast.makeText(this, "Asociación actualizada", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, getString(R.string.association_updated), Toast.LENGTH_SHORT).show()
                             cargarVehiculos(listVehiculos)
                             idVehiculoSeleccionado = null
                             editVehId.text.clear()
                         } else {
-                            Toast.makeText(this, "No se pudo actualizar", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, getString(R.string.update_failed), Toast.LENGTH_SHORT).show()
                         }
                     } catch (e: Exception) {
                         Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_LONG).show()
                     }
                 } else {
-                    Toast.makeText(this, "El nuevo vehículo no existe", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.new_veh_not_exists), Toast.LENGTH_SHORT).show()
                 }
             } else {
-                Toast.makeText(this, "Seleccione un vehículo de la lista y escriba el nuevo ID", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.select_veh_error), Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -97,15 +97,15 @@ class GestionVehiculosMovimientoActivity : AppCompatActivity() {
             if (idVehiculoSeleccionado != null) {
                 val res = movHandler.eliminarVehiculoDeMovimiento(idMovimiento, idVehiculoSeleccionado!!)
                 if (res > 0) {
-                    Toast.makeText(this, "Vehículo eliminado del movimiento", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.veh_deleted_from_mov), Toast.LENGTH_SHORT).show()
                     cargarVehiculos(listVehiculos)
                     idVehiculoSeleccionado = null
                     editVehId.text.clear()
                 } else {
-                    Toast.makeText(this, "Error al eliminar", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.delete_error), Toast.LENGTH_SHORT).show()
                 }
             } else {
-                Toast.makeText(this, "Seleccione un vehículo de la lista", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.select_from_list), Toast.LENGTH_SHORT).show()
             }
         }
     }
