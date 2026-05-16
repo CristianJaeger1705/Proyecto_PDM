@@ -228,6 +228,17 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
             END;
         """.trimIndent()
         db.execSQL(trCapacidadImportacion)
+
+        // TRIGGER 7: Actualizar estado del vehículo al enviarlo a reparación
+        val trEstadoReparacion = """
+        CREATE TRIGGER tr_estado_reparacion AFTER INSERT ON ${DatabaseContract.ReparacionEntry.TABLE_NAME}
+              BEGIN
+              UPDATE ${DatabaseContract.VehiculoEntry.TABLE_NAME}
+              SET ${DatabaseContract.VehiculoEntry.COLUMN_ESTADO} = 'EN_REPARACION'
+              WHERE ${DatabaseContract.VehiculoEntry.COLUMN_ID} = NEW.${DatabaseContract.ReparacionEntry.COLUMN_ID_VEHICULO};
+            END;
+        """.trimIndent()
+        db.execSQL(trEstadoReparacion)
     }
 
     override fun onOpen(db: SQLiteDatabase) {
@@ -258,8 +269,8 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
 
     companion object {
         private const val DATABASE_NAME = "proyecto_pdm.db"
-      
-        private const val DATABASE_VERSION = 20
+
+        private const val DATABASE_VERSION = 21
 
         @Volatile
         private var INSTANCE: DatabaseHelper? = null
