@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
+    android:background="@color/app_background"
     tools:context=".bodega.BodegaInsertarActivity">
 
     <TextView
@@ -15,6 +16,7 @@
         android:textSize="24sp"
         android:textStyle="bold"
         android:gravity="center"
+        android:textColor="@color/auto_import_text_dark"
         android:layout_marginBottom="24dp"/>
 
     <EditText
@@ -23,6 +25,8 @@
         android:layout_height="wrap_content"
         android:hint="@string/label_nombre_bodega"
         android:inputType="text"
+        android:textColor="@color/auto_import_text_dark"
+        android:textColorHint="@color/auto_import_hint"
         android:layout_marginBottom="12dp"
         android:autofillHints="name"/>
 
@@ -32,6 +36,8 @@
         android:layout_height="wrap_content"
         android:hint="@string/label_departamento"
         android:inputType="text"
+        android:textColor="@color/auto_import_text_dark"
+        android:textColorHint="@color/auto_import_hint"
         android:layout_marginBottom="12dp"
         android:autofillHints="postalAddress"/>
 
@@ -41,6 +47,8 @@
         android:layout_height="wrap_content"
         android:hint="@string/label_direccion"
         android:inputType="text"
+        android:textColor="@color/auto_import_text_dark"
+        android:textColorHint="@color/auto_import_hint"
         android:layout_marginBottom="12dp"
         android:autofillHints="streetAddress"/>
 
@@ -50,6 +58,8 @@
         android:layout_height="wrap_content"
         android:hint="@string/label_capacidad_secciones"
         android:inputType="number"
+        android:textColor="@color/auto_import_text_dark"
+        android:textColorHint="@color/auto_import_hint"
         android:layout_marginBottom="24dp"
         android:autofillHints="none"/>
 
@@ -57,14 +67,17 @@
         android:id="@+id/btnGuardarBodega"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/btn_save" />
+        android:text="@string/btn_save"
+        android:backgroundTint="@color/auto_import_dark"
+        android:textColor="@color/white"/>
 
     <Button
         android:id="@+id/btnLimpiarBodega"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Limpiar Campos"
+        android:text="@string/btn_clean"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:textColor="@color/auto_import_dark"
         android:layout_marginTop="8dp"/>
 
 </LinearLayout>

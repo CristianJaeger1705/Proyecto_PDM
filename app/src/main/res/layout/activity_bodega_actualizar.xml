@@ -6,6 +6,7 @@
     android:orientation="vertical"
     android:padding="16dp"
     android:id="@+id/main"
+    android:background="@color/app_background"
     tools:context=".bodega.BodegaActualizarActivity">
 
     <TextView
@@ -15,6 +16,7 @@
         android:textSize="24sp"
         android:textStyle="bold"
         android:gravity="center"
+        android:textColor="@color/auto_import_text_dark"
         android:layout_marginBottom="24dp"/>
 
     <LinearLayout
@@ -30,13 +32,17 @@
             android:layout_weight="1"
             android:hint="@string/label_id_bodega"
             android:inputType="number"
+            android:textColor="@color/auto_import_text_dark"
+            android:textColorHint="@color/auto_import_hint"
             android:autofillHints="none"/>
 
         <Button
             android:id="@+id/btnCargarBodega"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/btn_load" />
+            android:text="@string/btn_load"
+            android:backgroundTint="@color/auto_import_dark"
+            android:textColor="@color/white"/>
     </LinearLayout>
 
     <EditText
@@ -45,6 +51,8 @@
         android:layout_height="wrap_content"
         android:hint="@string/label_nombre_bodega"
         android:inputType="text"
+        android:textColor="@color/auto_import_text_dark"
+        android:textColorHint="@color/auto_import_hint"
         android:layout_marginBottom="12dp"
         android:autofillHints="name"/>
 
@@ -54,6 +62,8 @@
         android:layout_height="wrap_content"
         android:hint="@string/label_departamento"
         android:inputType="text"
+        android:textColor="@color/auto_import_text_dark"
+        android:textColorHint="@color/auto_import_hint"
         android:layout_marginBottom="12dp"
         android:autofillHints="postalAddress"/>
 
@@ -63,6 +73,8 @@
         android:layout_height="wrap_content"
         android:hint="@string/label_direccion"
         android:inputType="text"
+        android:textColor="@color/auto_import_text_dark"
+        android:textColorHint="@color/auto_import_hint"
         android:layout_marginBottom="12dp"
         android:autofillHints="streetAddress"/>
 
@@ -72,6 +84,8 @@
         android:layout_height="wrap_content"
         android:hint="@string/label_capacidad_secciones"
         android:inputType="number"
+        android:textColor="@color/auto_import_text_dark"
+        android:textColorHint="@color/auto_import_hint"
         android:layout_marginBottom="24dp"
         android:autofillHints="none"/>
 
@@ -79,6 +93,8 @@
         android:id="@+id/btnActualizarBodega"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/btn_save" />
+        android:text="@string/btn_save"
+        android:backgroundTint="@color/auto_import_dark"
+        android:textColor="@color/white"/>
 
 </LinearLayout>

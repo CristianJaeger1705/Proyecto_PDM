@@ -100,9 +100,11 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         val createUbicacionTable = "CREATE TABLE ${DatabaseContract.UbicacionEntry.TABLE_NAME} (" +
                 "${DatabaseContract.UbicacionEntry.COLUMN_ID} INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "${DatabaseContract.UbicacionEntry.COLUMN_ID_SECCION} INTEGER, " +
+                "${DatabaseContract.UbicacionEntry.COLUMN_ID_VEHICULO} INTEGER, " +
                 "${DatabaseContract.UbicacionEntry.COLUMN_FECHA} TEXT, " +
                 "${DatabaseContract.UbicacionEntry.COLUMN_ACTIVA} INTEGER, " +
-                "FOREIGN KEY (${DatabaseContract.UbicacionEntry.COLUMN_ID_SECCION}) REFERENCES ${DatabaseContract.SeccionEntry.TABLE_NAME}(${DatabaseContract.SeccionEntry.COLUMN_ID}) ON DELETE CASCADE)"
+                "FOREIGN KEY (${DatabaseContract.UbicacionEntry.COLUMN_ID_SECCION}) REFERENCES ${DatabaseContract.SeccionEntry.TABLE_NAME}(${DatabaseContract.SeccionEntry.COLUMN_ID}) ON DELETE CASCADE, " +
+                "FOREIGN KEY (${DatabaseContract.UbicacionEntry.COLUMN_ID_VEHICULO}) REFERENCES ${DatabaseContract.VehiculoEntry.TABLE_NAME}(${DatabaseContract.VehiculoEntry.COLUMN_ID}))"
         db.execSQL(createUbicacionTable)
 
         val createTallerTable = "CREATE TABLE ${DatabaseContract.TallerEntry.TABLE_NAME} (" +
@@ -239,6 +241,49 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
             END;
         """.trimIndent()
         db.execSQL(trEstadoReparacion)
+
+        // TRIGGER 8: Bloquear si el vehículo ya tiene una ubicación activa
+        val trBloquearDuplicado = """
+            CREATE TRIGGER tr_bloquear_ubicacion_duplicada BEFORE INSERT ON ${DatabaseContract.UbicacionEntry.TABLE_NAME}
+            FOR EACH ROW
+            WHEN (SELECT COUNT(*) FROM ${DatabaseContract.UbicacionEntry.TABLE_NAME} 
+                  WHERE ${DatabaseContract.UbicacionEntry.COLUMN_ID_VEHICULO} = NEW.${DatabaseContract.UbicacionEntry.COLUMN_ID_VEHICULO} 
+                  AND ${DatabaseContract.UbicacionEntry.COLUMN_ACTIVA} = 1) > 0
+            BEGIN
+                SELECT RAISE(ABORT, 'El vehículo ya tiene una ubicación activa. Use el módulo de Actualizar para moverlo.');
+            END;
+        """.trimIndent()
+        db.execSQL(trBloquearDuplicado)
+
+        // TRIGGER 9: Liberar ubicación al vender
+        val trLiberarVenta = """
+            CREATE TRIGGER tr_liberar_ubicacion_venta AFTER INSERT ON ${DatabaseContract.VentaEntry.TABLE_NAME}
+            BEGIN
+                UPDATE ${DatabaseContract.UbicacionEntry.TABLE_NAME}
+                SET ${DatabaseContract.UbicacionEntry.COLUMN_ACTIVA} = 0
+                WHERE ${DatabaseContract.UbicacionEntry.COLUMN_ID_VEHICULO} = NEW.${DatabaseContract.VentaEntry.COLUMN_ID_VEHICULO};
+                
+                UPDATE ${DatabaseContract.VehiculoEntry.TABLE_NAME}
+                SET ${DatabaseContract.VehiculoEntry.COLUMN_ID_UBICACION} = NULL
+                WHERE ${DatabaseContract.VehiculoEntry.COLUMN_ID} = NEW.${DatabaseContract.VentaEntry.COLUMN_ID_VEHICULO};
+            END;
+        """.trimIndent()
+        db.execSQL(trLiberarVenta)
+
+        // TRIGGER 10: Liberar ubicación al enviar a reparación
+        val trLiberarReparacion = """
+            CREATE TRIGGER tr_liberar_ubicacion_reparacion AFTER INSERT ON ${DatabaseContract.ReparacionEntry.TABLE_NAME}
+            BEGIN
+                UPDATE ${DatabaseContract.UbicacionEntry.TABLE_NAME}
+                SET ${DatabaseContract.UbicacionEntry.COLUMN_ACTIVA} = 0
+                WHERE ${DatabaseContract.UbicacionEntry.COLUMN_ID_VEHICULO} = NEW.${DatabaseContract.ReparacionEntry.COLUMN_ID_VEHICULO};
+                
+                UPDATE ${DatabaseContract.VehiculoEntry.TABLE_NAME}
+                SET ${DatabaseContract.VehiculoEntry.COLUMN_ID_UBICACION} = NULL
+                WHERE ${DatabaseContract.VehiculoEntry.COLUMN_ID} = NEW.${DatabaseContract.ReparacionEntry.COLUMN_ID_VEHICULO};
+            END;
+        """.trimIndent()
+        db.execSQL(trLiberarReparacion)
     }
 
     override fun onOpen(db: SQLiteDatabase) {
@@ -270,7 +315,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
     companion object {
         private const val DATABASE_NAME = "proyecto_pdm.db"
 
-        private const val DATABASE_VERSION = 21
+        private const val DATABASE_VERSION = 23
 
         @Volatile
         private var INSTANCE: DatabaseHelper? = null

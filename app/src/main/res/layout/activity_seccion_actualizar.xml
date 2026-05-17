@@ -6,6 +6,7 @@
     android:orientation="vertical"
     android:padding="16dp"
     android:id="@+id/main"
+    android:background="@color/app_background"
     tools:context=".seccion.SeccionActualizarActivity">
 
     <TextView
@@ -15,41 +16,44 @@
         android:textSize="24sp"
         android:textStyle="bold"
         android:gravity="center"
+        android:textColor="@color/auto_import_text_dark"
         android:layout_marginBottom="24dp"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="16dp">
-
-        <EditText
-            android:id="@+id/editActualizarIdSeccion"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="@string/label_id_seccion"
-            android:inputType="number"
-            android:autofillHints="none"/>
-
-        <Button
-            android:id="@+id/btnCargarSeccion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_load" />
-    </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/label_seleccione_bodega"
+        android:textColor="@color/auto_import_text_dark"
         android:layout_marginBottom="4dp"/>
 
     <Spinner
         android:id="@+id/spinnerActualizarBodegas"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
+        android:background="@color/white"
+        android:padding="8dp"
         android:layout_marginBottom="12dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Seleccione Sección a Modificar:"
+        android:textColor="@color/auto_import_text_dark"
+        android:layout_marginBottom="4dp"/>
+
+    <Spinner
+        android:id="@+id/spinnerActualizarSecciones"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/white"
+        android:padding="8dp"
+        android:layout_marginBottom="24dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/auto_import_border_grey"
+        android:layout_marginBottom="24dp"/>
 
     <EditText
         android:id="@+id/editActualizarNivel"
@@ -57,6 +61,8 @@
         android:layout_height="wrap_content"
         android:hint="@string/label_nivel"
         android:inputType="number"
+        android:textColor="@color/auto_import_text_dark"
+        android:textColorHint="@color/auto_import_hint"
         android:layout_marginBottom="12dp"
         android:autofillHints="none"/>
 
@@ -66,6 +72,8 @@
         android:layout_height="wrap_content"
         android:hint="@string/label_capacidad_vehiculos"
         android:inputType="number"
+        android:textColor="@color/auto_import_text_dark"
+        android:textColorHint="@color/auto_import_hint"
         android:layout_marginBottom="24dp"
         android:autofillHints="none"/>
 
@@ -73,6 +81,8 @@
         android:id="@+id/btnActualizarSeccion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/btn_save" />
+        android:text="@string/btn_save"
+        android:backgroundTint="@color/auto_import_dark"
+        android:textColor="@color/white"/>
 
 </LinearLayout>

@@ -7,6 +7,7 @@
     android:orientation="vertical"
     android:padding="24dp"
     android:gravity="center"
+    android:background="@color/app_background"
     tools:context=".seccion.SeccionMenuActivity">
 
     <TextView
@@ -15,6 +16,7 @@
         android:text="@string/title_gestion_secciones"
         android:textSize="28sp"
         android:textStyle="bold"
+        android:textColor="@color/auto_import_text_dark"
         android:layout_marginBottom="40dp"/>
 
     <Button
@@ -22,6 +24,8 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="@string/btn_insertar_seccion"
+        android:backgroundTint="@color/auto_import_dark"
+        android:textColor="@color/white"
         android:layout_marginBottom="12dp"/>
 
     <Button
@@ -29,6 +33,8 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="@string/btn_consultar_seccion"
+        android:backgroundTint="@color/auto_import_dark"
+        android:textColor="@color/white"
         android:layout_marginBottom="12dp"/>
 
     <Button
@@ -36,6 +42,8 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="@string/btn_actualizar_seccion"
+        android:backgroundTint="@color/auto_import_dark"
+        android:textColor="@color/white"
         android:layout_marginBottom="12dp"/>
 
     <Button
@@ -43,7 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="@string/btn_eliminar_seccion"
-        android:backgroundTint="#FF5252"
-        android:textColor="#FFFFFF"/>
+        android:backgroundTint="@color/auto_import_red"
+        android:textColor="@color/white"/>
 
 </LinearLayout>

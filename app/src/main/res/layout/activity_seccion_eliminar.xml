@@ -6,6 +6,7 @@
     android:orientation="vertical"
     android:padding="16dp"
     android:id="@+id/main"
+    android:background="@color/app_background"
     tools:context=".seccion.SeccionEliminarActivity">
 
     <TextView
@@ -15,23 +16,45 @@
         android:textSize="24sp"
         android:textStyle="bold"
         android:gravity="center"
+        android:textColor="@color/auto_import_text_dark"
         android:layout_marginBottom="24dp"/>
 
-    <EditText
-        android:id="@+id/editEliminarIdSeccion"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/label_id_seccion"
-        android:inputType="number"
-        android:layout_marginBottom="24dp"
-        android:autofillHints="none"/>
+        android:text="@string/label_seleccione_bodega"
+        android:textColor="@color/auto_import_text_dark"
+        android:layout_marginBottom="4dp"/>
+
+    <Spinner
+        android:id="@+id/spinnerEliminarBodegas"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/white"
+        android:padding="8dp"
+        android:layout_marginBottom="12dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Seleccione Sección a Eliminar:"
+        android:textColor="@color/auto_import_text_dark"
+        android:layout_marginBottom="4dp"/>
+
+    <Spinner
+        android:id="@+id/spinnerEliminarSecciones"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/white"
+        android:padding="8dp"
+        android:layout_marginBottom="24dp"/>
 
     <Button
-        android:id="@+id/btnEliminarSeccion"
+        android:id="@+id/btnEliminarSeccionFinal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/btn_delete"
-        android:backgroundTint="#FF5252"
-        android:textColor="#FFFFFF"/>
+        android:backgroundTint="@color/auto_import_red"
+        android:textColor="@color/white"/>
 
 </LinearLayout>

@@ -6,6 +6,7 @@
     android:orientation="vertical"
     android:padding="16dp"
     android:id="@+id/main"
+    android:background="@color/app_background"
     tools:context=".bodega.BodegaConsultarActivity">
 
     <TextView
@@ -15,22 +16,31 @@
         android:textSize="24sp"
         android:textStyle="bold"
         android:gravity="center"
+        android:textColor="@color/auto_import_text_dark"
         android:layout_marginBottom="24dp"/>
 
-    <EditText
-        android:id="@+id/editConsultarIdBodega"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/label_id_bodega"
-        android:inputType="number"
-        android:layout_marginBottom="12dp"
-        android:autofillHints="none"/>
+        android:text="@string/label_seleccione_bodega"
+        android:textColor="@color/auto_import_text_dark"
+        android:layout_marginBottom="4dp"/>
+
+    <Spinner
+        android:id="@+id/spinnerConsultarBodegas"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/white"
+        android:padding="8dp"
+        android:layout_marginBottom="12dp"/>
 
     <Button
-        android:id="@+id/btnConsultarBodega"
+        android:id="@+id/btnConsultarBodegaDetalle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/btn_search" />
+        android:text="@string/btn_search"
+        android:backgroundTint="@color/auto_import_dark"
+        android:textColor="@color/white"/>
 
     <TextView
         android:id="@+id/textResultadoBodega"
@@ -38,8 +48,11 @@
         android:layout_height="wrap_content"
         android:text="@string/label_result"
         android:textSize="18sp"
+        android:textColor="@color/auto_import_text_dark"
         android:layout_marginTop="24dp"
-        android:padding="8dp"
-        android:background="#F0F0F0"/>
+        android:padding="16dp"
+        android:background="@color/white"
+        android:elevation="2dp"
+        android:lineSpacingExtra="4dp"/>
 
 </LinearLayout>

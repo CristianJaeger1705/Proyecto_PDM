@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
+    android:background="@color/app_background"
     tools:context=".seccion.SeccionInsertarActivity">
 
     <TextView
@@ -15,18 +16,22 @@
         android:textSize="24sp"
         android:textStyle="bold"
         android:gravity="center"
+        android:textColor="@color/auto_import_text_dark"
         android:layout_marginBottom="24dp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/label_seleccione_bodega"
+        android:textColor="@color/auto_import_text_dark"
         android:layout_marginBottom="4dp"/>
 
     <Spinner
         android:id="@+id/spinnerBodegas"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
+        android:background="@color/white"
+        android:padding="8dp"
         android:layout_marginBottom="12dp"/>
 
     <EditText
@@ -35,6 +40,8 @@
         android:layout_height="wrap_content"
         android:hint="@string/label_nivel"
         android:inputType="number"
+        android:textColor="@color/auto_import_text_dark"
+        android:textColorHint="@color/auto_import_hint"
         android:layout_marginBottom="12dp"
         android:autofillHints="none"/>
 
@@ -44,6 +51,8 @@
         android:layout_height="wrap_content"
         android:hint="@string/label_capacidad_vehiculos"
         android:inputType="number"
+        android:textColor="@color/auto_import_text_dark"
+        android:textColorHint="@color/auto_import_hint"
         android:layout_marginBottom="24dp"
         android:autofillHints="none"/>
 
@@ -51,14 +60,17 @@
         android:id="@+id/btnGuardarSeccion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/btn_save" />
+        android:text="@string/btn_save"
+        android:backgroundTint="@color/auto_import_dark"
+        android:textColor="@color/white"/>
 
     <Button
         android:id="@+id/btnLimpiarSeccion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Limpiar Campos"
+        android:text="@string/btn_clean"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:textColor="@color/auto_import_dark"
         android:layout_marginTop="8dp"/>
 
 </LinearLayout>

@@ -9,4 +9,5 @@
     <color name="auto_import_border_grey">#CCCCCC</color>
     <color name="app_background">#F7F9FC</color>
     <color name="hub_button_bg">#E0E0E0</color>
+    <color name="auto_import_hint">#636E72</color>
 </resources>

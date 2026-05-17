@@ -82,4 +82,28 @@ class SeccionHandler(context: Context) {
         cursor.close()
         return lista
     }
+
+    fun obtenerPorBodega(idBodega: Int): List<Seccion> {
+        val lista = mutableListOf<Seccion>()
+        val db = dbHelper.readableDatabase
+        val cursor = db.query(
+            DatabaseContract.SeccionEntry.TABLE_NAME,
+            null,
+            "${DatabaseContract.SeccionEntry.COLUMN_ID_BODEGA} = ?",
+            arrayOf(idBodega.toString()),
+            null, null, null
+        )
+        if (cursor.moveToFirst()) {
+            do {
+                lista.add(Seccion(
+                    cursor.getInt(0),
+                    cursor.getInt(1),
+                    cursor.getInt(2),
+                    cursor.getInt(3)
+                ))
+            } while (cursor.moveToNext())
+        }
+        cursor.close()
+        return lista
+    }
 }

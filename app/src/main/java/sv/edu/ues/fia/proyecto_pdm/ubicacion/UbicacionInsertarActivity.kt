@@ -2,19 +2,22 @@ package sv.edu.ues.fia.proyecto_pdm.ubicacion
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import sv.edu.ues.fia.proyecto_pdm.BaseActivity
 import sv.edu.ues.fia.proyecto_pdm.R
 import sv.edu.ues.fia.proyecto_pdm.Vehiculo
 import sv.edu.ues.fia.proyecto_pdm.VehiculoHandler
+import sv.edu.ues.fia.proyecto_pdm.bodega.Bodega
+import sv.edu.ues.fia.proyecto_pdm.bodega.BodegaHandler
 import sv.edu.ues.fia.proyecto_pdm.seccion.Seccion
 import sv.edu.ues.fia.proyecto_pdm.seccion.SeccionHandler
 import java.time.LocalDate
@@ -25,14 +28,17 @@ class UbicacionInsertarActivity : BaseActivity() {
     private lateinit var ubicacionHandler: UbicacionHandler
     private lateinit var vehiculoHandler: VehiculoHandler
     private lateinit var seccionHandler: SeccionHandler
+    private lateinit var bodegaHandler: BodegaHandler
     
-    private lateinit var spinnerVehiculos: Spinner
+    private lateinit var spinnerBodegas: Spinner
     private lateinit var spinnerSecciones: Spinner
+    private lateinit var spinnerVehiculos: Spinner
     private lateinit var editFecha: EditText
     private lateinit var btnGuardar: Button
     
-    private lateinit var listaVehiculos: List<Vehiculo>
+    private lateinit var listaBodegas: List<Bodega>
     private lateinit var listaSecciones: List<Seccion>
+    private lateinit var listaVehiculos: List<Vehiculo>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,35 +54,59 @@ class UbicacionInsertarActivity : BaseActivity() {
         ubicacionHandler = UbicacionHandler(this)
         vehiculoHandler = VehiculoHandler(this)
         seccionHandler = SeccionHandler(this)
+        bodegaHandler = BodegaHandler(this)
 
-        spinnerVehiculos = findViewById(R.id.spinnerVehiculos)
-        spinnerSecciones = findViewById(R.id.spinnerSecciones)
+        spinnerBodegas = findViewById(R.id.spinnerUbicacionBodegas)
+        spinnerSecciones = findViewById(R.id.spinnerUbicacionSecciones)
+        spinnerVehiculos = findViewById(R.id.spinnerUbicacionVehiculos)
         editFecha = findViewById(R.id.editFechaAsignacion)
         btnGuardar = findViewById(R.id.btnGuardarUbicacion)
 
-        cargarDatos()
+        cargarBodegas()
+        cargarVehiculos()
+
+        spinnerBodegas.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                cargarSecciones(listaBodegas[position].idBodega)
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
+        }
 
         editFecha.setOnClickListener { mostrarDatePicker() }
         btnGuardar.setOnClickListener { insertarUbicacion() }
     }
 
-    private fun cargarDatos() {
-        listaVehiculos = vehiculoHandler.obtenerTodos().filter { it.estado == "DISPONIBLE" }
-        listaSecciones = seccionHandler.obtenerTodas()
-
-        if (listaVehiculos.isEmpty() || listaSecciones.isEmpty()) {
-            Toast.makeText(this, "Asegúrese de tener vehículos disponibles y secciones creadas", Toast.LENGTH_LONG).show()
+    private fun cargarBodegas() {
+        listaBodegas = bodegaHandler.obtenerTodas()
+        if (listaBodegas.isEmpty()) {
+            Toast.makeText(this, "Debe registrar una bodega primero", Toast.LENGTH_SHORT).show()
             finish()
             return
         }
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, listaBodegas.map { it.nombreBodega })
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerBodegas.adapter = adapter
+    }
 
-        val adapterVeh = ArrayAdapter(this, android.R.layout.simple_spinner_item, listaVehiculos.map { "ID: ${it.idVehiculo} - ${it.marca}" })
-        adapterVeh.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinnerVehiculos.adapter = adapterVeh
+    private fun cargarSecciones(idBodega: Int) {
+        listaSecciones = seccionHandler.obtenerPorBodega(idBodega)
+        if (listaSecciones.isEmpty()) {
+            spinnerSecciones.adapter = null
+            return
+        }
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, listaSecciones.map { "ID: ${it.idSeccion} - Nivel ${it.nivel}" })
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerSecciones.adapter = adapter
+    }
 
-        val adapterSec = ArrayAdapter(this, android.R.layout.simple_spinner_item, listaSecciones.map { "Sec: ${it.idSeccion} - Nivel ${it.nivel}" })
-        adapterSec.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinnerSecciones.adapter = adapterSec
+    private fun cargarVehiculos() {
+        listaVehiculos = vehiculoHandler.obtenerTodos().filter { it.estado == "DISPONIBLE" }
+        if (listaVehiculos.isEmpty()) {
+            Toast.makeText(this, "No hay vehículos disponibles", Toast.LENGTH_SHORT).show()
+        }
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, listaVehiculos.map { "ID: ${it.idVehiculo} - ${it.marca}" })
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerVehiculos.adapter = adapter
     }
 
     private fun mostrarDatePicker() {
@@ -94,8 +124,8 @@ class UbicacionInsertarActivity : BaseActivity() {
 
     private fun insertarUbicacion() {
         val fechaStr = editFecha.text.toString()
-        if (fechaStr.isEmpty()) {
-            Toast.makeText(this, "Seleccione una fecha", Toast.LENGTH_SHORT).show()
+        if (fechaStr.isEmpty() || spinnerSecciones.selectedItem == null || spinnerVehiculos.selectedItem == null) {
+            Toast.makeText(this, "Complete todos los campos", Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -103,21 +133,18 @@ class UbicacionInsertarActivity : BaseActivity() {
             val vehiculoSel = listaVehiculos[spinnerVehiculos.selectedItemPosition]
             val seccionSel = listaSecciones[spinnerSecciones.selectedItemPosition]
             
-            // 1. Crear registro de ubicación
-            val nuevaUbicacion = Ubicacion_vehiculo(0, seccionSel.idSeccion, LocalDate.parse(fechaStr), true)
+            val nuevaUbicacion = Ubicacion_vehiculo(0, seccionSel.idSeccion, vehiculoSel.idVehiculo!!, LocalDate.parse(fechaStr), true)
             val idUbicacionGen = ubicacionHandler.insertar(nuevaUbicacion)
 
             if (idUbicacionGen != -1L) {
-                // 2. Actualizar el vehículo para que apunte a esta ubicación
                 vehiculoHandler.asignarUbicacion(vehiculoSel.idVehiculo!!, idUbicacionGen.toInt())
-                
-                Toast.makeText(this, "Ubicación asignada con éxito al vehículo ${vehiculoSel.idVehiculo}", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Ubicación asignada con éxito", Toast.LENGTH_LONG).show()
                 finish()
             } else {
-                Toast.makeText(this, "Error: Capacidad de sección alcanzada (Trigger)", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Error: Capacidad de sección alcanzada", Toast.LENGTH_LONG).show()
             }
         } catch (e: Exception) {
-            Toast.makeText(this, "Error al asignar: ${e.message}", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_LONG).show()
         }
     }
 }

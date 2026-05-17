@@ -84,6 +84,7 @@ object DatabaseContract {
         const val TABLE_NAME = "Ubicacion_Vehiculo"
         const val COLUMN_ID = "IdUbicacion"
         const val COLUMN_ID_SECCION = "IdSeccion"
+        const val COLUMN_ID_VEHICULO = "IdVehiculo"
         const val COLUMN_FECHA = "FechaAsignacion"
         const val COLUMN_ACTIVA = "Activa"
     }

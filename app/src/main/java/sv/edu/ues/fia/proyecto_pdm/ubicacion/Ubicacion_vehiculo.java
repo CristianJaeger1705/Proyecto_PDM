@@ -5,16 +5,17 @@ import java.time.LocalDate;
 public class Ubicacion_vehiculo {
     private int idUbicacion;
     private int idSeccion;
+    private int idVehiculo;
     private LocalDate fechaAsignacion;
-
     private Boolean activa;
 
     public Ubicacion_vehiculo() {
     }
 
-    public Ubicacion_vehiculo(int idUbicacion, int idSeccion, LocalDate fechaAsignacion,Boolean activa) {
+    public Ubicacion_vehiculo(int idUbicacion, int idSeccion, int idVehiculo, LocalDate fechaAsignacion, Boolean activa) {
         this.idUbicacion = idUbicacion;
         this.idSeccion = idSeccion;
+        this.idVehiculo = idVehiculo;
         this.fechaAsignacion = fechaAsignacion;
         this.activa = activa;
     }
@@ -33,6 +34,14 @@ public class Ubicacion_vehiculo {
 
     public void setIdSeccion(int idSeccion) {
         this.idSeccion = idSeccion;
+    }
+
+    public int getIdVehiculo() {
+        return idVehiculo;
+    }
+
+    public void setIdVehiculo(int idVehiculo) {
+        this.idVehiculo = idVehiculo;
     }
 
     public LocalDate getFechaAsignacion() {

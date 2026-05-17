@@ -67,6 +67,25 @@ class BodegaHandler(context: Context) {
         )
     }
 
+    fun obtenerConteoVehiculos(idBodega: Int): Int {
+        val db = dbHelper.readableDatabase
+        val query = """
+            SELECT COUNT(*) 
+            FROM ${DatabaseContract.VehiculoEntry.TABLE_NAME} v
+            JOIN ${DatabaseContract.UbicacionEntry.TABLE_NAME} u ON v.${DatabaseContract.VehiculoEntry.COLUMN_ID_UBICACION} = u.${DatabaseContract.UbicacionEntry.COLUMN_ID}
+            JOIN ${DatabaseContract.SeccionEntry.TABLE_NAME} s ON u.${DatabaseContract.UbicacionEntry.COLUMN_ID_SECCION} = s.${DatabaseContract.SeccionEntry.COLUMN_ID}
+            WHERE s.${DatabaseContract.SeccionEntry.COLUMN_ID_BODEGA} = ? AND u.${DatabaseContract.UbicacionEntry.COLUMN_ACTIVA} = 1
+        """.trimIndent()
+        
+        val cursor = db.rawQuery(query, arrayOf(idBodega.toString()))
+        var conteo = 0
+        if (cursor.moveToFirst()) {
+            conteo = cursor.getInt(0)
+        }
+        cursor.close()
+        return conteo
+    }
+
     fun obtenerTodas(): List<Bodega> {
         val lista = mutableListOf<Bodega>()
         val db = dbHelper.readableDatabase
