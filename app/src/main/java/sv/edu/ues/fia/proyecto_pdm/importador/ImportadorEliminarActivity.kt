@@ -34,29 +34,29 @@ class ImportadorEliminarActivity : AppCompatActivity() {
         btnEliminar.setOnClickListener {
             val nui = editNUI.text.toString().trim()
             if (nui.isEmpty()) {
-                Toast.makeText(this, "Ingrese un NUI para eliminar", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.msg_enter_nui_delete), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             val importador = handler.buscar(nui)
             if (importador == null) {
-                Toast.makeText(this, "No existe importador con NUI: $nui", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.msg_not_found_nui, nui), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             AlertDialog.Builder(this)
-                .setTitle("Confirmar eliminación")
-                .setMessage("¿Eliminar a ${importador.nombre} ${importador.apellido}?")
-                .setPositiveButton("Eliminar") { _, _ ->
+                .setTitle(getString(R.string.title_confirm_delete))
+                .setMessage(getString(R.string.msg_confirm_delete_importador, importador.nombre, importador.apellido))
+                .setPositiveButton(getString(R.string.btn_delete)) { _, _ ->
                     val resultado = handler.eliminar(nui)
                     if (resultado > 0) {
-                        Toast.makeText(this, "Importador eliminado", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, getString(R.string.msg_deleted_success), Toast.LENGTH_SHORT).show()
                         editNUI.setText("")
                     } else {
-                        Toast.makeText(this, "Error al eliminar", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, getString(R.string.msg_deleted_error), Toast.LENGTH_SHORT).show()
                     }
                 }
-                .setNegativeButton("Cancelar", null)
+                .setNegativeButton(getString(R.string.btn_cancel), null)
                 .show()
         }
     }

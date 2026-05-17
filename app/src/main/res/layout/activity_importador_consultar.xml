@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Consultar Importador"
+        android:text="@string/title_consult_importador_head"
         android:textSize="24sp"
         android:textStyle="bold"
         android:gravity="center"
@@ -21,7 +21,7 @@
         android:id="@+id/editConsultarNUI"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Ingrese NUI a buscar"
+        android:hint="@string/hint_nui_search"
         android:inputType="text"
         android:layout_marginBottom="12dp"/>
 
@@ -29,14 +29,14 @@
         android:id="@+id/btnConsultarImportador"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="BUSCAR"
+        android:text="@string/btn_search"
         android:layout_marginBottom="16dp"/>
 
     <TextView
         android:id="@+id/textResultadoImportador"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Resultado..."
+        android:text="@string/label_result"
         android:textSize="16sp"
         android:padding="12dp"
         android:background="#F0F0F0"
@@ -46,7 +46,7 @@
         android:id="@+id/btnLimpiarConsultarImportador"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="LIMPIAR"
+        android:text="@string/btn_clean"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
 </LinearLayout>

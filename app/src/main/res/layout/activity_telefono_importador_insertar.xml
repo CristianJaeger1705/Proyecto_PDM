@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Insertar Teléfono"
+        android:text="@string/title_insert_phone"
         android:textSize="24sp"
         android:textStyle="bold"
         android:gravity="center"
@@ -20,33 +20,33 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="NUI del Importador*"
+        android:text="@string/label_nui_importador"
         android:textStyle="bold"/>
     <EditText
         android:id="@+id/editTelefonoNUI"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="NUI del importador"
+        android:hint="@string/label_nui"
         android:inputType="text"
         android:layout_marginBottom="12dp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Número de Teléfono*"
+        android:text="@string/label_phone_number"
         android:textStyle="bold"/>
     <EditText
         android:id="@+id/editTelefonoNumero"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Ej: 7777-8888"
+        android:hint="@string/hint_phone_example"
         android:inputType="phone"
         android:layout_marginBottom="12dp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tipo de Teléfono"
+        android:text="@string/label_phone_type"
         android:textStyle="bold"/>
     <Spinner
         android:id="@+id/spinnerTelefonoTipo"
@@ -58,13 +58,13 @@
         android:id="@+id/btnGuardarTelefono"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="GUARDAR TELÉFONO"/>
+        android:text="@string/btn_save"/>
 
     <Button
         android:id="@+id/btnLimpiarTelefono"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="LIMPIAR CAMPOS"
+        android:text="@string/btn_clean"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_marginTop="8dp"/>
 

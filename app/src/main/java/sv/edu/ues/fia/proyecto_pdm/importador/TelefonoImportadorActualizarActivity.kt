@@ -36,7 +36,12 @@ class TelefonoImportadorActualizarActivity : AppCompatActivity() {
         val btnActualizar = findViewById<Button>(R.id.btnActualizarTelefono)
         val btnLimpiar = findViewById<Button>(R.id.btnLimpiarActualizarTelefono)
 
-        val tipos = arrayOf("CELULAR", "CASA", "TRABAJO", "OTRO")
+        val tipos = arrayOf(
+            getString(R.string.phone_type_mobile),
+            getString(R.string.phone_type_home),
+            getString(R.string.phone_type_work),
+            getString(R.string.phone_type_other)
+        )
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, tipos)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerTipo.adapter = adapter
@@ -44,7 +49,7 @@ class TelefonoImportadorActualizarActivity : AppCompatActivity() {
         btnCargar.setOnClickListener {
             val id = editId.text.toString().trim().toIntOrNull()
             if (id == null) {
-                Toast.makeText(this, "Ingrese un ID válido", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.msg_enter_valid_id), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             telefonoActual = handler.buscar(id)
@@ -53,9 +58,9 @@ class TelefonoImportadorActualizarActivity : AppCompatActivity() {
                 val index = tipos.indexOf(telefonoActual!!.tipoTelefono)
                 if (index != -1) spinnerTipo.setSelection(index)
                 setEdicionHabilitada(true)
-                Toast.makeText(this, "Datos cargados", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.record_found), Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this, "No se encontró teléfono con ID: $id", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.msg_phone_not_found_id, id), Toast.LENGTH_SHORT).show()
                 setEdicionHabilitada(false)
             }
         }
@@ -70,10 +75,10 @@ class TelefonoImportadorActualizarActivity : AppCompatActivity() {
             )
             val filas = handler.actualizar(actualizado)
             if (filas > 0) {
-                Toast.makeText(this, "Teléfono actualizado", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.update_success), Toast.LENGTH_SHORT).show()
                 limpiarCampos()
             } else {
-                Toast.makeText(this, "Error al actualizar", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.update_error), Toast.LENGTH_SHORT).show()
             }
         }
 

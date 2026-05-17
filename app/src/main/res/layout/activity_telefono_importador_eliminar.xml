@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Eliminar Teléfono"
+        android:text="@string/title_delete_phone"
         android:textSize="24sp"
         android:textStyle="bold"
         android:gravity="center"
@@ -20,13 +20,13 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ID del Teléfono"
+        android:text="@string/hint_phone_id"
         android:textStyle="bold"/>
     <EditText
         android:id="@+id/editEliminarTelefonoId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="ID del teléfono a eliminar"
+        android:hint="@string/hint_phone_id"
         android:inputType="number"
         android:layout_marginBottom="24dp"/>
 
@@ -34,14 +34,14 @@
         android:id="@+id/btnEliminarTelefono"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ELIMINAR TELÉFONO"
+        android:text="@string/btn_delete_phone"
         android:backgroundTint="#FF5252"
         android:textColor="#FFFFFF"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="¡Atención! Esta acción no se puede deshacer."
+        android:text="@string/warning_irreversible"
         android:textColor="#FF0000"
         android:gravity="center"
         android:layout_marginTop="12dp"

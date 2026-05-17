@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Consultar Teléfonos"
+        android:text="@string/title_consult_phone"
         android:textSize="24sp"
         android:textStyle="bold"
         android:gravity="center"
@@ -20,13 +20,13 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="NUI del Importador"
+        android:text="@string/label_nui_importador"
         android:textStyle="bold"/>
     <EditText
         android:id="@+id/editConsultarTelefonoNUI"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Ingrese NUI para buscar sus teléfonos"
+        android:hint="@string/hint_nui_search"
         android:inputType="text"
         android:layout_marginBottom="12dp"/>
 
@@ -34,14 +34,14 @@
         android:id="@+id/btnConsultarTelefono"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="BUSCAR TELÉFONOS"
+        android:text="@string/btn_search"
         android:layout_marginBottom="16dp"/>
 
     <TextView
         android:id="@+id/textResultadoTelefono"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Resultado..."
+        android:text="@string/label_result"
         android:textSize="16sp"
         android:padding="12dp"
         android:background="#F0F0F0"
@@ -51,7 +51,7 @@
         android:id="@+id/btnLimpiarConsultarTelefono"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="LIMPIAR"
+        android:text="@string/btn_clean"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
 </LinearLayout>

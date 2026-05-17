@@ -33,29 +33,29 @@ class TelefonoImportadorEliminarActivity : AppCompatActivity() {
         btnEliminar.setOnClickListener {
             val id = editId.text.toString().trim().toIntOrNull()
             if (id == null) {
-                Toast.makeText(this, "Ingrese un ID válido", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.msg_enter_valid_id), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             val telefono = handler.buscar(id)
             if (telefono == null) {
-                Toast.makeText(this, "No existe teléfono con ID: $id", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.msg_phone_not_found_id, id), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             AlertDialog.Builder(this)
-                .setTitle("Confirmar eliminación")
-                .setMessage("¿Eliminar el número ${telefono.numero}?")
-                .setPositiveButton("Eliminar") { _, _ ->
+                .setTitle(getString(R.string.title_confirm_delete))
+                .setMessage(getString(R.string.msg_confirm_delete_phone, telefono.numero))
+                .setPositiveButton(getString(R.string.btn_delete), { _, _ ->
                     val resultado = handler.eliminar(id)
                     if (resultado > 0) {
-                        Toast.makeText(this, "Teléfono eliminado", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, getString(R.string.msg_deleted_success), Toast.LENGTH_SHORT).show()
                         editId.setText("")
                     } else {
-                        Toast.makeText(this, "Error al eliminar", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, getString(R.string.msg_deleted_error), Toast.LENGTH_SHORT).show()
                     }
-                }
-                .setNegativeButton("Cancelar", null)
+                })
+                .setNegativeButton(getString(R.string.btn_cancel), null)
                 .show()
         }
     }

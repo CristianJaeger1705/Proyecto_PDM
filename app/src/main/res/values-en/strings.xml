@@ -190,6 +190,17 @@
     <string name="label_fecha_nacimiento">Date of Birth*</string>
     <string name="label_correo">Email Address*</string>
     <string name="label_nui_responsable">Responsible NUI (optional)</string>
+    <string name="label_result_nui">NUI: %1$s</string>
+    <string name="label_result_name">Name: %1$s %2$s</string>
+    <string name="label_result_maiden">Maiden Name: %1$s</string>
+    <string name="label_result_gender">Gender: %1$s</string>
+    <string name="label_result_birth">Date of Birth: %1$s</string>
+    <string name="label_result_address">Address: %1$s</string>
+    <string name="label_result_email">Email: %1$s</string>
+    <string name="label_result_responsible">Responsible: %1$s</string>
+    <string name="msg_not_found">Record not found</string>
+    <string name="msg_not_found_nui">Importing agent not found with NUI: %1$s</string>
+    <string name="msg_enter_nui">Enter a NUI to search</string>
     <string name="hint_fecha_nacimiento">Tap to select date</string>
 
     <!-- Vehicles -->
@@ -236,4 +247,44 @@
     <string name="dash_available">Available</string>
     <string name="dash_repair">Repair</string>
     <string name="dash_sold">Sold</string>
+    <!-- Importing Agents (Continuation) -->
+    <string name="title_consult_importador_head">Consult Importing Agent</string>
+    <string name="hint_nui_search">Enter NUI to search</string>
+    <string name="title_delete_importador_head">Delete Importing Agent</string>
+    <string name="hint_nui_delete">NUI of the agent to delete</string>
+    <string name="warning_irreversible">Warning! This action cannot be undone.</string>
+    <string name="title_confirm_delete">Confirm Deletion</string>
+    <string name="msg_confirm_delete_importador">Delete %1$s %2$s?</string>
+    <string name="msg_deleted_success">Deleted successfully</string>
+    <string name="msg_deleted_error">Error deleting</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="msg_enter_nui_delete">Enter a NUI to delete</string>
+
+    <!-- Importing Agent Phones -->
+    <string name="title_phones_menu">Phone Management</string>
+    <string name="btn_insert_phone">INSERT PHONE</string>
+    <string name="btn_consult_phones">CONSULT PHONES</string>
+    <string name="btn_update_phone">UPDATE PHONE</string>
+    <string name="btn_delete_phone">DELETE PHONE</string>
+    <string name="title_insert_phone">Insert Phone</string>
+    <string name="label_nui_importador">Importing Agent NUI*</string>
+    <string name="label_phone_number">Phone Number*</string>
+    <string name="label_phone_type">Phone Type</string>
+    <string name="hint_phone_example">Eg: 7777-8888</string>
+    <string name="title_consult_phone">Consult Phone</string>
+    <string name="title_update_phone">Update Phone</string>
+    <string name="title_delete_phone">Delete Phone</string>
+    <string name="hint_phone_id">Phone ID</string>
+    <string name="phone_type_mobile">MOBILE</string>
+    <string name="phone_type_home">HOME</string>
+    <string name="phone_type_work">WORK</string>
+    <string name="phone_type_other">OTHER</string>
+    <string name="msg_phone_saved">Phone saved. ID: %1$d</string>
+    <string name="label_result_phone_id">ID: %1$d</string>
+    <string name="label_result_phone_number">Number: %1$s</string>
+    <string name="label_result_phone_type">Type: %1$s</string>
+    <string name="msg_no_phones_found">No phones found for NUI: %1$s</string>
+    <string name="msg_enter_valid_id">Enter a valid ID</string>
+    <string name="msg_phone_not_found_id">Phone not found with ID: %1$d</string>
+    <string name="msg_confirm_delete_phone">Delete phone number %1$s?</string>
 </resources>

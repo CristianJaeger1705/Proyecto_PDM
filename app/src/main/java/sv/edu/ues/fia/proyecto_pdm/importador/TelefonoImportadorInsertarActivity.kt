@@ -37,7 +37,12 @@ class TelefonoImportadorInsertarActivity : AppCompatActivity() {
         val btnGuardar = findViewById<Button>(R.id.btnGuardarTelefono)
         val btnLimpiar = findViewById<Button>(R.id.btnLimpiarTelefono)
 
-        val tipos = arrayOf("CELULAR", "CASA", "TRABAJO", "OTRO")
+        val tipos = arrayOf(
+            getString(R.string.phone_type_mobile),
+            getString(R.string.phone_type_home),
+            getString(R.string.phone_type_work),
+            getString(R.string.phone_type_other)
+        )
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, tipos)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerTipo.adapter = adapter
@@ -48,13 +53,13 @@ class TelefonoImportadorInsertarActivity : AppCompatActivity() {
             val tipo = spinnerTipo.selectedItem.toString()
 
             if (nui.isEmpty() || numero.isEmpty()) {
-                Toast.makeText(this, "Complete los campos obligatorios", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.required_fields), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             val importador = importadorHandler.buscar(nui)
             if (importador == null) {
-                Toast.makeText(this, "No existe importador con NUI: $nui", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.msg_not_found_nui, nui), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -62,10 +67,10 @@ class TelefonoImportadorInsertarActivity : AppCompatActivity() {
             val resultado = handler.insertar(telefono)
 
             if (resultado != -1L) {
-                Toast.makeText(this, "Teléfono guardado. ID: $resultado", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.msg_phone_saved, resultado), Toast.LENGTH_SHORT).show()
                 limpiarCampos()
             } else {
-                Toast.makeText(this, "Error al guardar", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.insert_error), Toast.LENGTH_SHORT).show()
             }
         }
 

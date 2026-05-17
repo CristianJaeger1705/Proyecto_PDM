@@ -190,6 +190,17 @@
     <string name="label_fecha_nacimiento">Fecha de Nacimiento*</string>
     <string name="label_correo">Correo Electrónico*</string>
     <string name="label_nui_responsable">NUI Responsable (opcional)</string>
+    <string name="label_result_nui">NUI: %1$s</string>
+    <string name="label_result_name">Nombre: %1$s %2$s</string>
+    <string name="label_result_maiden">Apellido Casada: %1$s</string>
+    <string name="label_result_gender">Género: %1$s</string>
+    <string name="label_result_birth">Fecha Nacimiento: %1$s</string>
+    <string name="label_result_address">Dirección: %1$s</string>
+    <string name="label_result_email">Correo: %1$s</string>
+    <string name="label_result_responsible">Responsable: %1$s</string>
+    <string name="msg_not_found">No se encontró registro</string>
+    <string name="msg_not_found_nui">No se encontró importador con NUI: %1$s</string>
+    <string name="msg_enter_nui">Ingrese un NUI para buscar</string>
     <string name="hint_fecha_nacimiento">Toque para seleccionar fecha</string>
 
     <!-- Vehículos -->
@@ -236,4 +247,44 @@
     <string name="dash_available">Disponibles</string>
     <string name="dash_repair">Reparación</string>
     <string name="dash_sold">Vendidos</string>
+    <!-- Importadores (Continuación) -->
+    <string name="title_consult_importador_head">Consultar Importador</string>
+    <string name="hint_nui_search">Ingrese NUI a buscar</string>
+    <string name="title_delete_importador_head">Eliminar Importador</string>
+    <string name="hint_nui_delete">NUI del importador a eliminar</string>
+    <string name="warning_irreversible">¡Atención! Esta acción no se puede deshacer.</string>
+    <string name="title_confirm_delete">Confirmar eliminación</string>
+    <string name="msg_confirm_delete_importador">¿Eliminar a %1$s %2$s?</string>
+    <string name="msg_deleted_success">Eliminado con éxito</string>
+    <string name="msg_deleted_error">Error al eliminar</string>
+    <string name="btn_cancel">Cancelar</string>
+    <string name="msg_enter_nui_delete">Ingrese un NUI para eliminar</string>
+
+    <!-- Teléfonos Importador -->
+    <string name="title_phones_menu">Gestión de Teléfonos</string>
+    <string name="btn_insert_phone">INSERTAR TELÉFONO</string>
+    <string name="btn_consult_phones">CONSULTAR TELÉFONOS</string>
+    <string name="btn_update_phone">ACTUALIZAR TELÉFONO</string>
+    <string name="btn_delete_phone">ELIMINAR TELÉFONO</string>
+    <string name="title_insert_phone">Insertar Teléfono</string>
+    <string name="label_nui_importador">NUI del Importador*</string>
+    <string name="label_phone_number">Número de Teléfono*</string>
+    <string name="label_phone_type">Tipo de Teléfono</string>
+    <string name="hint_phone_example">Ej: 7777-8888</string>
+    <string name="title_consult_phone">Consultar Teléfono</string>
+    <string name="title_update_phone">Actualizar Teléfono</string>
+    <string name="title_delete_phone">Eliminar Teléfono</string>
+    <string name="hint_phone_id">ID de Teléfono</string>
+    <string name="phone_type_mobile">CELULAR</string>
+    <string name="phone_type_home">CASA</string>
+    <string name="phone_type_work">TRABAJO</string>
+    <string name="phone_type_other">OTRO</string>
+    <string name="msg_phone_saved">Teléfono guardado. ID: %1$d</string>
+    <string name="label_result_phone_id">ID: %1$d</string>
+    <string name="label_result_phone_number">Número: %1$s</string>
+    <string name="label_result_phone_type">Tipo: %1$s</string>
+    <string name="msg_no_phones_found">No se encontraron teléfonos para NUI: %1$s</string>
+    <string name="msg_enter_valid_id">Ingrese un ID válido</string>
+    <string name="msg_phone_not_found_id">No existe teléfono con ID: %1$d</string>
+    <string name="msg_confirm_delete_phone">¿Eliminar el número %1$s?</string>
 </resources>

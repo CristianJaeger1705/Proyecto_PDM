@@ -35,7 +35,7 @@ class TelefonoImportadorConsultarActivity : AppCompatActivity() {
         btnConsultar.setOnClickListener {
             val nui = editNUI.text.toString().trim()
             if (nui.isEmpty()) {
-                Toast.makeText(this, "Ingrese un NUI para buscar", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.msg_enter_nui), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -43,20 +43,20 @@ class TelefonoImportadorConsultarActivity : AppCompatActivity() {
             if (telefonos.isNotEmpty()) {
                 val sb = StringBuilder()
                 telefonos.forEach { t ->
-                    sb.append("ID: ${t.idTelefono}\n")
-                    sb.append("Número: ${t.numero}\n")
-                    sb.append("Tipo: ${t.tipoTelefono ?: "N/A"}\n")
+                    sb.append(getString(R.string.label_result_phone_id, t.idTelefono)).append("\n")
+                    sb.append(getString(R.string.label_result_phone_number, t.numero)).append("\n")
+                    sb.append(getString(R.string.label_result_phone_type, t.tipoTelefono ?: "N/A")).append("\n")
                     sb.append("---\n")
                 }
                 textResultado.text = sb.toString()
             } else {
-                textResultado.text = "No se encontraron teléfonos para NUI: $nui"
+                textResultado.text = getString(R.string.msg_no_phones_found, nui)
             }
         }
 
         btnLimpiar.setOnClickListener {
             editNUI.setText("")
-            textResultado.text = "Resultado..."
+            textResultado.text = getString(R.string.label_result)
         }
     }
 }

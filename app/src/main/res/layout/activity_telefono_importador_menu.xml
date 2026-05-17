@@ -12,7 +12,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Gestión de Teléfonos"
+        android:text="@string/title_phones_menu"
         android:textSize="28sp"
         android:textStyle="bold"
         android:layout_marginBottom="40dp"/>
@@ -21,28 +21,28 @@
         android:id="@+id/btnTelefonoInsertar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="INSERTAR TELÉFONO"
+        android:text="@string/btn_insert_phone"
         android:layout_marginBottom="12dp"/>
 
     <Button
         android:id="@+id/btnTelefonoConsultar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="CONSULTAR TELÉFONOS"
+        android:text="@string/btn_consult_phones"
         android:layout_marginBottom="12dp"/>
 
     <Button
         android:id="@+id/btnTelefonoActualizar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="ACTUALIZAR TELÉFONO"
+        android:text="@string/btn_update_phone"
         android:layout_marginBottom="12dp"/>
 
     <Button
         android:id="@+id/btnTelefonoEliminar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="ELIMINAR TELÉFONO"
+        android:text="@string/btn_delete_phone"
         android:backgroundTint="#FF5252"
         android:textColor="#FFFFFF"/>
 

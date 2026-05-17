@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Eliminar Importador"
+        android:text="@string/title_delete_importador_head"
         android:textSize="24sp"
         android:textStyle="bold"
         android:gravity="center"
@@ -21,7 +21,7 @@
         android:id="@+id/editEliminarNUI"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="NUI del importador a eliminar"
+        android:hint="@string/hint_nui_delete"
         android:inputType="text"
         android:layout_marginBottom="24dp"/>
 
@@ -29,14 +29,14 @@
         android:id="@+id/btnEliminarImportador"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ELIMINAR IMPORTADOR"
+        android:text="@string/btn_delete_importador"
         android:backgroundTint="#FF5252"
         android:textColor="#FFFFFF"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="¡Atención! Esta acción no se puede deshacer."
+        android:text="@string/warning_irreversible"
         android:textColor="#FF0000"
         android:gravity="center"
         android:layout_marginTop="12dp"

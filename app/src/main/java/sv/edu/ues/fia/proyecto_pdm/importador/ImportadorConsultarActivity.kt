@@ -36,29 +36,29 @@ class ImportadorConsultarActivity : AppCompatActivity() {
         btnConsultar.setOnClickListener {
             val nui = editNUI.text.toString().trim()
             if (nui.isEmpty()) {
-                Toast.makeText(this, "Ingrese un NUI para buscar", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.msg_enter_nui), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             val importador = handler.buscar(nui)
             if (importador != null) {
-                textResultado.text = """
-                    NUI: ${importador.nui}
-                    Nombre: ${importador.nombre} ${importador.apellido}
-                    Apellido Casada: ${importador.apellidoCasada ?: "N/A"}
-                    Género: ${importador.genero}
-                    Fecha Nacimiento: ${importador.fechaNacimiento}
-                    Dirección: ${importador.direccion}
-                    Correo: ${importador.correoElectronico}
-                    Responsable: ${importador.nuiResponsable ?: "N/A"}
-                """.trimIndent()
+                val sb = StringBuilder()
+                sb.append(getString(R.string.label_result_nui, importador.nui)).append("\n")
+                sb.append(getString(R.string.label_result_name, importador.nombre, importador.apellido)).append("\n")
+                sb.append(getString(R.string.label_result_maiden, importador.apellidoCasada ?: "N/A")).append("\n")
+                sb.append(getString(R.string.label_result_gender, importador.genero)).append("\n")
+                sb.append(getString(R.string.label_result_birth, importador.fechaNacimiento)).append("\n")
+                sb.append(getString(R.string.label_result_address, importador.direccion)).append("\n")
+                sb.append(getString(R.string.label_result_email, importador.correoElectronico)).append("\n")
+                sb.append(getString(R.string.label_result_responsible, importador.nuiResponsable ?: "N/A"))
+                textResultado.text = sb.toString()
             } else {
-                textResultado.text = "No se encontró importador con NUI: $nui"
+                textResultado.text = getString(R.string.msg_not_found_nui, nui)
             }
         }
 
         btnLimpiar.setOnClickListener {
             editNUI.setText("")
-            textResultado.text = "Resultado..."
+            textResultado.text = getString(R.string.label_result)
         }
     }
 }
