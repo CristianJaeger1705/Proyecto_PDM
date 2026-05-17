@@ -12,7 +12,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Gestionar Importación"
+        android:text="@string/title_gestion_importacion"
         android:textSize="28sp"
         android:textStyle="bold"
         android:layout_marginBottom="40dp"/>
@@ -21,7 +21,7 @@
         android:id="@+id/btnImportacionInsertar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="INSERTAR"
+        android:text="@string/btn_save"
         style="@style/AutoImportButton"
         android:layout_marginBottom="12dp"/>
 
@@ -29,7 +29,7 @@
         android:id="@+id/btnImportacionConsultar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="CONSULTAR"
+        android:text="@string/btn_search"
         style="@style/AutoImportButton"
         android:layout_marginBottom="12dp"/>
 
@@ -37,7 +37,7 @@
         android:id="@+id/btnImportacionActualizar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="MODIFICAR"
+        android:text="@string/btn_modificar"
         style="@style/AutoImportButton"
         android:layout_marginBottom="12dp"/>
 
@@ -45,7 +45,7 @@
         android:id="@+id/btnImportacionEliminar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="ELIMINAR"
+        android:text="@string/btn_delete"
         style="@style/AutoImportButton"
         android:textColor="#FFFFFF"/>
 

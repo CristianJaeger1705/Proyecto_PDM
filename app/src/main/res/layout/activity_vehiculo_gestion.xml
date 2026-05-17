@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Gestión de Vehículos"
+            android:text="@string/title_gestion_vehiculos"
             android:textSize="24sp"
             android:textStyle="bold"
             android:gravity="center"
@@ -23,65 +23,65 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ID Vehículo"
+            android:text="@string/label_id_vehiculo"
             android:textStyle="bold"/>
         <EditText
             android:id="@+id/editIdVehiculo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="ID único del vehículo"
+            android:hint="@string/label_id_vehiculo"
             android:inputType="number"
             android:layout_marginBottom="12dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Marca"
+            android:text="@string/label_marca"
             android:textStyle="bold"/>
         <EditText
             android:id="@+id/editMarca"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ej. Toyota"
+            android:hint="@string/label_marca"
             android:inputType="text"
             android:layout_marginBottom="12dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Modelo"
+            android:text="@string/label_modelo"
             android:textStyle="bold"/>
         <EditText
             android:id="@+id/editModelo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ej. Corolla"
+            android:hint="@string/label_modelo"
             android:inputType="text"
             android:layout_marginBottom="12dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Año"
+            android:text="@string/label_anio"
             android:textStyle="bold"/>
         <EditText
             android:id="@+id/editAnio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ej. 2024"
+            android:hint="@string/label_anio"
             android:inputType="number"
             android:layout_marginBottom="12dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ID Importación"
+            android:text="@string/label_id_importacion"
             android:textStyle="bold"/>
         <EditText
             android:id="@+id/editIdImportacionVehiculo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="ID de la importación vinculada"
+            android:hint="@string/label_id_importacion"
             android:inputType="number"
             android:layout_marginBottom="24dp"/>
 
@@ -96,7 +96,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:text="INSERTAR"
+                android:text="@string/btn_save"
                 android:layout_margin="4dp"/>
 
             <Button
@@ -104,7 +104,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:text="CONSULTAR"
+                android:text="@string/btn_search"
                 android:layout_margin="4dp"/>
 
             <Button
@@ -112,7 +112,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:text="ACTUALIZAR"
+                android:text="@string/btn_update"
                 android:layout_margin="4dp"/>
 
             <Button
@@ -120,7 +120,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:text="ELIMINAR"
+                android:text="@string/btn_delete"
                 android:backgroundTint="#FF5252"
                 android:textColor="#FFFFFF"
                 android:layout_margin="4dp"/>
@@ -130,7 +130,7 @@
             android:id="@+id/btnLimpiarVehiculo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="LIMPIAR"
+            android:text="@string/btn_clean"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_marginTop="12dp"/>
 
@@ -138,7 +138,7 @@
             android:id="@+id/btnIrAEstadoVehicular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ESTADO VEHICULAR"
+            android:text="@string/btn_estado_vehicular"
             android:layout_marginTop="12dp"
             android:backgroundTint="#4CAF50"
             android:textColor="#FFFFFF"/>

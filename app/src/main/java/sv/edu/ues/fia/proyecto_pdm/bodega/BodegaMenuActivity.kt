@@ -2,6 +2,7 @@ package sv.edu.ues.fia.proyecto_pdm.bodega
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -23,19 +24,30 @@ class BodegaMenuActivity : BaseActivity() {
             insets
         }
 
-        findViewById<Button>(R.id.btnMenuInsertar).setOnClickListener {
+        val btnInsertar = findViewById<Button>(R.id.btnMenuInsertar)
+        val btnConsultar = findViewById<Button>(R.id.btnMenuConsultar)
+        val btnActualizar = findViewById<Button>(R.id.btnMenuActualizar)
+        val btnEliminar = findViewById<Button>(R.id.btnMenuEliminar)
+
+        // Validar permisos (Prefix 06)
+        if (!tienePermiso("061")) btnInsertar.visibility = View.GONE
+        if (!tienePermiso("062")) btnActualizar.visibility = View.GONE
+        if (!tienePermiso("063")) btnConsultar.visibility = View.GONE
+        if (!tienePermiso("064")) btnEliminar.visibility = View.GONE
+
+        btnInsertar.setOnClickListener {
             startActivity(Intent(this, BodegaInsertarActivity::class.java))
         }
 
-        findViewById<Button>(R.id.btnMenuConsultar).setOnClickListener {
+        btnConsultar.setOnClickListener {
             startActivity(Intent(this, BodegaConsultarActivity::class.java))
         }
 
-        findViewById<Button>(R.id.btnMenuActualizar).setOnClickListener {
+        btnActualizar.setOnClickListener {
             startActivity(Intent(this, BodegaActualizarActivity::class.java))
         }
 
-        findViewById<Button>(R.id.btnMenuEliminar).setOnClickListener {
+        btnEliminar.setOnClickListener {
             startActivity(Intent(this, BodegaEliminarActivity::class.java))
         }
 

@@ -1,16 +1,18 @@
 package sv.edu.ues.fia.proyecto_pdm.vehiculo
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import sv.edu.ues.fia.proyecto_pdm.BaseActivity
 import sv.edu.ues.fia.proyecto_pdm.R
 import sv.edu.ues.fia.proyecto_pdm.Vehiculo
 import sv.edu.ues.fia.proyecto_pdm.VehiculoHandler
 import sv.edu.ues.fia.proyecto_pdm.importacion.ImportacionHandler
 
-class VehiculoGestionActivity : AppCompatActivity() {
+class VehiculoGestionActivity : BaseActivity() {
 
     private lateinit var editIdVehiculo: EditText
     private lateinit var editMarca: EditText
@@ -46,6 +48,12 @@ class VehiculoGestionActivity : AppCompatActivity() {
         btnEliminar = findViewById(R.id.btnEliminarVehiculo)
         btnLimpiar = findViewById(R.id.btnLimpiarVehiculo)
         btnIrAEstado = findViewById(R.id.btnIrAEstadoVehicular)
+
+        // Validar permisos (Prefix 04)
+        if (!tienePermiso("041")) btnInsertar.visibility = View.GONE
+        if (!tienePermiso("042")) btnActualizar.visibility = View.GONE
+        if (!tienePermiso("043")) btnConsultar.visibility = View.GONE
+        if (!tienePermiso("044")) btnEliminar.visibility = View.GONE
 
         btnInsertar.setOnClickListener { insertar() }
         btnConsultar.setOnClickListener { consultar() }

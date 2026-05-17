@@ -3,6 +3,7 @@ package sv.edu.ues.fia.proyecto_pdm.ventas
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
@@ -44,6 +45,12 @@ class GestionVentasActivity : BaseActivity() {
         val btnBuscar = findViewById<Button>(R.id.btnBuscarVenta)
         val btnActualizar = findViewById<Button>(R.id.btnActualizarVenta)
         val btnEliminar = findViewById<Button>(R.id.btnEliminarVenta)
+
+        // Validar permisos (Prefix 03)
+        if (!tienePermiso("031")) btnIrAInsertar.visibility = View.GONE
+        if (!tienePermiso("032")) btnActualizar.visibility = View.GONE
+        if (!tienePermiso("033")) btnBuscar.visibility = View.GONE
+        if (!tienePermiso("034")) btnEliminar.visibility = View.GONE
 
         // Cargar Importadores
         importadores = importadorHandler.obtenerTodos()

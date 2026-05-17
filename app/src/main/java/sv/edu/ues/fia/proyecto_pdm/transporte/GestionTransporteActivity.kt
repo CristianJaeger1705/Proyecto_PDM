@@ -2,13 +2,15 @@ package sv.edu.ues.fia.proyecto_pdm.transporte
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import sv.edu.ues.fia.proyecto_pdm.BaseActivity
 import sv.edu.ues.fia.proyecto_pdm.R
 
-class GestionTransporteActivity : AppCompatActivity() {
+class GestionTransporteActivity : BaseActivity() {
 
     private lateinit var handler: MedioTransporteHandler
     private var medioActual: MedioTransporte? = null
@@ -27,6 +29,12 @@ class GestionTransporteActivity : AppCompatActivity() {
         val btnBuscar = findViewById<Button>(R.id.btnBuscar)
         val btnActualizar = findViewById<Button>(R.id.btnActualizar)
         val btnEliminar = findViewById<Button>(R.id.btnEliminar)
+
+        // Validar permisos (Prefix 05)
+        if (!tienePermiso("051")) btnIrACrear.visibility = View.GONE
+        if (!tienePermiso("052")) btnActualizar.visibility = View.GONE
+        if (!tienePermiso("053")) btnBuscar.visibility = View.GONE
+        if (!tienePermiso("054")) btnEliminar.visibility = View.GONE
 
         btnIrACrear.setOnClickListener {
             val intent = Intent(this, InsertarMedioTransporteActivity::class.java)

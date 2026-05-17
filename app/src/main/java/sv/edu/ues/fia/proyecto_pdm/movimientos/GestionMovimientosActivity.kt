@@ -4,6 +4,7 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
@@ -48,7 +49,17 @@ class GestionMovimientosActivity : BaseActivity() {
         val btnActualizar = findViewById<Button>(R.id.btnActualizarMov)
         val btnEliminar = findViewById<Button>(R.id.btnEliminarMov)
 
+        // Validar permisos (Prefix 11)
+        if (!tienePermiso("111")) btnIrAInsertar.visibility = View.GONE
+        if (!tienePermiso("112")) btnActualizar.visibility = View.GONE
+        if (!tienePermiso("113")) btnBuscar.visibility = View.GONE
+        if (!tienePermiso("114")) btnEliminar.visibility = View.GONE
+
         val btnAsignar = findViewById<Button>(R.id.btnAsignarVehiculo)
+        // También restringir asignación si no puede editar? 
+        // El usuario dijo "solo consultar para consultor", así que 112 y 114 están fuera.
+        // Asignar vehículos a un movimiento es una edición.
+        if (!tienePermiso("112")) btnAsignar.visibility = View.GONE
 
         // Cargar Medios
         medios = medioHandler.obtenerTodos()

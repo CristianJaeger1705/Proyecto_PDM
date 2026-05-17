@@ -116,4 +116,23 @@ class VehiculoHandler(context: Context) {
             arrayOf(idVehiculo.toString())
         )
     }
+
+    fun obtenerConteoPorEstado(): Map<String, Int> {
+        val conteos = mutableMapOf("DISPONIBLE" to 0, "EN_REPARACION" to 0, "VENDIDO" to 0)
+        val db = dbHelper.readableDatabase
+        val cursor = db.rawQuery(
+            "SELECT ${DatabaseContract.VehiculoEntry.COLUMN_ESTADO}, COUNT(*) " +
+                    "FROM ${DatabaseContract.VehiculoEntry.TABLE_NAME} " +
+                    "GROUP BY ${DatabaseContract.VehiculoEntry.COLUMN_ESTADO}", null
+        )
+        if (cursor.moveToFirst()) {
+            do {
+                val estado = cursor.getString(0)
+                val cantidad = cursor.getInt(1)
+                conteos[estado] = cantidad
+            } while (cursor.moveToNext())
+        }
+        cursor.close()
+        return conteos
+    }
 }

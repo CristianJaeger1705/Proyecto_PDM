@@ -12,7 +12,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Gestión de Importadores"
+        android:text="@string/title_importadores_menu"
         android:textSize="28sp"
         android:textStyle="bold"
         android:layout_marginBottom="40dp"/>
@@ -21,28 +21,28 @@
         android:id="@+id/btnImportadorInsertar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="INSERTAR IMPORTADOR"
+        android:text="@string/btn_insert_importador"
         android:layout_marginBottom="12dp"/>
 
     <Button
         android:id="@+id/btnImportadorConsultar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="CONSULTAR IMPORTADOR"
+        android:text="@string/btn_consult_importador"
         android:layout_marginBottom="12dp"/>
 
     <Button
         android:id="@+id/btnImportadorActualizar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="ACTUALIZAR IMPORTADOR"
+        android:text="@string/btn_update_importador"
         android:layout_marginBottom="12dp"/>
 
     <Button
         android:id="@+id/btnImportadorEliminar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="ELIMINAR IMPORTADOR"
+        android:text="@string/btn_delete_importador"
         android:backgroundTint="#FF5252"
         android:textColor="#FFFFFF"/>
 
@@ -56,7 +56,7 @@
         android:id="@+id/btnTelefonosImportador"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="GESTIÓN DE TELÉFONOS"
+        android:text="@string/btn_manage_phones"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
 </LinearLayout>

@@ -173,4 +173,67 @@
     <string name="select_gasto_to_update">Seleccione un gasto para actualizar</string>
     <string name="select_gasto_to_delete">Seleccione un gasto para eliminar</string>
     <string name="label_historial_gastos">Historial de Gastos</string>
+
+    <!-- Importadores -->
+    <string name="title_importadores_menu">Gestión de Importadores</string>
+    <string name="btn_insert_importador">INSERTAR IMPORTADOR</string>
+    <string name="btn_consult_importador">CONSULTAR IMPORTADOR</string>
+    <string name="btn_update_importador">ACTUALIZAR IMPORTADOR</string>
+    <string name="btn_delete_importador">ELIMINAR IMPORTADOR</string>
+    <string name="btn_manage_phones">GESTIÓN DE TELÉFONOS</string>
+    <string name="title_insert_importador">Insertar Importador</string>
+    <string name="label_nui">NUI (Número Único de Importador)*</string>
+    <string name="label_nombre">Nombre*</string>
+    <string name="label_apellido">Apellido*</string>
+    <string name="label_apellido_casada">Apellido de Casada (opcional)</string>
+    <string name="label_genero">Género*</string>
+    <string name="label_fecha_nacimiento">Fecha de Nacimiento*</string>
+    <string name="label_correo">Correo Electrónico*</string>
+    <string name="label_nui_responsable">NUI Responsable (opcional)</string>
+    <string name="hint_fecha_nacimiento">Toque para seleccionar fecha</string>
+
+    <!-- Vehículos -->
+    <string name="title_gestion_vehiculos">Gestión de Vehículos</string>
+    <string name="label_id_vehiculo">ID Vehículo</string>
+    <string name="label_marca">Marca</string>
+    <string name="label_modelo">Modelo</string>
+    <string name="label_anio">Año</string>
+    <string name="label_id_importacion">ID Importación</string>
+    <string name="btn_estado_vehicular">ESTADO VEHICULAR</string>
+
+    <!-- Ventas -->
+    <string name="title_gestion_ventas">GESTIÓN DE VENTAS</string>
+    <string name="btn_new_venta">NUEVA VENTA</string>
+    <string name="label_id_venta">ID VENTA</string>
+    <string name="btn_search_venta">BUSCAR VENTA</string>
+    <string name="label_importador">IMPORTADOR</string>
+    <string name="label_precio">PRECIO</string>
+    <string name="label_fecha">FECHA</string>
+
+    <!-- Talleres -->
+    <string name="title_gestion_talleres">GESTIÓN DE TALLERES</string>
+    <string name="btn_new_taller">NUEVO TALLER</string>
+    <string name="label_nombre_taller">NOMBRE TALLER</string>
+    <string name="label_telefono">TELÉFONO</string>
+    <string name="label_autorizado">AUTORIZADO (S/N)</string>
+
+    <!-- Reparaciones -->
+    <string name="title_gestion_reparaciones">GESTIÓN DE REPARACIONES</string>
+    <string name="btn_new_reparacion">NUEVA REPARACIÓN</string>
+    <string name="label_taller">TALLER</string>
+    <string name="label_vehiculo">VEHÍCULO</string>
+    <string name="label_fecha_entrada">FECHA ENTRADA</string>
+    <string name="label_fecha_salida">FECHA SALIDA</string>
+    <string name="label_descripcion">DESCRIPCIÓN</string>
+    <string name="label_apto">APTO PARA VENTA (S/N)</string>
+    <string name="label_costo">COSTO</string>
+
+    <!-- Importación -->
+    <string name="title_gestion_importacion">Gestionar Importación</string>
+    <string name="btn_modificar">MODIFICAR</string>
+    <string name="title_actualizar_importador">Actualizar Importador</string>
+    <string name="btn_save_changes">GUARDAR CAMBIOS</string>
+    <string name="dash_available">Disponibles</string>
+    <string name="dash_repair">Reparación</string>
+    <string name="dash_sold">Vendidos</string>
 </resources>

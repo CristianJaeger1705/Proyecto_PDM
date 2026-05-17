@@ -2,6 +2,7 @@ package sv.edu.ues.fia.proyecto_pdm.taller
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -34,6 +35,12 @@ class TallerGestionActivity : BaseActivity() {
         val btnActualizar = findViewById<Button>(R.id.btnActualizar)
         val btnEliminar = findViewById<Button>(R.id.btnEliminar)
         val recyclerTalleres = findViewById<RecyclerView>(R.id.recyclerTalleres)
+
+        // Validar permisos (Prefix 09)
+        if (!tienePermiso("091")) btnIrACrear.visibility = View.GONE
+        if (!tienePermiso("092")) btnActualizar.visibility = View.GONE
+        if (!tienePermiso("093")) btnBuscar.visibility = View.GONE
+        if (!tienePermiso("094")) btnEliminar.visibility = View.GONE
 
         // Configurar RecyclerView
         adapter = TallerAdapter(emptyList()) { taller ->

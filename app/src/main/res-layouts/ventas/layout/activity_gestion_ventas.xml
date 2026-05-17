@@ -13,7 +13,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="GESTIÓN DE VENTAS"
+            android:text="@string/title_gestion_ventas"
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="@color/auto_import_dark"
@@ -24,13 +24,13 @@
             style="@style/AutoImportButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="NUEVA VENTA"
+            android:text="@string/btn_new_venta"
             android:layout_marginBottom="32dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ID VENTA"
+            android:text="@string/label_id_venta"
             android:textStyle="bold"
             android:layout_marginBottom="4dp"/>
         <EditText
@@ -45,7 +45,7 @@
             style="@style/AutoImportButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="BUSCAR VENTA" />
+            android:text="@string/btn_search_venta" />
 
         <View
             android:layout_width="match_parent"
@@ -56,7 +56,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ID VEHÍCULO"
+            android:text="@string/label_vehiculo"
             android:textStyle="bold"
             android:layout_marginBottom="4dp"/>
         <EditText
@@ -69,7 +69,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="IMPORTADOR"
+            android:text="@string/label_importador"
             android:textStyle="bold"
             android:layout_marginBottom="4dp"/>
         <Spinner
@@ -82,7 +82,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="PRECIO"
+            android:text="@string/label_precio"
             android:textStyle="bold"
             android:layout_marginBottom="4dp"/>
         <EditText
@@ -95,7 +95,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="FECHA"
+            android:text="@string/label_fecha"
             android:textStyle="bold"
             android:layout_marginBottom="4dp"/>
         <EditText
@@ -117,7 +117,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="ACTUALIZAR"
+                android:text="@string/btn_update"
                 android:layout_marginEnd="8dp"/>
 
             <Button
@@ -126,7 +126,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="ELIMINAR"
+                android:text="@string/btn_delete"
                 android:backgroundTint="#888888"
                 android:layout_marginStart="8dp"/>
         </LinearLayout>

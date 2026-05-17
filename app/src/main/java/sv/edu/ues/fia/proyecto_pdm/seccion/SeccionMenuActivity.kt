@@ -2,6 +2,7 @@ package sv.edu.ues.fia.proyecto_pdm.seccion
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -21,19 +22,30 @@ class SeccionMenuActivity : BaseActivity() {
             insets
         }
 
-        findViewById<Button>(R.id.btnSeccionInsertar).setOnClickListener {
+        val btnInsertar = findViewById<Button>(R.id.btnSeccionInsertar)
+        val btnConsultar = findViewById<Button>(R.id.btnSeccionConsultar)
+        val btnActualizar = findViewById<Button>(R.id.btnSeccionActualizar)
+        val btnEliminar = findViewById<Button>(R.id.btnSeccionEliminar)
+
+        // Validar permisos (Prefix 07)
+        if (!tienePermiso("071")) btnInsertar.visibility = View.GONE
+        if (!tienePermiso("072")) btnActualizar.visibility = View.GONE
+        if (!tienePermiso("073")) btnConsultar.visibility = View.GONE
+        if (!tienePermiso("074")) btnEliminar.visibility = View.GONE
+
+        btnInsertar.setOnClickListener {
             startActivity(Intent(this, SeccionInsertarActivity::class.java))
         }
 
-        findViewById<Button>(R.id.btnSeccionConsultar).setOnClickListener {
+        btnConsultar.setOnClickListener {
             startActivity(Intent(this, SeccionConsultarActivity::class.java))
         }
 
-        findViewById<Button>(R.id.btnSeccionActualizar).setOnClickListener {
+        btnActualizar.setOnClickListener {
             startActivity(Intent(this, SeccionActualizarActivity::class.java))
         }
 
-        findViewById<Button>(R.id.btnSeccionEliminar).setOnClickListener {
+        btnEliminar.setOnClickListener {
             startActivity(Intent(this, SeccionEliminarActivity::class.java))
         }
     }

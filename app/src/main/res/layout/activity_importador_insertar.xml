@@ -15,7 +15,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Insertar Importador"
+            android:text="@string/title_insert_importador"
             android:textSize="24sp"
             android:textStyle="bold"
             android:gravity="center"
@@ -24,7 +24,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="NUI (Número Único de Importador)*"
+            android:text="@string/label_nui"
             android:textStyle="bold"/>
         <EditText
             android:id="@+id/editImportadorNUI"
@@ -37,46 +37,46 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nombre*"
+            android:text="@string/label_nombre"
             android:textStyle="bold"/>
         <EditText
             android:id="@+id/editImportadorNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nombre"
+            android:hint="@string/label_nombre"
             android:inputType="textPersonName"
             android:layout_marginBottom="12dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Apellido*"
+            android:text="@string/label_apellido"
             android:textStyle="bold"/>
         <EditText
             android:id="@+id/editImportadorApellido"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Apellido"
+            android:hint="@string/label_apellido"
             android:inputType="textPersonName"
             android:layout_marginBottom="12dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Apellido de Casada (opcional)"
+            android:text="@string/label_apellido_casada"
             android:textStyle="bold"/>
         <EditText
             android:id="@+id/editImportadorApellidoCasada"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Solo si aplica"
+            android:hint="@string/label_apellido_casada"
             android:inputType="textPersonName"
             android:layout_marginBottom="12dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Género*"
+            android:text="@string/label_genero"
             android:textStyle="bold"/>
         <Spinner
             android:id="@+id/spinnerImportadorGenero"
@@ -87,13 +87,13 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Fecha de Nacimiento*"
+            android:text="@string/label_fecha_nacimiento"
             android:textStyle="bold"/>
         <EditText
             android:id="@+id/editImportadorFecha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Toque para seleccionar fecha"
+            android:hint="@string/hint_fecha_nacimiento"
             android:focusable="false"
             android:clickable="true"
             android:layout_marginBottom="12dp"/>
@@ -101,13 +101,13 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Dirección*"
+            android:text="@string/label_direccion"
             android:textStyle="bold"/>
         <EditText
             android:id="@+id/editImportadorDireccion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Dirección completa"
+            android:hint="@string/label_direccion"
             android:inputType="textMultiLine"
             android:lines="2"
             android:layout_marginBottom="12dp"/>
@@ -115,7 +115,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Correo Electrónico*"
+            android:text="@string/label_correo"
             android:textStyle="bold"/>
         <EditText
             android:id="@+id/editImportadorCorreo"
@@ -128,13 +128,13 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="NUI Responsable (opcional)"
+            android:text="@string/label_nui_responsable"
             android:textStyle="bold"/>
         <EditText
             android:id="@+id/editImportadorNUIResponsable"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="NUI del responsable"
+            android:hint="@string/label_nui_responsable"
             android:inputType="text"
             android:layout_marginBottom="24dp"/>
 
@@ -142,13 +142,13 @@
             android:id="@+id/btnGuardarImportador"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="GUARDAR IMPORTADOR"/>
+            android:text="@string/btn_save"/>
 
         <Button
             android:id="@+id/btnLimpiarImportador"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="LIMPIAR CAMPOS"
+            android:text="@string/btn_clean"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_marginTop="8dp"/>
 

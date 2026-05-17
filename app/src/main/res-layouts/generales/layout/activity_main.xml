@@ -1,267 +1,365 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:fillViewport="true"
     android:background="@color/app_background">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="24dp">
+        android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/logo"
-            android:layout_centerVertical="true"
-            android:contentDescription="Logo" />
-
-        <TextView
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="AUTOIMPORT"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="@color/auto_import_dark"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"/>
-    </RelativeLayout>
+            android:padding="24dp">
 
-    <!-- Rejilla de opciones -->
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:columnCount="2"
-        android:padding="24dp"
-        android:alignmentMode="alignMargins">
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/logo"
+                android:layout_centerVertical="true"
+                android:contentDescription="Logo" />
 
-        <!-- Opción 1: MOVIMIENTOS -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:layout_margin="8dp">
-
-            <ImageButton
-                android:id="@+id/btnIrAMovimientosHub"
-                style="@style/HubIconButton"
-                android:src="@drawable/ic_movimientos"
-                android:contentDescription="@string/menu_movimientos"
-                app:tint="@color/auto_import_dark"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/menu_movimientos"
+                android:text="AUTOIMPORT"
+                android:textSize="24sp"
                 android:textStyle="bold"
-                android:textSize="12sp"
-                android:textColor="@color/auto_import_text_dark"
-                android:layout_marginTop="8dp"/>
+                android:textColor="@color/auto_import_dark"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+
+        <!-- Mini Dashboard (Solo Admin) -->
+        <LinearLayout
+            android:id="@+id/layoutDashboard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="24dp"
+            android:paddingBottom="16dp"
+            android:visibility="gone"
+            android:weightSum="3"
+            android:baselineAligned="false">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@drawable/bg_dash_disponible"
+                android:padding="8dp"
+                android:layout_marginEnd="4dp">
+                <TextView
+                    android:id="@+id/txtCountDisponible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#2E7D32"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dash_available"
+                    android:textSize="11sp"
+                    android:textColor="#2E7D32"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@drawable/bg_dash_reparacion"
+                android:padding="8dp"
+                android:layout_marginHorizontal="2dp">
+                <TextView
+                    android:id="@+id/txtCountReparacion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#EF6C00"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dash_repair"
+                    android:textSize="11sp"
+                    android:textColor="#EF6C00"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@drawable/bg_dash_vendido"
+                android:padding="8dp"
+                android:layout_marginStart="4dp">
+                <TextView
+                    android:id="@+id/txtCountVendido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#C62828"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dash_sold"
+                    android:textSize="11sp"
+                    android:textColor="#C62828"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
         </LinearLayout>
 
-        <!-- Opción 2: VENTA -->
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <!-- Rejilla de opciones -->
+        <GridLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:layout_margin="8dp">
+            android:columnCount="2"
+            android:padding="24dp"
+            android:alignmentMode="alignMargins">
 
-            <ImageButton
-                android:id="@+id/btnIrAVentas"
-                style="@style/HubIconButton"
-                android:src="@drawable/ic_ventas"
-                android:contentDescription="@string/menu_ventas"
-                app:tint="@color/auto_import_dark"/>
-            <TextView
+            <!-- Opción 1: MOVIMIENTOS -->
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/menu_ventas"
-                android:textStyle="bold"
-                android:textSize="12sp"
-                android:textColor="@color/auto_import_text_dark"
-                android:layout_marginTop="8dp"/>
-        </LinearLayout>
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_margin="8dp">
 
-        <!-- Opción 3: BODEGAS -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:layout_margin="8dp">
+                <ImageButton
+                    android:id="@+id/btnIrAMovimientosHub"
+                    style="@style/HubIconButton"
+                    android:src="@drawable/ic_movimientos"
+                    android:contentDescription="@string/menu_movimientos"
+                    app:tint="@color/auto_import_dark"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/menu_movimientos"
+                    android:textStyle="bold"
+                    android:textSize="12sp"
+                    android:textColor="@color/auto_import_text_dark"
+                    android:layout_marginTop="8dp"/>
+            </LinearLayout>
 
-            <ImageButton
-                android:id="@+id/btnIrABodega"
-                style="@style/HubIconButton"
-                android:src="@drawable/hogar"
-                android:contentDescription="@string/menu_bodegas"
-                app:tint="@color/auto_import_dark"/>
-            <TextView
+            <!-- Opción 2: VENTA -->
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/menu_bodegas"
-                android:textStyle="bold"
-                android:textSize="12sp"
-                android:textColor="@color/auto_import_text_dark"
-                android:layout_marginTop="8dp"/>
-        </LinearLayout>
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_margin="8dp">
 
-        <!-- Opción 4: TALLER -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:layout_margin="8dp">
+                <ImageButton
+                    android:id="@+id/btnIrAVentas"
+                    style="@style/HubIconButton"
+                    android:src="@drawable/ic_ventas"
+                    android:contentDescription="@string/menu_ventas"
+                    app:tint="@color/auto_import_dark"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/menu_ventas"
+                    android:textStyle="bold"
+                    android:textSize="12sp"
+                    android:textColor="@color/auto_import_text_dark"
+                    android:layout_marginTop="8dp"/>
+            </LinearLayout>
 
-            <ImageButton
-                android:id="@+id/btnIrATaller"
-                style="@style/HubIconButton"
-                android:src="@drawable/llave"
-                android:contentDescription="@string/desc_talleres"
-                app:tint="@color/auto_import_dark"/>
-            <TextView
+            <!-- Opción 3: BODEGAS -->
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/menu_talleres"
-                android:textStyle="bold"
-                android:textSize="12sp"
-                android:textColor="@color/auto_import_text_dark"
-                android:layout_marginTop="8dp"/>
-        </LinearLayout>
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_margin="8dp">
 
-        <!-- Opción 5: REPARACIONES -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:layout_margin="8dp">
+                <ImageButton
+                    android:id="@+id/btnIrABodega"
+                    style="@style/HubIconButton"
+                    android:src="@drawable/hogar"
+                    android:contentDescription="@string/menu_bodegas"
+                    app:tint="@color/auto_import_dark"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/menu_bodegas"
+                    android:textStyle="bold"
+                    android:textSize="12sp"
+                    android:textColor="@color/auto_import_text_dark"
+                    android:layout_marginTop="8dp"/>
+            </LinearLayout>
 
-            <ImageButton
-                android:id="@+id/btnIrAReparaciones"
-                style="@style/HubIconButton"
-                android:src="@drawable/mecanico"
-                android:contentDescription="@string/desc_reparaciones"
-                app:tint="@color/auto_import_dark"/>
-            <TextView
+            <!-- Opción 4: TALLER -->
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/menu_reparaciones"
-                android:textStyle="bold"
-                android:textSize="12sp"
-                android:textColor="@color/auto_import_text_dark"
-                android:layout_marginTop="8dp"/>
-        </LinearLayout>
-          
-        <!-- Opción 6: IMPORTADORES -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:layout_margin="8dp">
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_margin="8dp">
 
-            <ImageButton
-                android:id="@+id/btnIrAImportadores"
-                style="@style/HubIconButton"
-                android:src="@drawable/ic_gestion"
-                android:contentDescription="@string/menu_importadores"
-                app:tint="@color/auto_import_dark"/>
-            <TextView
+                <ImageButton
+                    android:id="@+id/btnIrATaller"
+                    style="@style/HubIconButton"
+                    android:src="@drawable/llave"
+                    android:contentDescription="@string/desc_talleres"
+                    app:tint="@color/auto_import_dark"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/menu_talleres"
+                    android:textStyle="bold"
+                    android:textSize="12sp"
+                    android:textColor="@color/auto_import_text_dark"
+                    android:layout_marginTop="8dp"/>
+            </LinearLayout>
+
+            <!-- Opción 5: REPARACIONES -->
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/menu_importadores"
-                android:textStyle="bold"
-                android:textSize="12sp"
-                android:textColor="@color/auto_import_text_dark"
-                android:layout_marginTop="8dp"/>
-        </LinearLayout>
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_margin="8dp">
 
-        <!-- Opción 7: IMPORTACIONES -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:layout_margin="8dp">
+                <ImageButton
+                    android:id="@+id/btnIrAReparaciones"
+                    style="@style/HubIconButton"
+                    android:src="@drawable/mecanico"
+                    android:contentDescription="@string/desc_reparaciones"
+                    app:tint="@color/auto_import_dark"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/menu_reparaciones"
+                    android:textStyle="bold"
+                    android:textSize="12sp"
+                    android:textColor="@color/auto_import_text_dark"
+                    android:layout_marginTop="8dp"/>
+            </LinearLayout>
 
-            <ImageButton
-                android:id="@+id/btnIrAImportaciones"
-                style="@style/HubIconButton"
-                android:src="@drawable/importacion"
-                android:contentDescription="@string/menu_importaciones"
-                app:tint="@color/auto_import_dark"/>
-            <TextView
+            <!-- Opción 6: IMPORTADORES -->
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/menu_importaciones"
-                android:textStyle="bold"
-                android:textSize="12sp"
-                android:textColor="@color/auto_import_text_dark"
-                android:layout_marginTop="8dp"/>
-        </LinearLayout>
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_margin="8dp">
 
-        <!-- Opción 8: VEHICULOS -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:layout_margin="8dp">
+                <ImageButton
+                    android:id="@+id/btnIrAImportadores"
+                    style="@style/HubIconButton"
+                    android:src="@drawable/ic_gestion"
+                    android:contentDescription="@string/menu_importadores"
+                    app:tint="@color/auto_import_dark"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/menu_importadores"
+                    android:textStyle="bold"
+                    android:textSize="12sp"
+                    android:textColor="@color/auto_import_text_dark"
+                    android:layout_marginTop="8dp"/>
+            </LinearLayout>
 
-            <ImageButton
-                android:id="@+id/btnIrAVehiculo"
-                style="@style/HubIconButton"
-                android:src="@drawable/coches"
-                android:contentDescription="@string/menu_vehiculos"
-                app:tint="@color/auto_import_dark"/>
-            <TextView
+            <!-- Opción 7: IMPORTACIONES -->
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/menu_vehiculos"
-                android:textStyle="bold"
-                android:textSize="12sp"
-                android:textColor="@color/auto_import_text_dark"
-                android:layout_marginTop="8dp"/>
-        </LinearLayout>
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_margin="8dp">
 
-        <!-- Opción 9: GASTOS -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:layout_margin="8dp">
+                <ImageButton
+                    android:id="@+id/btnIrAImportaciones"
+                    style="@style/HubIconButton"
+                    android:src="@drawable/importacion"
+                    android:contentDescription="@string/menu_importaciones"
+                    app:tint="@color/auto_import_dark"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/menu_importaciones"
+                    android:textStyle="bold"
+                    android:textSize="12sp"
+                    android:textColor="@color/auto_import_text_dark"
+                    android:layout_marginTop="8dp"/>
+            </LinearLayout>
 
-            <ImageButton
-                android:id="@+id/btnIrAGastos"
-                style="@style/HubIconButton"
-                android:src="@drawable/ic_gestion"
-                android:contentDescription="@string/menu_gastos"
-                app:tint="@color/auto_import_dark"/>
-            <TextView
+            <!-- Opción 8: VEHICULOS -->
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/menu_gastos"
-                android:textStyle="bold"
-                android:textSize="12sp"
-                android:textColor="@color/auto_import_text_dark"
-                android:layout_marginTop="8dp"/>
-        </LinearLayout>
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_margin="8dp">
 
-    </GridLayout>
+                <ImageButton
+                    android:id="@+id/btnIrAVehiculo"
+                    style="@style/HubIconButton"
+                    android:src="@drawable/coches"
+                    android:contentDescription="@string/menu_vehiculos"
+                    app:tint="@color/auto_import_dark"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/menu_vehiculos"
+                    android:textStyle="bold"
+                    android:textSize="12sp"
+                    android:textColor="@color/auto_import_text_dark"
+                    android:layout_marginTop="8dp"/>
+            </LinearLayout>
 
-</LinearLayout>
+            <!-- Opción 9: GASTOS -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_margin="8dp">
+
+                <ImageButton
+                    android:id="@+id/btnIrAGastos"
+                    style="@style/HubIconButton"
+                    android:src="@drawable/ic_gestion"
+                    android:contentDescription="@string/menu_gastos"
+                    app:tint="@color/auto_import_dark"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/menu_gastos"
+                    android:textStyle="bold"
+                    android:textSize="12sp"
+                    android:textColor="@color/auto_import_text_dark"
+                    android:layout_marginTop="8dp"/>
+            </LinearLayout>
+
+        </GridLayout>
+
+    </LinearLayout>
+</ScrollView>

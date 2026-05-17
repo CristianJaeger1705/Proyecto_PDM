@@ -173,4 +173,67 @@
     <string name="select_gasto_to_update">Select an expense to update</string>
     <string name="select_gasto_to_delete">Select an expense to delete</string>
     <string name="label_historial_gastos">Expense History</string>
+
+    <!-- Importadores -->
+    <string name="title_importadores_menu">Importing Agents Management</string>
+    <string name="btn_insert_importador">INSERT IMPORTING AGENT</string>
+    <string name="btn_consult_importador">CONSULT IMPORTING AGENT</string>
+    <string name="btn_update_importador">UPDATE IMPORTING AGENT</string>
+    <string name="btn_delete_importador">DELETE IMPORTING AGENT</string>
+    <string name="btn_manage_phones">PHONE MANAGEMENT</string>
+    <string name="title_insert_importador">Insert Importing Agent</string>
+    <string name="label_nui">NUI (Unique Importing Agent Number)*</string>
+    <string name="label_nombre">First Name*</string>
+    <string name="label_apellido">Last Name*</string>
+    <string name="label_apellido_casada">Maiden Name (optional)</string>
+    <string name="label_genero">Gender*</string>
+    <string name="label_fecha_nacimiento">Date of Birth*</string>
+    <string name="label_correo">Email Address*</string>
+    <string name="label_nui_responsable">Responsible NUI (optional)</string>
+    <string name="hint_fecha_nacimiento">Tap to select date</string>
+
+    <!-- Vehicles -->
+    <string name="title_gestion_vehiculos">Vehicle Management</string>
+    <string name="label_id_vehiculo">Vehicle ID</string>
+    <string name="label_marca">Make</string>
+    <string name="label_modelo">Model</string>
+    <string name="label_anio">Year</string>
+    <string name="label_id_importacion">Importation ID</string>
+    <string name="btn_estado_vehicular">VEHICLE CONDITION</string>
+
+    <!-- Sales -->
+    <string name="title_gestion_ventas">SALES MANAGEMENT</string>
+    <string name="btn_new_venta">NEW SALE</string>
+    <string name="label_id_venta">SALE ID</string>
+    <string name="btn_search_venta">SEARCH SALE</string>
+    <string name="label_importador">IMPORTING AGENT</string>
+    <string name="label_precio">PRICE</string>
+    <string name="label_fecha">DATE</string>
+
+    <!-- Workshops -->
+    <string name="title_gestion_talleres">WORKSHOPS MANAGEMENT</string>
+    <string name="btn_new_taller">NEW WORKSHOP</string>
+    <string name="label_nombre_taller">WORKSHOP NAME</string>
+    <string name="label_telefono">PHONE</string>
+    <string name="label_autorizado">AUTHORIZED (Y/N)</string>
+
+    <!-- Repairs -->
+    <string name="title_gestion_reparaciones">REPAIRS MANAGEMENT</string>
+    <string name="btn_new_reparacion">NEW REPAIR</string>
+    <string name="label_taller">WORKSHOP</string>
+    <string name="label_vehiculo">VEHICLE</string>
+    <string name="label_fecha_entrada">ENTRY DATE</string>
+    <string name="label_fecha_salida">EXIT DATE</string>
+    <string name="label_descripcion">DESCRIPTION</string>
+    <string name="label_apto">READY FOR SALE (Y/N)</string>
+    <string name="label_costo">COST</string>
+
+    <!-- Importation -->
+    <string name="title_gestion_importacion">Manage Importation</string>
+    <string name="btn_modificar">MODIFY</string>
+    <string name="title_actualizar_importador">Update Importing Agent</string>
+    <string name="btn_save_changes">SAVE CHANGES</string>
+    <string name="dash_available">Available</string>
+    <string name="dash_repair">Repair</string>
+    <string name="dash_sold">Sold</string>
 </resources>

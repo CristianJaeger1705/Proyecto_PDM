@@ -13,13 +13,14 @@ import android.view.View
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import sv.edu.ues.fia.proyecto_pdm.BaseActivity
 import sv.edu.ues.fia.proyecto_pdm.R
 import sv.edu.ues.fia.proyecto_pdm.Vehiculo
 import sv.edu.ues.fia.proyecto_pdm.VehiculoHandler
 import java.io.ByteArrayOutputStream
 import java.util.Calendar
 
-class EstadoVehicularGestionActivity : AppCompatActivity() {
+class EstadoVehicularGestionActivity : BaseActivity() {
 
     private lateinit var spinnerVehiculo: Spinner
     private lateinit var spinnerHistorial: Spinner
@@ -63,6 +64,13 @@ class EstadoVehicularGestionActivity : AppCompatActivity() {
         btnActualizar = findViewById(R.id.btnActualizarEstado)
         btnEliminar = findViewById(R.id.btnEliminarEstado)
         btnLimpiar = findViewById(R.id.btnLimpiarEstado)
+
+        // Validar permisos (Prefix 13)
+        if (!tienePermiso("131")) btnInsertar.visibility = View.GONE
+        if (!tienePermiso("132")) btnActualizar.visibility = View.GONE
+        // 133 es consultar (el spinner de historial)
+        if (!tienePermiso("133")) spinnerHistorial.visibility = View.GONE
+        if (!tienePermiso("134")) btnEliminar.visibility = View.GONE
 
         cargarVehiculos()
 

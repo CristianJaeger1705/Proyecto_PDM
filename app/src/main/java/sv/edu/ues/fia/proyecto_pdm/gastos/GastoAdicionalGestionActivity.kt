@@ -5,12 +5,13 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import sv.edu.ues.fia.proyecto_pdm.BaseActivity
 import sv.edu.ues.fia.proyecto_pdm.R
 import sv.edu.ues.fia.proyecto_pdm.Vehiculo
 import sv.edu.ues.fia.proyecto_pdm.VehiculoHandler
 import java.util.Calendar
 
-class GastoAdicionalGestionActivity : AppCompatActivity() {
+class GastoAdicionalGestionActivity : BaseActivity() {
 
     private lateinit var spinnerVehiculo: Spinner
     private lateinit var spinnerHistorial: Spinner
@@ -49,6 +50,15 @@ class GastoAdicionalGestionActivity : AppCompatActivity() {
         btnActualizar = findViewById(R.id.btnActualizarGasto)
         btnEliminar = findViewById(R.id.btnEliminarGasto)
         btnLimpiar = findViewById(R.id.btnLimpiarGasto)
+
+        // Validar permisos (Prefix 14)
+        if (!tienePermiso("141")) btnInsertar.visibility = View.GONE
+        if (!tienePermiso("142")) btnActualizar.visibility = View.GONE
+        if (!tienePermiso("143")) {
+            btnConsultar.visibility = View.GONE
+            spinnerHistorial.visibility = View.GONE
+        }
+        if (!tienePermiso("144")) btnEliminar.visibility = View.GONE
 
         cargarVehiculos()
 

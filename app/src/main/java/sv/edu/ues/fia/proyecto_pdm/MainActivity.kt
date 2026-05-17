@@ -12,14 +12,20 @@ import sv.edu.ues.fia.proyecto_pdm.reparacion.ReparacionGestionActivity
 import sv.edu.ues.fia.proyecto_pdm.importacion.ImportacionMenuActivity
 import sv.edu.ues.fia.proyecto_pdm.vehiculo.VehiculoGestionActivity
 import sv.edu.ues.fia.proyecto_pdm.gastos.GastoAdicionalGestionActivity
-
-
+import android.content.Context
+import android.view.View
+import android.widget.LinearLayout
+import android.widget.TextView
 
 class MainActivity : BaseActivity() {
+
+    private lateinit var vehiculoHandler: VehiculoHandler
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        vehiculoHandler = VehiculoHandler(this)
 
         val btnIrAMovimientosHub = findViewById<ImageButton>(R.id.btnIrAMovimientosHub)
         val btnIrAVentas = findViewById<ImageButton>(R.id.btnIrAVentas)
@@ -71,6 +77,29 @@ class MainActivity : BaseActivity() {
         btnIrAGastos.setOnClickListener {
             startActivity(Intent(this, GastoAdicionalGestionActivity::class.java))
         }
-        
+
+        actualizarDashboard()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        actualizarDashboard()
+    }
+
+    private fun actualizarDashboard() {
+        val sharedPref = getSharedPreferences("nombre_usuario", Context.MODE_PRIVATE)
+        val username = sharedPref.getString("username", "") ?: ""
+        val layoutDashboard = findViewById<LinearLayout>(R.id.layoutDashboard)
+
+        if (username == "admin") {
+            layoutDashboard.visibility = View.VISIBLE
+            val conteos = vehiculoHandler.obtenerConteoPorEstado()
+            
+            findViewById<TextView>(R.id.txtCountDisponible).text = (conteos["DISPONIBLE"] ?: 0).toString()
+            findViewById<TextView>(R.id.txtCountReparacion).text = (conteos["EN_REPARACION"] ?: 0).toString()
+            findViewById<TextView>(R.id.txtCountVendido).text = (conteos["VENDIDO"] ?: 0).toString()
+        } else {
+            layoutDashboard.visibility = View.GONE
+        }
     }
 }

@@ -255,16 +255,30 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         """.trimIndent()
         db.execSQL(trCapacidadImportacion)
 
-        // TRIGGER 7: Actualizar estado del vehículo al enviarlo a reparación
+        // TRIGGER 7: Actualizar estado del vehículo al enviarlo a reparación o al marcar como APTO
         val trEstadoReparacion = """
         CREATE TRIGGER tr_estado_reparacion AFTER INSERT ON ${DatabaseContract.ReparacionEntry.TABLE_NAME}
               BEGIN
               UPDATE ${DatabaseContract.VehiculoEntry.TABLE_NAME}
-              SET ${DatabaseContract.VehiculoEntry.COLUMN_ESTADO} = 'EN_REPARACION'
+              SET ${DatabaseContract.VehiculoEntry.COLUMN_ESTADO} = CASE 
+                  WHEN UPPER(NEW.${DatabaseContract.ReparacionEntry.COLUMN_APTO}) = 'S' THEN 'DISPONIBLE'
+                  ELSE 'EN_REPARACION'
+              END
               WHERE ${DatabaseContract.VehiculoEntry.COLUMN_ID} = NEW.${DatabaseContract.ReparacionEntry.COLUMN_ID_VEHICULO};
             END;
         """.trimIndent()
         db.execSQL(trEstadoReparacion)
+
+        val trEstadoReparacionUpdate = """
+        CREATE TRIGGER tr_estado_reparacion_update AFTER UPDATE ON ${DatabaseContract.ReparacionEntry.TABLE_NAME}
+              WHEN UPPER(NEW.${DatabaseContract.ReparacionEntry.COLUMN_APTO}) = 'S'
+              BEGIN
+              UPDATE ${DatabaseContract.VehiculoEntry.TABLE_NAME}
+              SET ${DatabaseContract.VehiculoEntry.COLUMN_ESTADO} = 'DISPONIBLE'
+              WHERE ${DatabaseContract.VehiculoEntry.COLUMN_ID} = NEW.${DatabaseContract.ReparacionEntry.COLUMN_ID_VEHICULO};
+            END;
+        """.trimIndent()
+        db.execSQL(trEstadoReparacionUpdate)
 
         // TRIGGER 8: Bloquear si el vehículo ya tiene una ubicación activa
         val trBloquearDuplicado = """
@@ -308,6 +322,18 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
             END;
         """.trimIndent()
         db.execSQL(trLiberarReparacion)
+
+        // TRIGGER 11: Restringir antigüedad de vehículos (Gpo06 - Máximo 5 años)
+        val trRestringirAnio = """
+            CREATE TRIGGER tr_validar_anio_vehiculo BEFORE INSERT ON ${DatabaseContract.VehiculoEntry.TABLE_NAME}
+            BEGIN
+                SELECT CASE
+                    WHEN NEW.${DatabaseContract.VehiculoEntry.COLUMN_ANIO} <= 2020
+                    THEN RAISE(ABORT, 'No se permiten vehículos del año 2020 o anteriores (Máximo 5 años de antigüedad)')
+                END;
+            END;
+        """.trimIndent()
+        db.execSQL(trRestringirAnio)
     }
 
     override fun onOpen(db: SQLiteDatabase) {

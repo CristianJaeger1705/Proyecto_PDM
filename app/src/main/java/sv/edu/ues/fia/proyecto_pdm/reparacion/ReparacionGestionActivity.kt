@@ -2,6 +2,7 @@ package sv.edu.ues.fia.proyecto_pdm.reparacion
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
@@ -50,6 +51,13 @@ class ReparacionGestionActivity : BaseActivity() {
         val btnBuscar = findViewById<Button>(R.id.btnBuscarRep)
         val btnActualizar = findViewById<Button>(R.id.btnActualizarRep)
         val btnEliminar = findViewById<Button>(R.id.btnEliminarRep)
+
+        // Validar permisos (Prefix 10)
+        if (!tienePermiso("101")) btnIrACrear.visibility = View.GONE
+        if (!tienePermiso("102")) btnActualizar.visibility = View.GONE
+        if (!tienePermiso("103")) btnBuscar.visibility = View.GONE
+        if (!tienePermiso("104")) btnEliminar.visibility = View.GONE
+
         val recyclerReparaciones = findViewById<RecyclerView>(R.id.recyclerReparaciones)
 
         // Cargar Talleres
