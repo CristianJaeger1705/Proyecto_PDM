@@ -99,7 +99,7 @@
             <ImageButton
                 android:id="@+id/btnIrABodega"
                 style="@style/HubIconButton"
-                android:src="@drawable/ic_movimientos"
+                android:src="@drawable/hogar"
                 android:contentDescription="@string/menu_bodegas"
                 app:tint="@color/auto_import_dark"/>
             <TextView
@@ -124,7 +124,7 @@
             <ImageButton
                 android:id="@+id/btnIrATaller"
                 style="@style/HubIconButton"
-                android:src="@drawable/ic_ventas"
+                android:src="@drawable/llave"
                 android:contentDescription="@string/desc_talleres"
                 app:tint="@color/auto_import_dark"/>
             <TextView
@@ -149,7 +149,7 @@
             <ImageButton
                 android:id="@+id/btnIrAReparaciones"
                 style="@style/HubIconButton"
-                android:src="@drawable/ic_movimientos"
+                android:src="@drawable/mecanico"
                 android:contentDescription="@string/desc_reparaciones"
                 app:tint="@color/auto_import_dark"/>
             <TextView
@@ -199,7 +199,7 @@
             <ImageButton
                 android:id="@+id/btnIrAImportaciones"
                 style="@style/HubIconButton"
-                android:src="@drawable/ic_movimientos"
+                android:src="@drawable/importacion"
                 android:contentDescription="@string/menu_importaciones"
                 app:tint="@color/auto_import_dark"/>
             <TextView
@@ -224,7 +224,7 @@
             <ImageButton
                 android:id="@+id/btnIrAVehiculo"
                 style="@style/HubIconButton"
-                android:src="@drawable/ic_movimientos"
+                android:src="@drawable/coches"
                 android:contentDescription="@string/menu_vehiculos"
                 app:tint="@color/auto_import_dark"/>
             <TextView
