@@ -123,41 +123,13 @@ class LoginActivity : BaseActivity() {
             accesoHandler.insertar("${prefix}3", "consultor")
         }
 
-        // 2. Medios de Transporte (Gpo06 Capacidades)
+        //  Medios de Transporte
         medioHandler.insertar(MedioTransporte(1, "Auto", 1))
         medioHandler.insertar(MedioTransporte(2, "Grua", 1))
         medioHandler.insertar(MedioTransporte(3, "Tacuazina", 12))
 
-        // 3. Importadores (Gpo06 Campos completos)
-        importadorHandler.insertar(Importador(
-            nui = "IMP0000001",
-            nombre = "Juan Carlos",
-            apellido = "Pérez",
-            apellidoCasada = null,
-            genero = "M",
-            fechaNacimiento = "1980-01-01",
-            direccion = "San Salvador, El Salvador",
-            correoElectronico = "juan@mail.com",
-            nuiResponsable = null
-        ))
-        importadorHandler.insertar(Importador(
-            nui = "IMP0000002",
-            nombre = "Maria Elena",
-            apellido = "Lopez",
-            apellidoCasada = "de Perez",
-            genero = "F",
-            fechaNacimiento = "1985-05-15",
-            direccion = "Santa Tecla, La Libertad",
-            correoElectronico = "maria@mail.com",
-            nuiResponsable = "IMP0000001"
-        ))
 
-        // 4. Teléfonos
-        val telHandler = TelefonoImportadorHandler(this)
-        telHandler.insertar(TelefonoImportador(null, "IMP0000001", "2222-3333", "CASA"))
-        telHandler.insertar(TelefonoImportador(null, "IMP0000001", "7777-8888", "CELULAR"))
-
-        // 5. Bodegas
+        // Bodegas
         val bodegaHandler = BodegaHandler(this)
         val seccionHandler = SeccionHandler(this)
         val nombresBodegas = listOf("Central", "Occidente", "Oriente", "Norte", "Sur", "Puerto")
@@ -174,23 +146,6 @@ class LoginActivity : BaseActivity() {
                 seccionHandler.insertar(Seccion(0, idB, nivel, 50))
             }
         }
-
-        // 6. Importaciones y Vehículos
-        val impHandler = ImportacionHandler(this)
-        impHandler.insertar(Importacion(1, "IMP0000001", 5, "2024-05-01"))
-        
-        vehiculoHandler.insertar(Vehiculo(1, "Toyota", "Corolla", 2021, "DISPONIBLE", null, 1))
-        vehiculoHandler.insertar(Vehiculo(2, "Nissan", "Sentra", 2023, "DISPONIBLE", null, 1))
-        vehiculoHandler.insertar(Vehiculo(3, "Honda", "Civic", 2024, "DISPONIBLE", null, 1))
-
-        // 7. Talleres y Reparaciones
-        val tallerHandler = TallerHandler(this)
-        tallerHandler.insertar(Taller(0, "Taller El Rayo (Autorizado)", "San Salvador", "2255-8899", "S"))
-        
-        // 8. Ventas
-        val ventaHandler = VentaHandler(this)
-        ventaHandler.registrarVenta(Venta(1, 2, 15000.0, "IMP0000002", "2024-06-01"))
-
         Toast.makeText(this, "Datos Gpo06 cargados.", Toast.LENGTH_LONG).show()
     }
 }
