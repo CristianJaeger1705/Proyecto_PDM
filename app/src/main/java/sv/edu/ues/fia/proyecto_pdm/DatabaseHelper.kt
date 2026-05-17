@@ -261,7 +261,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
               BEGIN
               UPDATE ${DatabaseContract.VehiculoEntry.TABLE_NAME}
               SET ${DatabaseContract.VehiculoEntry.COLUMN_ESTADO} = CASE 
-                  WHEN UPPER(NEW.${DatabaseContract.ReparacionEntry.COLUMN_APTO}) = 'S' THEN 'DISPONIBLE'
+                  WHEN UPPER(TRIM(NEW.${DatabaseContract.ReparacionEntry.COLUMN_APTO})) = 'S' THEN 'DISPONIBLE'
                   ELSE 'EN_REPARACION'
               END
               WHERE ${DatabaseContract.VehiculoEntry.COLUMN_ID} = NEW.${DatabaseContract.ReparacionEntry.COLUMN_ID_VEHICULO};
@@ -271,10 +271,12 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
 
         val trEstadoReparacionUpdate = """
         CREATE TRIGGER tr_estado_reparacion_update AFTER UPDATE ON ${DatabaseContract.ReparacionEntry.TABLE_NAME}
-              WHEN UPPER(NEW.${DatabaseContract.ReparacionEntry.COLUMN_APTO}) = 'S'
               BEGIN
               UPDATE ${DatabaseContract.VehiculoEntry.TABLE_NAME}
-              SET ${DatabaseContract.VehiculoEntry.COLUMN_ESTADO} = 'DISPONIBLE'
+              SET ${DatabaseContract.VehiculoEntry.COLUMN_ESTADO} = CASE 
+                  WHEN UPPER(TRIM(NEW.${DatabaseContract.ReparacionEntry.COLUMN_APTO})) = 'S' THEN 'DISPONIBLE'
+                  ELSE 'EN_REPARACION'
+              END
               WHERE ${DatabaseContract.VehiculoEntry.COLUMN_ID} = NEW.${DatabaseContract.ReparacionEntry.COLUMN_ID_VEHICULO};
             END;
         """.trimIndent()
@@ -368,7 +370,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
     companion object {
         private const val DATABASE_NAME = "proyecto_pdm.db"
 
-        private const val DATABASE_VERSION = 25
+        private const val DATABASE_VERSION = 26
 
         @Volatile
         private var INSTANCE: DatabaseHelper? = null

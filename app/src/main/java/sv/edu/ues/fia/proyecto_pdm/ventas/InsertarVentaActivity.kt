@@ -72,6 +72,8 @@ class InsertarVentaActivity : BaseActivity() {
                         } else {
                             Toast.makeText(this, "Error: ID Venta ya existe", Toast.LENGTH_SHORT).show()
                         }
+                    } else if (veh.estado == "EN_REPARACION") {
+                        Toast.makeText(this, "El vehículo está EN REPARACIÓN. Debe marcarse como APTO en el módulo de Reparaciones primero.", Toast.LENGTH_LONG).show()
                     } else {
                         Toast.makeText(this, "El vehículo ya está VENDIDO", Toast.LENGTH_SHORT).show()
                     }
