@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
@@ -44,6 +45,8 @@ class GestionMovimientosActivity : BaseActivity() {
         val editHora = findViewById<EditText>(R.id.editMovHora)
         val editObs = findViewById<EditText>(R.id.editMovObs)
         val txtVehiculos = findViewById<TextView>(R.id.txtVehiculosAsignados)
+        val txtMovStatus = findViewById<TextView>(R.id.txtMovStatus)
+        val layoutStatus = findViewById<LinearLayout>(R.id.layoutStatus)
 
         val btnBuscar = findViewById<Button>(R.id.btnBuscarMov)
         val btnActualizar = findViewById<Button>(R.id.btnActualizarMov)
@@ -110,9 +113,20 @@ class GestionMovimientosActivity : BaseActivity() {
                     val indexTipo = tiposMovimiento.indexOf(movActual?.tipoMovimiento)
                     if (indexTipo != -1) spinnerTipo.setSelection(indexTipo)
                     
+                    // Mostrar estado de autorización
+                    layoutStatus.visibility = View.VISIBLE
+                    if (movActual!!.autorizado == 1) {
+                        txtMovStatus.text = getString(R.string.status_authorized)
+                        txtMovStatus.setTextColor(resources.getColor(R.color.auto_import_dark, null))
+                    } else {
+                        txtMovStatus.text = getString(R.string.status_pending)
+                        txtMovStatus.setTextColor(resources.getColor(R.color.auto_import_red, null))
+                    }
+                    
                     actualizarListaVehiculos(id, txtVehiculos)
                     Toast.makeText(this, getString(R.string.mov_found), Toast.LENGTH_SHORT).show()
                 } else {
+                    layoutStatus.visibility = View.GONE
                     Toast.makeText(this, getString(R.string.mov_not_found), Toast.LENGTH_SHORT).show()
                 }
             }

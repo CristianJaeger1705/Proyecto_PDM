@@ -54,6 +54,28 @@
             android:background="@color/auto_import_border_grey"
             android:layout_marginVertical="24dp"/>
 
+        <LinearLayout
+            android:id="@+id/layoutStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp"
+            android:visibility="gone">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_status"
+                android:textStyle="bold"
+                android:layout_marginEnd="8dp"/>
+            <TextView
+                android:id="@+id/txtMovStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textStyle="bold"
+                android:textColor="@color/auto_import_dark"/>
+        </LinearLayout>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

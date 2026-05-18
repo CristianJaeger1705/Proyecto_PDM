@@ -83,4 +83,31 @@
 
     </GridLayout>
 
+    <!-- Lista de Movimientos Pendientes de Autorizar (Solo Admin) -->
+    <LinearLayout
+        android:id="@+id/layoutPendientes"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingHorizontal="24dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/txtPendientesTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_pending_movements"
+            android:textStyle="bold"
+            android:textColor="@color/auto_import_red"
+            android:textSize="14sp"
+            android:layout_marginBottom="8dp"/>
+
+        <ListView
+            android:id="@+id/listMovimientosPendientes"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="8dp" />
+    </LinearLayout>
+
 </LinearLayout>

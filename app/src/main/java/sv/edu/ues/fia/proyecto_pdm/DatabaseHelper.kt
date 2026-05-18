@@ -84,6 +84,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                 "${DatabaseContract.MovimientoEntry.COLUMN_FECHA} TEXT, " +
                 "${DatabaseContract.MovimientoEntry.COLUMN_HORA} TEXT, " +
                 "${DatabaseContract.MovimientoEntry.COLUMN_OBSERVACIONES} TEXT, " +
+                "${DatabaseContract.MovimientoEntry.COLUMN_AUTORIZADO} INTEGER DEFAULT 0, " +
                 "FOREIGN KEY (${DatabaseContract.MovimientoEntry.COLUMN_ID_MEDIO}) REFERENCES ${DatabaseContract.MedioTransporteEntry.TABLE_NAME}(${DatabaseContract.MedioTransporteEntry.COLUMN_ID}))"
         db.execSQL(createMovimientoTable)
 
@@ -370,7 +371,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
     companion object {
         private const val DATABASE_NAME = "proyecto_pdm.db"
 
-        private const val DATABASE_VERSION = 26
+        private const val DATABASE_VERSION = 27
 
         @Volatile
         private var INSTANCE: DatabaseHelper? = null

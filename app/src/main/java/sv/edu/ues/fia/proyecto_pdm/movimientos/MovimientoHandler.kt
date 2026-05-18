@@ -17,6 +17,7 @@ class MovimientoHandler(context: Context) {
             put(DatabaseContract.MovimientoEntry.COLUMN_FECHA, mov.fecha)
             put(DatabaseContract.MovimientoEntry.COLUMN_HORA, mov.hora)
             put(DatabaseContract.MovimientoEntry.COLUMN_OBSERVACIONES, mov.observaciones)
+            put(DatabaseContract.MovimientoEntry.COLUMN_AUTORIZADO, 0) // Siempre inicia en 0
         }
         return db.insert(DatabaseContract.MovimientoEntry.TABLE_NAME, null, values)
     }
@@ -38,7 +39,8 @@ class MovimientoHandler(context: Context) {
                 cursor.getString(2),
                 cursor.getString(3),
                 cursor.getString(4),
-                cursor.getString(5)
+                cursor.getString(5),
+                cursor.getInt(6)
             )
         }
         cursor.close()
@@ -53,12 +55,52 @@ class MovimientoHandler(context: Context) {
             put(DatabaseContract.MovimientoEntry.COLUMN_FECHA, mov.fecha)
             put(DatabaseContract.MovimientoEntry.COLUMN_HORA, mov.hora)
             put(DatabaseContract.MovimientoEntry.COLUMN_OBSERVACIONES, mov.observaciones)
+            // No actualizamos autorizado aquí por seguridad
         }
         return db.update(
             DatabaseContract.MovimientoEntry.TABLE_NAME, 
             values, 
             "${DatabaseContract.MovimientoEntry.COLUMN_ID} = ?", 
             arrayOf(mov.idMovimiento.toString())
+        )
+    }
+
+    fun obtenerNoAutorizados(): List<Movimiento> {
+        val lista = mutableListOf<Movimiento>()
+        val db = dbHelper.readableDatabase
+        val cursor = db.query(
+            DatabaseContract.MovimientoEntry.TABLE_NAME,
+            null,
+            "${DatabaseContract.MovimientoEntry.COLUMN_AUTORIZADO} = 0",
+            null, null, null, null
+        )
+        if (cursor.moveToFirst()) {
+            do {
+                lista.add(Movimiento(
+                    cursor.getInt(0),
+                    cursor.getInt(1),
+                    cursor.getString(2),
+                    cursor.getString(3),
+                    cursor.getString(4),
+                    cursor.getString(5),
+                    cursor.getInt(6)
+                ))
+            } while (cursor.moveToNext())
+        }
+        cursor.close()
+        return lista
+    }
+
+    fun autorizar(idMovimiento: Int): Int {
+        val db = dbHelper.writableDatabase
+        val values = ContentValues().apply {
+            put(DatabaseContract.MovimientoEntry.COLUMN_AUTORIZADO, 1)
+        }
+        return db.update(
+            DatabaseContract.MovimientoEntry.TABLE_NAME,
+            values,
+            "${DatabaseContract.MovimientoEntry.COLUMN_ID} = ?",
+            arrayOf(idMovimiento.toString())
         )
     }
 

@@ -287,4 +287,14 @@
     <string name="msg_enter_valid_id">Enter a valid ID</string>
     <string name="msg_phone_not_found_id">Phone not found with ID: %1$d</string>
     <string name="msg_confirm_delete_phone">Delete phone number %1$s?</string>
+    <string name="title_pending_movements">PENDING MOVEMENTS</string>
+    <string name="title_authorize_movement">Authorize Movement</string>
+    <string name="msg_authorize_confirm">Do you want to authorize movement #%1$d?</string>
+    <string name="btn_authorize">Authorize</string>
+    <string name="msg_movement_authorized">Movement authorized</string>
+    <string name="label_movement_item">Movement #%1$d - %2$s</string>
+    <string name="label_movement_details">Date: %1$s %2$s\nObs: %3$s</string>
+    <string name="label_status">STATUS:</string>
+    <string name="status_authorized">AUTHORIZED</string>
+    <string name="status_pending">PENDING AUTHORIZATION</string>
 </resources>

@@ -6,5 +6,6 @@ data class Movimiento(
     val tipoMovimiento: String,
     val fecha: String,
     val hora: String,
-    val observaciones: String
+    val observaciones: String,
+    val autorizado: Int = 0 // 0: No, 1: Sí
 )

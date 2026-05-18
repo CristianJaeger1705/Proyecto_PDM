@@ -55,6 +55,7 @@ object DatabaseContract {
         const val COLUMN_FECHA = "Fecha"
         const val COLUMN_HORA = "Hora"
         const val COLUMN_OBSERVACIONES = "Observaciones"
+        const val COLUMN_AUTORIZADO = "Autorizado" // 0: No, 1: Sí
     }
 
     object MovimientoVehiculoEntry {
