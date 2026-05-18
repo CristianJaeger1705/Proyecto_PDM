@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
@@ -7,6 +8,7 @@
     android:orientation="vertical"
     android:padding="24dp"
     android:gravity="center"
+    android:background="@color/white"
     tools:context=".importador.TelefonoImportadorMenuActivity">
 
     <TextView
@@ -19,6 +21,7 @@
 
     <Button
         android:id="@+id/btnTelefonoInsertar"
+        style="@style/AutoImportButton"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="@string/btn_insert_phone"
@@ -26,6 +29,7 @@
 
     <Button
         android:id="@+id/btnTelefonoConsultar"
+        style="@style/AutoImportButton"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="@string/btn_consult_phones"
@@ -33,6 +37,7 @@
 
     <Button
         android:id="@+id/btnTelefonoActualizar"
+        style="@style/AutoImportButton"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="@string/btn_update_phone"
@@ -40,10 +45,10 @@
 
     <Button
         android:id="@+id/btnTelefonoEliminar"
+        style="@style/AutoImportButton"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="@string/btn_delete_phone"
-        android:backgroundTint="#FF5252"
-        android:textColor="#FFFFFF"/>
+        android:backgroundTint="#FF5252"/>
 
 </LinearLayout>

@@ -297,4 +297,48 @@
     <string name="label_status">ESTADO:</string>
     <string name="status_authorized">AUTORIZADO</string>
     <string name="status_pending">PENDIENTE DE AUTORIZACIÓN</string>
+    <string name="btn_save_venta">GUARDAR VENTA</string>
+    <string name="btn_save_record">GUARDAR REGISTRO</string>
+
+    <!-- Importación -->
+    <string name="title_insert_importacion">Insertar Importación</string>
+    <string name="title_consult_importacion">Consultar Importación</string>
+    <string name="title_update_importacion">Actualizar Importación</string>
+    <string name="title_delete_importacion">Eliminar Importación</string>
+    <string name="label_cantidad_vehiculos">Cantidad de Vehículos</string>
+    <string name="hint_id_importacion_search">ID Importación a buscar</string>
+    <string name="label_importacion_to_delete">ID de la Importación a eliminar:</string>
+
+    <!-- Estado Vehicular -->
+    <string name="title_estado_vehicular">Estado Vehicular</string>
+    <string name="label_vin">1. Seleccione Vehículo (VIN)</string>
+    <string name="label_historial_estados">2. Historial de Estados (por fecha)</string>
+    <string name="label_desc_estado">Descripción del Estado</string>
+    <string name="label_fecha_registro">Fecha del Registro</string>
+    <string name="label_fotografia">Fotografía</string>
+    <string name="btn_change_image">CAMBIAR IMAGEN</string>
+    <string name="btn_insert_new">INSERTAR NUEVO</string>
+    <string name="btn_reload">RECARGAR</string>
+
+    <!-- Mensajes Adicionales -->
+    <string name="msg_importacion_saved">Importación insertada con éxito</string>
+    <string name="msg_importacion_error_save">Error al insertar importación</string>
+    <string name="msg_importacion_not_found">Importación no encontrada</string>
+    <string name="msg_importacion_updated">Importación actualizada con éxito</string>
+    <string name="msg_importacion_deleted">Importación eliminada con éxito</string>
+    <string name="msg_importacion_error_delete">Error: No se encontró la importación o no pudo eliminarse</string>
+    <string name="label_new_record">--- NUEVO REGISTRO ---</string>
+    <string name="msg_select_new_record_insert">Seleccione \'NUEVO REGISTRO\' para insertar</string>
+    <string name="msg_condition_saved">Estado guardado correctamente</string>
+    <string name="msg_select_history_update">Seleccione un estado del historial para actualizar</string>
+    <string name="msg_condition_updated">Actualizado con éxito</string>
+    <string name="msg_select_history_delete">Seleccione un estado del historial para eliminar</string>
+    <string name="msg_condition_deleted">Eliminado con éxito</string>
+    <string name="msg_sale_reparacion_error">El vehículo está EN REPARACIÓN. Debe marcarse como APTO en el módulo de Reparaciones primero.</string>
+    <string name="msg_sale_success">Venta registrada con éxito</string>
+    <string name="msg_sale_id_exists">Error: ID Venta ya existe</string>
+    <string name="msg_workshop_saved">Taller guardado (ID: %1$d)</string>
+    <string name="msg_workshop_name_required">El nombre es obligatorio</string>
+    <string name="msg_repair_saved">Reparación guardada (ID: %1$d)</string>
+    <string name="msg_select_workshop_vehicle">Debe seleccionar un taller y un vehículo</string>
 </resources>

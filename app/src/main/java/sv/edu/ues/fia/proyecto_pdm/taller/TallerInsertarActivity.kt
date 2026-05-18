@@ -44,13 +44,13 @@ class TallerInsertarActivity : AppCompatActivity() {
                 
                 val resultado = handler.insertar(taller)
                 if (resultado != -1L) {
-                    Toast.makeText(this, "Taller guardado (ID: $resultado)", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.msg_workshop_saved, resultado), Toast.LENGTH_SHORT).show()
                     limpiar()
                 } else {
-                    Toast.makeText(this, "Error al insertar.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.insert_error), Toast.LENGTH_SHORT).show()
                 }
             } else {
-                Toast.makeText(this, "El nombre es obligatorio", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.msg_workshop_name_required), Toast.LENGTH_SHORT).show()
             }
         }
 

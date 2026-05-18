@@ -21,6 +21,7 @@ class InsertarVentaActivity : BaseActivity() {
     private lateinit var vehiculoHandler: VehiculoHandler
     private lateinit var importadorHandler: ImportadorHandler
     private lateinit var importadores: List<Importador>
+    private lateinit var vehiculos: List<sv.edu.ues.fia.proyecto_pdm.Vehiculo>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +32,7 @@ class InsertarVentaActivity : BaseActivity() {
         importadorHandler = ImportadorHandler(this)
 
         val editId = findViewById<EditText>(R.id.editNewVentaId)
-        val editVehId = findViewById<EditText>(R.id.editNewVentaVehId)
+        val spinnerVehiculos = findViewById<Spinner>(R.id.spinnerNewVentaVehiculo)
         val editPrecio = findViewById<EditText>(R.id.editNewVentaPrecio)
         val spinnerImportadores = findViewById<Spinner>(R.id.spinnerImportadores)
         val editFecha = findViewById<EditText>(R.id.editNewVentaFecha)
@@ -39,9 +40,15 @@ class InsertarVentaActivity : BaseActivity() {
 
         // Cargar Importadores en el Spinner
         importadores = importadorHandler.obtenerTodos()
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, importadores.map { it.nombre })
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinnerImportadores.adapter = adapter
+        val adapterImp = ArrayAdapter(this, android.R.layout.simple_spinner_item, importadores.map { it.nombre })
+        adapterImp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerImportadores.adapter = adapterImp
+
+        // Cargar Vehículos en el Spinner
+        vehiculos = vehiculoHandler.obtenerTodos()
+        val adapterVeh = ArrayAdapter(this, android.R.layout.simple_spinner_item, vehiculos.map { "${it.idVehiculo} - ${it.marca} ${it.modelo}" })
+        adapterVeh.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerVehiculos.adapter = adapterVeh
 
         // Configurar DatePicker
         editFecha.setOnClickListener {
@@ -53,35 +60,33 @@ class InsertarVentaActivity : BaseActivity() {
 
         btnGuardar.setOnClickListener {
             val idVenta = editId.text.toString().toIntOrNull()
-            val idVeh = editVehId.text.toString().toIntOrNull()
+            val posVeh = spinnerVehiculos.selectedItemPosition
             val precio = editPrecio.text.toString().toDoubleOrNull()
             val fecha = editFecha.text.toString()
             
             val posImportador = spinnerImportadores.selectedItemPosition
             
-            if (idVenta != null && idVeh != null && precio != null && posImportador != -1 && fecha.isNotEmpty()) {
+            if (idVenta != null && posVeh != -1 && precio != null && posImportador != -1 && fecha.isNotEmpty()) {
                 val nui = importadores[posImportador].nui
-                val veh = vehiculoHandler.consultar(idVeh)
-                if (veh != null) {
-                    if (veh.estado == "DISPONIBLE") {
-                        val nuevaVenta = Venta(idVenta, idVeh, precio, nui, fecha)
-                        val res = ventaHandler.registrarVenta(nuevaVenta)
-                        if (res != -1L) {
-                            Toast.makeText(this, "Venta registrada con éxito", Toast.LENGTH_SHORT).show()
-                            finish()
-                        } else {
-                            Toast.makeText(this, "Error: ID Venta ya existe", Toast.LENGTH_SHORT).show()
-                        }
-                    } else if (veh.estado == "EN_REPARACION") {
-                        Toast.makeText(this, "El vehículo está EN REPARACIÓN. Debe marcarse como APTO en el módulo de Reparaciones primero.", Toast.LENGTH_LONG).show()
+                val veh = vehiculos[posVeh]
+                val idVeh = veh.idVehiculo!!
+                
+                if (veh.estado == "DISPONIBLE") {
+                    val nuevaVenta = Venta(idVenta, idVeh, precio, nui, fecha)
+                    val res = ventaHandler.registrarVenta(nuevaVenta)
+                    if (res != -1L) {
+                        Toast.makeText(this, getString(R.string.msg_sale_success), Toast.LENGTH_SHORT).show()
+                        finish()
                     } else {
-                        Toast.makeText(this, "El vehículo ya está VENDIDO", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, getString(R.string.msg_sale_id_exists), Toast.LENGTH_SHORT).show()
                     }
+                } else if (veh.estado == "EN_REPARACION") {
+                    Toast.makeText(this, getString(R.string.msg_sale_reparacion_error), Toast.LENGTH_LONG).show()
                 } else {
-                    Toast.makeText(this, "El vehículo no existe", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.msg_not_found), Toast.LENGTH_SHORT).show()
                 }
             } else {
-                Toast.makeText(this, "Complete todos los campos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.fill_fields), Toast.LENGTH_SHORT).show()
             }
         }
     }

@@ -2,6 +2,7 @@ package sv.edu.ues.fia.proyecto_pdm.importador
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
@@ -20,6 +21,7 @@ class ImportadorActualizarActivity : AppCompatActivity() {
 
     private lateinit var handler: ImportadorHandler
     private var importadorActual: Importador? = null
+    private lateinit var listaImportadores: List<Importador>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +35,7 @@ class ImportadorActualizarActivity : AppCompatActivity() {
 
         handler = ImportadorHandler(this)
 
-        val editNUI = findViewById<EditText>(R.id.editActualizarNUI)
+        val spinnerNUI = findViewById<Spinner>(R.id.spinnerActualizarNUI)
         val editNombre = findViewById<EditText>(R.id.editActualizarNombre)
         val editApellido = findViewById<EditText>(R.id.editActualizarApellido)
         val editApellidoCasada = findViewById<EditText>(R.id.editActualizarApellidoCasada)
@@ -46,10 +48,13 @@ class ImportadorActualizarActivity : AppCompatActivity() {
         val btnActualizar = findViewById<Button>(R.id.btnActualizarImportador)
         val btnLimpiar = findViewById<Button>(R.id.btnLimpiarActualizarImportador)
 
+        // Spinner de género
         val generos = arrayOf("M", "F")
         val adapterGenero = ArrayAdapter(this, android.R.layout.simple_spinner_item, generos)
         adapterGenero.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerGenero.adapter = adapterGenero
+
+        cargarImportadores(spinnerNUI)
 
         editFecha.setOnClickListener {
             val c = Calendar.getInstance()
@@ -59,49 +64,47 @@ class ImportadorActualizarActivity : AppCompatActivity() {
         }
 
         btnCargar.setOnClickListener {
-            val nui = editNUI.text.toString().trim()
-            if (nui.isEmpty()) {
-                Toast.makeText(this, "Ingrese un NUI para cargar", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-            importadorActual = handler.buscar(nui)
-            if (importadorActual != null) {
-                editNombre.setText(importadorActual!!.nombre)
-                editApellido.setText(importadorActual!!.apellido)
-                editApellidoCasada.setText(importadorActual!!.apellidoCasada ?: "")
-                spinnerGenero.setSelection(if (importadorActual!!.genero == "M") 0 else 1)
-                editFecha.setText(importadorActual!!.fechaNacimiento)
-                editDireccion.setText(importadorActual!!.direccion)
-                editCorreo.setText(importadorActual!!.correoElectronico)
-                editNUIResponsable.setText(importadorActual!!.nuiResponsable ?: "")
-                setEdicionHabilitada(true)
-                Toast.makeText(this, "Datos cargados", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "No se encontró importador con ese NUI", Toast.LENGTH_SHORT).show()
-                setEdicionHabilitada(false)
+            val pos = spinnerNUI.selectedItemPosition
+            if (pos != -1) {
+                val nui = listaImportadores[pos].nui
+                importadorActual = handler.buscar(nui)
+                if (importadorActual != null) {
+                    editNombre.setText(importadorActual!!.nombre)
+                    editApellido.setText(importadorActual!!.apellido)
+                    editApellidoCasada.setText(importadorActual!!.apellidoCasada ?: "")
+                    val genIndex = generos.indexOf(importadorActual!!.genero)
+                    if (genIndex != -1) spinnerGenero.setSelection(genIndex)
+                    editFecha.setText(importadorActual!!.fechaNacimiento)
+                    editDireccion.setText(importadorActual!!.direccion)
+                    editCorreo.setText(importadorActual!!.correoElectronico)
+                    editNUIResponsable.setText(importadorActual!!.nuiResponsable ?: "")
+
+                    setEdicionHabilitada(true)
+                    Toast.makeText(this, "Datos cargados", Toast.LENGTH_SHORT).show()
+                }
             }
         }
 
         btnActualizar.setOnClickListener {
             if (importadorActual == null) return@setOnClickListener
-            val apellidoCasada = editApellidoCasada.text.toString().trim().ifEmpty { null }
-            val nuiResponsable = editNUIResponsable.text.toString().trim().ifEmpty { null }
 
             val actualizado = Importador(
-                importadorActual!!.nui,
-                editNombre.text.toString().trim(),
-                editApellido.text.toString().trim(),
-                apellidoCasada,
-                spinnerGenero.selectedItem.toString(),
-                editFecha.text.toString().trim(),
-                editDireccion.text.toString().trim(),
-                editCorreo.text.toString().trim(),
-                nuiResponsable
+                nui = importadorActual!!.nui,
+                nombre = editNombre.text.toString().trim(),
+                apellido = editApellido.text.toString().trim(),
+                apellidoCasada = editApellidoCasada.text.toString().trim().ifEmpty { null },
+                genero = spinnerGenero.selectedItem.toString(),
+                fechaNacimiento = editFecha.text.toString().trim(),
+                direccion = editDireccion.text.toString().trim(),
+                correoElectronico = editCorreo.text.toString().trim(),
+                nuiResponsable = editNUIResponsable.text.toString().trim().ifEmpty { null }
             )
+
             val filas = handler.actualizar(actualizado)
             if (filas > 0) {
-                Toast.makeText(this, "Importador actualizado con éxito", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Importador actualizado", Toast.LENGTH_SHORT).show()
                 limpiarCampos()
+                cargarImportadores(spinnerNUI)
             } else {
                 Toast.makeText(this, "Error al actualizar", Toast.LENGTH_SHORT).show()
             }
@@ -109,6 +112,13 @@ class ImportadorActualizarActivity : AppCompatActivity() {
 
         btnLimpiar.setOnClickListener { limpiarCampos() }
         setEdicionHabilitada(false)
+    }
+
+    private fun cargarImportadores(spinner: Spinner) {
+        listaImportadores = handler.obtenerTodos()
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, listaImportadores.map { "${it.nui} - ${it.nombre}" })
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = adapter
     }
 
     private fun setEdicionHabilitada(habilitar: Boolean) {
@@ -121,12 +131,11 @@ class ImportadorActualizarActivity : AppCompatActivity() {
         findViewById<EditText>(R.id.editActualizarCorreo).isEnabled = habilitar
         findViewById<EditText>(R.id.editActualizarNUIResponsable).isEnabled = habilitar
         findViewById<Button>(R.id.btnActualizarImportador).isEnabled = habilitar
-        findViewById<EditText>(R.id.editActualizarNUI).isEnabled = !habilitar
+        findViewById<Spinner>(R.id.spinnerActualizarNUI).isEnabled = !habilitar
     }
 
     private fun limpiarCampos() {
         importadorActual = null
-        findViewById<EditText>(R.id.editActualizarNUI).setText("")
         findViewById<EditText>(R.id.editActualizarNombre).setText("")
         findViewById<EditText>(R.id.editActualizarApellido).setText("")
         findViewById<EditText>(R.id.editActualizarApellidoCasada).setText("")
@@ -135,6 +144,5 @@ class ImportadorActualizarActivity : AppCompatActivity() {
         findViewById<EditText>(R.id.editActualizarCorreo).setText("")
         findViewById<EditText>(R.id.editActualizarNUIResponsable).setText("")
         setEdicionHabilitada(false)
-        findViewById<EditText>(R.id.editActualizarNUI).requestFocus()
     }
 }

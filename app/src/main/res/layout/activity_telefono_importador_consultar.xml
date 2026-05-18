@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
+    android:background="@color/white"
     tools:context=".importador.TelefonoImportadorConsultarActivity">
 
     <TextView
@@ -22,16 +24,16 @@
         android:layout_height="wrap_content"
         android:text="@string/label_nui_importador"
         android:textStyle="bold"/>
-    <EditText
-        android:id="@+id/editConsultarTelefonoNUI"
+    <Spinner
+        android:id="@+id/spinnerConsultarTelefonoNUI"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/hint_nui_search"
-        android:inputType="text"
+        android:minHeight="48dp"
         android:layout_marginBottom="12dp"/>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnConsultarTelefono"
+        style="@style/AutoImportButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/btn_search"
@@ -49,9 +51,10 @@
 
     <Button
         android:id="@+id/btnLimpiarConsultarTelefono"
+        style="@style/AutoImportButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/btn_clean"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+        android:backgroundTint="#888888"/>
 
 </LinearLayout>

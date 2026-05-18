@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".gastos.GastoAdicionalGestionActivity">
 
     <LinearLayout
@@ -108,47 +110,51 @@
             android:columnCount="2"
             android:rowCount="2">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnInsertarGasto"
+                style="@style/AutoImportButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
                 android:text="@string/btn_insertar_gasto"
                 android:layout_margin="4dp"/>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnConsultarGasto"
+                style="@style/AutoImportButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
                 android:text="@string/btn_consultar_gasto"
                 android:layout_margin="4dp"/>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnActualizarGasto"
+                style="@style/AutoImportButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
                 android:text="@string/btn_actualizar_gasto"
                 android:layout_margin="4dp"/>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnEliminarGasto"
+                style="@style/AutoImportButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
                 android:text="@string/btn_eliminar_gasto"
                 android:backgroundTint="#FF5252"
-                android:textColor="#FFFFFF"
                 android:layout_margin="4dp"/>
         </GridLayout>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnLimpiarGasto"
+            style="@style/AutoImportButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_clean"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:backgroundTint="#888888"
             android:layout_marginTop="12dp"/>
 
     </LinearLayout>

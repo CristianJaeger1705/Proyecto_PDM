@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
+    android:background="@color/white"
     tools:context=".importador.ImportadorConsultarActivity">
 
     <TextView
@@ -17,16 +19,16 @@
         android:gravity="center"
         android:layout_marginBottom="24dp"/>
 
-    <EditText
-        android:id="@+id/editConsultarNUI"
+    <Spinner
+        android:id="@+id/spinnerConsultarNUI"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/hint_nui_search"
-        android:inputType="text"
+        android:minHeight="48dp"
         android:layout_marginBottom="12dp"/>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnConsultarImportador"
+        style="@style/AutoImportButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/btn_search"
@@ -42,11 +44,12 @@
         android:background="#F0F0F0"
         android:layout_marginBottom="16dp"/>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnLimpiarConsultarImportador"
+        style="@style/AutoImportButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/btn_clean"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+        android:backgroundTint="#888888"/>
 
 </LinearLayout>

@@ -1,15 +1,21 @@
 package sv.edu.ues.fia.proyecto_pdm.importacion
 
+import android.app.DatePickerDialog
 import android.os.Bundle
+import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import sv.edu.ues.fia.proyecto_pdm.R
+import java.util.Calendar
+import java.util.Locale
 
 class ImportacionActualizarActivity : AppCompatActivity() {
 
-    private lateinit var editIdBuscar: EditText
+    private lateinit var spinnerIdBuscar: Spinner
     private lateinit var editIdImportador: EditText
     private lateinit var editCantidad: EditText
     private lateinit var editFecha: EditText
@@ -17,6 +23,8 @@ class ImportacionActualizarActivity : AppCompatActivity() {
     private lateinit var btnActualizar: Button
     private lateinit var btnLimpiar: Button
     private lateinit var handler: ImportacionHandler
+    private lateinit var listaImportaciones: List<Importacion>
+    private var importacionActual: Importacion? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,13 +32,19 @@ class ImportacionActualizarActivity : AppCompatActivity() {
 
         handler = ImportacionHandler(this)
 
-        editIdBuscar = findViewById(R.id.editActualizarIdImportacion)
+        spinnerIdBuscar = findViewById(R.id.spinnerActualizarIdImportacion)
         editIdImportador = findViewById(R.id.editActualizarIdImportador)
         editCantidad = findViewById(R.id.editActualizarCantidadVehiculos)
         editFecha = findViewById(R.id.editActualizarFecha)
         btnCargar = findViewById(R.id.btnCargarActualizar)
         btnActualizar = findViewById(R.id.btnActualizarImportacion)
         btnLimpiar = findViewById(R.id.btnLimpiarActualizar)
+
+        cargarImportaciones()
+
+        editFecha.setOnClickListener {
+            mostrarDatePicker()
+        }
 
         btnCargar.setOnClickListener {
             cargarDatos()
@@ -45,44 +59,57 @@ class ImportacionActualizarActivity : AppCompatActivity() {
         }
     }
 
+    private fun cargarImportaciones() {
+        listaImportaciones = handler.obtenerTodas()
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, listaImportaciones.map { "ID: ${it.idImportacion} - ${it.idImportador}" })
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerIdBuscar.adapter = adapter
+    }
+
+    private fun mostrarDatePicker() {
+        val c = Calendar.getInstance()
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar.MONTH)
+        val day = c.get(Calendar.DAY_OF_MONTH)
+
+        DatePickerDialog(this, { _, y, m, d ->
+            val formattedDate = String.format(Locale.US, "%04d-%02d-%02d", y, m + 1, d)
+            editFecha.setText(formattedDate)
+        }, year, month, day).show()
+    }
+
     private fun cargarDatos() {
-        val idStr = editIdBuscar.text.toString()
-        if (idStr.isEmpty()) {
-            Toast.makeText(this, "Ingrese el ID para buscar", Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        val importacion = handler.consultar(idStr.toInt())
-
-        if (importacion != null) {
-            editIdImportador.setText(importacion.idImportador)
-            editCantidad.setText(importacion.cantidadVehiculos.toString())
-            editFecha.setText(importacion.fecha)
+        val pos = spinnerIdBuscar.selectedItemPosition
+        if (pos != -1) {
+            importacionActual = listaImportaciones[pos]
+            editIdImportador.setText(importacionActual!!.idImportador)
+            editCantidad.setText(importacionActual!!.cantidadVehiculos.toString())
+            editFecha.setText(importacionActual!!.fecha)
 
             // Habilitar campos y botón de guardar
             editIdImportador.isEnabled = true
             editCantidad.isEnabled = true
             editFecha.isEnabled = true
             btnActualizar.isEnabled = true
-            editIdBuscar.isEnabled = false
-        } else {
-            Toast.makeText(this, "Importación no encontrada", Toast.LENGTH_SHORT).show()
+            spinnerIdBuscar.isEnabled = false
+            Toast.makeText(this, getString(R.string.record_found), Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun actualizarImportacion() {
-        val idStr = editIdBuscar.text.toString()
+        if (importacionActual == null) return
+
         val idImportador = editIdImportador.text.toString()
         val cantidadStr = editCantidad.text.toString()
         val fecha = editFecha.text.toString()
 
         if (idImportador.isEmpty() || cantidadStr.isEmpty() || fecha.isEmpty()) {
-            Toast.makeText(this, "Por favor complete todos los campos", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.fill_fields), Toast.LENGTH_SHORT).show()
             return
         }
 
         val importacion = Importacion(
-            idImportacion = idStr.toInt(),
+            idImportacion = importacionActual!!.idImportacion,
             idImportador = idImportador,
             cantidadVehiculos = cantidadStr.toInt(),
             fecha = fecha
@@ -91,15 +118,16 @@ class ImportacionActualizarActivity : AppCompatActivity() {
         val filasAfectadas = handler.actualizar(importacion)
 
         if (filasAfectadas > 0) {
-            Toast.makeText(this, "Importación actualizada con éxito", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.msg_importacion_updated), Toast.LENGTH_SHORT).show()
             limpiarCampos()
+            cargarImportaciones()
         } else {
-            Toast.makeText(this, "Error al actualizar", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.update_error), Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun limpiarCampos() {
-        editIdBuscar.setText("")
+        importacionActual = null
         editIdImportador.setText("")
         editCantidad.setText("")
         editFecha.setText("")
@@ -108,6 +136,6 @@ class ImportacionActualizarActivity : AppCompatActivity() {
         editCantidad.isEnabled = false
         editFecha.isEnabled = false
         btnActualizar.isEnabled = false
-        editIdBuscar.isEnabled = true
+        spinnerIdBuscar.isEnabled = true
     }
 }

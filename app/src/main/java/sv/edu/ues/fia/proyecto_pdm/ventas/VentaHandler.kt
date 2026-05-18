@@ -67,4 +67,23 @@ class VentaHandler(context: Context) {
             arrayOf(idVenta.toString())
         )
     }
+
+    fun obtenerTodas(): List<Venta> {
+        val lista = mutableListOf<Venta>()
+        val db = dbHelper.readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM ${DatabaseContract.VentaEntry.TABLE_NAME}", null)
+        if (cursor.moveToFirst()) {
+            do {
+                lista.add(Venta(
+                    cursor.getInt(0),
+                    cursor.getInt(1),
+                    cursor.getDouble(2),
+                    cursor.getString(3),
+                    cursor.getString(4)
+                ))
+            } while (cursor.moveToNext())
+        }
+        cursor.close()
+        return lista
+    }
 }

@@ -16,6 +16,7 @@ class TelefonoImportadorActualizarActivity : AppCompatActivity() {
 
     private lateinit var handler: TelefonoImportadorHandler
     private var telefonoActual: TelefonoImportador? = null
+    private lateinit var listaTelefonos: List<TelefonoImportador>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +30,7 @@ class TelefonoImportadorActualizarActivity : AppCompatActivity() {
 
         handler = TelefonoImportadorHandler(this)
 
-        val editId = findViewById<EditText>(R.id.editActualizarTelefonoId)
+        val spinnerId = findViewById<Spinner>(R.id.spinnerActualizarTelefonoId)
         val editNumero = findViewById<EditText>(R.id.editActualizarTelefonoNumero)
         val spinnerTipo = findViewById<Spinner>(R.id.spinnerActualizarTelefonoTipo)
         val btnCargar = findViewById<Button>(R.id.btnCargarTelefono)
@@ -42,26 +43,21 @@ class TelefonoImportadorActualizarActivity : AppCompatActivity() {
             getString(R.string.phone_type_work),
             getString(R.string.phone_type_other)
         )
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, tipos)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinnerTipo.adapter = adapter
+        val adapterTipo = ArrayAdapter(this, android.R.layout.simple_spinner_item, tipos)
+        adapterTipo.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerTipo.adapter = adapterTipo
+
+        cargarTelefonos(spinnerId)
 
         btnCargar.setOnClickListener {
-            val id = editId.text.toString().trim().toIntOrNull()
-            if (id == null) {
-                Toast.makeText(this, getString(R.string.msg_enter_valid_id), Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-            telefonoActual = handler.buscar(id)
-            if (telefonoActual != null) {
+            val pos = spinnerId.selectedItemPosition
+            if (pos != -1) {
+                telefonoActual = listaTelefonos[pos]
                 editNumero.setText(telefonoActual!!.numero)
                 val index = tipos.indexOf(telefonoActual!!.tipoTelefono)
                 if (index != -1) spinnerTipo.setSelection(index)
                 setEdicionHabilitada(true)
                 Toast.makeText(this, getString(R.string.record_found), Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, getString(R.string.msg_phone_not_found_id, id), Toast.LENGTH_SHORT).show()
-                setEdicionHabilitada(false)
             }
         }
 
@@ -77,6 +73,7 @@ class TelefonoImportadorActualizarActivity : AppCompatActivity() {
             if (filas > 0) {
                 Toast.makeText(this, getString(R.string.update_success), Toast.LENGTH_SHORT).show()
                 limpiarCampos()
+                cargarTelefonos(spinnerId)
             } else {
                 Toast.makeText(this, getString(R.string.update_error), Toast.LENGTH_SHORT).show()
             }
@@ -86,18 +83,23 @@ class TelefonoImportadorActualizarActivity : AppCompatActivity() {
         setEdicionHabilitada(false)
     }
 
+    private fun cargarTelefonos(spinner: Spinner) {
+        listaTelefonos = handler.obtenerTodos()
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, listaTelefonos.map { "ID:${it.idTelefono} - ${it.nui} (${it.numero})" })
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = adapter
+    }
+
     private fun setEdicionHabilitada(habilitar: Boolean) {
         findViewById<EditText>(R.id.editActualizarTelefonoNumero).isEnabled = habilitar
         findViewById<Spinner>(R.id.spinnerActualizarTelefonoTipo).isEnabled = habilitar
         findViewById<Button>(R.id.btnActualizarTelefono).isEnabled = habilitar
-        findViewById<EditText>(R.id.editActualizarTelefonoId).isEnabled = !habilitar
+        findViewById<Spinner>(R.id.spinnerActualizarTelefonoId).isEnabled = !habilitar
     }
 
     private fun limpiarCampos() {
         telefonoActual = null
-        findViewById<EditText>(R.id.editActualizarTelefonoId).setText("")
         findViewById<EditText>(R.id.editActualizarTelefonoNumero).setText("")
         setEdicionHabilitada(false)
-        findViewById<EditText>(R.id.editActualizarTelefonoId).requestFocus()
     }
 }

@@ -30,16 +30,12 @@
         android:gravity="center_vertical"
         android:layout_marginBottom="16dp">
 
-        <EditText
-            android:id="@+id/editVehiculoId"
-            style="@style/AutoImportEditText"
+        <Spinner
+            android:id="@+id/spinnerVehiculosMov"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="@string/veh_id_hint"
-            android:inputType="number"
-            android:layout_marginBottom="0dp"
-            android:autofillHints="none" />
+            android:minHeight="48dp" />
 
         <Button
             android:id="@+id/btnAgregarVeh"

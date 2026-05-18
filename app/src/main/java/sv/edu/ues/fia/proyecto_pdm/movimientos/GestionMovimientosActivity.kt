@@ -26,6 +26,7 @@ class GestionMovimientosActivity : BaseActivity() {
     private lateinit var vehHandler: VehiculoHandler
     private lateinit var medioHandler: MedioTransporteHandler
     private lateinit var medios: List<MedioTransporte>
+    private lateinit var movimientos: List<Movimiento>
     private val tiposMovimiento = arrayOf("ENTRADA", "SALIDA")
     private var movActual: Movimiento? = null
 
@@ -38,7 +39,7 @@ class GestionMovimientosActivity : BaseActivity() {
         medioHandler = MedioTransporteHandler(this)
 
         val btnIrAInsertar = findViewById<Button>(R.id.btnIrAInsertarMov)
-        val editId = findViewById<EditText>(R.id.editMovId)
+        val spinnerMovimientos = findViewById<Spinner>(R.id.spinnerGestionMovId)
         val spinnerMedios = findViewById<Spinner>(R.id.spinnerGestionMedios)
         val spinnerTipo = findViewById<Spinner>(R.id.spinnerGestionMovTipo)
         val editFecha = findViewById<EditText>(R.id.editMovFecha)
@@ -75,6 +76,8 @@ class GestionMovimientosActivity : BaseActivity() {
         adapterTipos.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerTipo.adapter = adapterTipos
 
+        cargarMovimientos(spinnerMovimientos)
+
         // Pickers
         editFecha.setOnClickListener {
             val c = Calendar.getInstance()
@@ -96,39 +99,35 @@ class GestionMovimientosActivity : BaseActivity() {
         }
 
         btnBuscar.setOnClickListener {
-            val idStr = editId.text.toString()
-            if (idStr.isNotEmpty()) {
-                val id = idStr.toInt()
-                movActual = movHandler.buscar(id)
-                if (movActual != null) {
-                    editFecha.setText(movActual?.fecha)
-                    editHora.setText(movActual?.hora)
-                    editObs.setText(movActual?.observaciones)
-                    
-                    // Seleccionar medio en spinner
-                    val indexMedio = medios.indexOfFirst { it.idMedio == movActual?.idMedio }
-                    if (indexMedio != -1) spinnerMedios.setSelection(indexMedio)
+            val pos = spinnerMovimientos.selectedItemPosition
+            if (pos != -1) {
+                movActual = movimientos[pos]
+                val id = movActual!!.idMovimiento
+                
+                editFecha.setText(movActual?.fecha)
+                editHora.setText(movActual?.hora)
+                editObs.setText(movActual?.observaciones)
+                
+                // Seleccionar medio en spinner
+                val indexMedio = medios.indexOfFirst { it.idMedio == movActual?.idMedio }
+                if (indexMedio != -1) spinnerMedios.setSelection(indexMedio)
 
-                    // Seleccionar tipo en spinner
-                    val indexTipo = tiposMovimiento.indexOf(movActual?.tipoMovimiento)
-                    if (indexTipo != -1) spinnerTipo.setSelection(indexTipo)
-                    
-                    // Mostrar estado de autorización
-                    layoutStatus.visibility = View.VISIBLE
-                    if (movActual!!.autorizado == 1) {
-                        txtMovStatus.text = getString(R.string.status_authorized)
-                        txtMovStatus.setTextColor(resources.getColor(R.color.auto_import_dark, null))
-                    } else {
-                        txtMovStatus.text = getString(R.string.status_pending)
-                        txtMovStatus.setTextColor(resources.getColor(R.color.auto_import_red, null))
-                    }
-                    
-                    actualizarListaVehiculos(id, txtVehiculos)
-                    Toast.makeText(this, getString(R.string.mov_found), Toast.LENGTH_SHORT).show()
+                // Seleccionar tipo en spinner
+                val indexTipo = tiposMovimiento.indexOf(movActual?.tipoMovimiento)
+                if (indexTipo != -1) spinnerTipo.setSelection(indexTipo)
+                
+                // Mostrar estado de autorización
+                layoutStatus.visibility = View.VISIBLE
+                if (movActual!!.autorizado == 1) {
+                    txtMovStatus.text = getString(R.string.status_authorized)
+                    txtMovStatus.setTextColor(resources.getColor(R.color.auto_import_dark, null))
                 } else {
-                    layoutStatus.visibility = View.GONE
-                    Toast.makeText(this, getString(R.string.mov_not_found), Toast.LENGTH_SHORT).show()
+                    txtMovStatus.text = getString(R.string.status_pending)
+                    txtMovStatus.setTextColor(resources.getColor(R.color.auto_import_red, null))
                 }
+                
+                actualizarListaVehiculos(id, txtVehiculos)
+                Toast.makeText(this, getString(R.string.mov_found), Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -157,7 +156,8 @@ class GestionMovimientosActivity : BaseActivity() {
                 val res = movHandler.eliminar(movActual!!.idMovimiento)
                 if (res > 0) {
                     Toast.makeText(this, getString(R.string.mov_delete_success), Toast.LENGTH_SHORT).show()
-                    finish()
+                    cargarMovimientos(spinnerMovimientos)
+                    limpiarCampos()
                 }
             }
         }
@@ -178,8 +178,28 @@ class GestionMovimientosActivity : BaseActivity() {
         textView.text = getString(R.string.vehicles_label) + vehiculos.joinToString(", ")
     }
 
+    private fun cargarMovimientos(spinner: Spinner) {
+        movimientos = movHandler.obtenerTodos()
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, movimientos.map { "#${it.idMovimiento} - ${it.tipoMovimiento} (${it.fecha})" })
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = adapter
+    }
+
+    private fun limpiarCampos() {
+        movActual = null
+        findViewById<EditText>(R.id.editMovFecha).text.clear()
+        findViewById<EditText>(R.id.editMovHora).text.clear()
+        findViewById<EditText>(R.id.editMovObs).text.clear()
+        findViewById<LinearLayout>(R.id.layoutStatus).visibility = View.GONE
+        findViewById<TextView>(R.id.txtVehiculosAsignados).text = getString(R.string.vehicles_label)
+    }
+
     override fun onResume() {
         super.onResume()
+        // Recargar movimientos
+        val spinnerMovimientos = findViewById<Spinner>(R.id.spinnerGestionMovId)
+        cargarMovimientos(spinnerMovimientos)
+
         // Actualizar la lista de vehículos si ya hay un movimiento buscado
         movActual?.let {
             val txtVehiculos = findViewById<TextView>(R.id.txtVehiculosAsignados)

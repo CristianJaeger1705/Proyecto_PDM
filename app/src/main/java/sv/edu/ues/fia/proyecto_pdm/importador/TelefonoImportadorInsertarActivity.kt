@@ -17,6 +17,7 @@ class TelefonoImportadorInsertarActivity : AppCompatActivity() {
 
     private lateinit var handler: TelefonoImportadorHandler
     private lateinit var importadorHandler: ImportadorHandler
+    private lateinit var listaImportadores: List<sv.edu.ues.fia.proyecto_pdm.Importador>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,11 +32,17 @@ class TelefonoImportadorInsertarActivity : AppCompatActivity() {
         handler = TelefonoImportadorHandler(this)
         importadorHandler = ImportadorHandler(this)
 
-        val editNUI = findViewById<EditText>(R.id.editTelefonoNUI)
+        val spinnerNUI = findViewById<Spinner>(R.id.spinnerTelefonoNUI)
         val editNumero = findViewById<EditText>(R.id.editTelefonoNumero)
         val spinnerTipo = findViewById<Spinner>(R.id.spinnerTelefonoTipo)
         val btnGuardar = findViewById<Button>(R.id.btnGuardarTelefono)
         val btnLimpiar = findViewById<Button>(R.id.btnLimpiarTelefono)
+
+        // Cargar Importadores
+        listaImportadores = importadorHandler.obtenerTodos()
+        val adapterImp = ArrayAdapter(this, android.R.layout.simple_spinner_item, listaImportadores.map { "${it.nui} - ${it.nombre}" })
+        adapterImp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerNUI.adapter = adapterImp
 
         val tipos = arrayOf(
             getString(R.string.phone_type_mobile),
@@ -48,21 +55,16 @@ class TelefonoImportadorInsertarActivity : AppCompatActivity() {
         spinnerTipo.adapter = adapter
 
         btnGuardar.setOnClickListener {
-            val nui = editNUI.text.toString().trim()
+            val posImp = spinnerNUI.selectedItemPosition
             val numero = editNumero.text.toString().trim()
             val tipo = spinnerTipo.selectedItem.toString()
 
-            if (nui.isEmpty() || numero.isEmpty()) {
+            if (posImp == -1 || numero.isEmpty()) {
                 Toast.makeText(this, getString(R.string.required_fields), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            val importador = importadorHandler.buscar(nui)
-            if (importador == null) {
-                Toast.makeText(this, getString(R.string.msg_not_found_nui, nui), Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-
+            val nui = listaImportadores[posImp].nui
             val telefono = TelefonoImportador(null, nui, numero, tipo)
             val resultado = handler.insertar(telefono)
 
@@ -78,8 +80,6 @@ class TelefonoImportadorInsertarActivity : AppCompatActivity() {
     }
 
     private fun limpiarCampos() {
-        findViewById<EditText>(R.id.editTelefonoNUI).setText("")
         findViewById<EditText>(R.id.editTelefonoNumero).setText("")
-        findViewById<EditText>(R.id.editTelefonoNUI).requestFocus()
     }
 }

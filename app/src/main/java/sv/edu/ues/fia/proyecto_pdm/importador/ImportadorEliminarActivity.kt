@@ -1,8 +1,10 @@
 package sv.edu.ues.fia.proyecto_pdm.importador
 
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
@@ -15,6 +17,7 @@ import sv.edu.ues.fia.proyecto_pdm.R
 class ImportadorEliminarActivity : AppCompatActivity() {
 
     private lateinit var handler: ImportadorHandler
+    private lateinit var listaImportadores: List<sv.edu.ues.fia.proyecto_pdm.Importador>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,21 +31,17 @@ class ImportadorEliminarActivity : AppCompatActivity() {
 
         handler = ImportadorHandler(this)
 
-        val editNUI = findViewById<EditText>(R.id.editEliminarNUI)
+        val spinnerNUI = findViewById<Spinner>(R.id.spinnerEliminarNUI)
         val btnEliminar = findViewById<Button>(R.id.btnEliminarImportador)
 
-        btnEliminar.setOnClickListener {
-            val nui = editNUI.text.toString().trim()
-            if (nui.isEmpty()) {
-                Toast.makeText(this, getString(R.string.msg_enter_nui_delete), Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
+        cargarImportadores(spinnerNUI)
 
-            val importador = handler.buscar(nui)
-            if (importador == null) {
-                Toast.makeText(this, getString(R.string.msg_not_found_nui, nui), Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
+        btnEliminar.setOnClickListener {
+            val pos = spinnerNUI.selectedItemPosition
+            if (pos == -1) return@setOnClickListener
+
+            val importador = listaImportadores[pos]
+            val nui = importador.nui
 
             AlertDialog.Builder(this)
                 .setTitle(getString(R.string.title_confirm_delete))
@@ -51,7 +50,7 @@ class ImportadorEliminarActivity : AppCompatActivity() {
                     val resultado = handler.eliminar(nui)
                     if (resultado > 0) {
                         Toast.makeText(this, getString(R.string.msg_deleted_success), Toast.LENGTH_SHORT).show()
-                        editNUI.setText("")
+                        cargarImportadores(spinnerNUI)
                     } else {
                         Toast.makeText(this, getString(R.string.msg_deleted_error), Toast.LENGTH_SHORT).show()
                     }
@@ -59,5 +58,12 @@ class ImportadorEliminarActivity : AppCompatActivity() {
                 .setNegativeButton(getString(R.string.btn_cancel), null)
                 .show()
         }
+    }
+
+    private fun cargarImportadores(spinner: Spinner) {
+        listaImportadores = handler.obtenerTodos()
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, listaImportadores.map { "${it.nui} - ${it.nombre}" })
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = adapter
     }
 }

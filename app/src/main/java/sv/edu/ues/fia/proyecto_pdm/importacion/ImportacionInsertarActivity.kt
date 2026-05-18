@@ -1,23 +1,30 @@
 package sv.edu.ues.fia.proyecto_pdm.importacion
 
+import android.app.DatePickerDialog
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import sv.edu.ues.fia.proyecto_pdm.Importador
 import sv.edu.ues.fia.proyecto_pdm.ImportadorHandler
 import sv.edu.ues.fia.proyecto_pdm.R
+import java.util.Calendar
+import java.util.Locale
 
 class ImportacionInsertarActivity : AppCompatActivity() {
 
     private lateinit var editIdImportacion: EditText
-    private lateinit var editIdImportador: EditText
+    private lateinit var spinnerImportador: Spinner
     private lateinit var editCantidadVehiculos: EditText
     private lateinit var editFechaImportacion: EditText
     private lateinit var btnInsertar: Button
     private lateinit var btnLimpiar: Button
     private lateinit var handler: ImportacionHandler
     private lateinit var importadorHandler: ImportadorHandler
+    private lateinit var listaImportadores: List<Importador>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,11 +34,17 @@ class ImportacionInsertarActivity : AppCompatActivity() {
         importadorHandler = ImportadorHandler(this)
 
         editIdImportacion = findViewById(R.id.editIdImportacion)
-        editIdImportador = findViewById(R.id.editIdImportador)
+        spinnerImportador = findViewById(R.id.spinnerInsertNUI)
         editCantidadVehiculos = findViewById(R.id.editCantidadVehiculos)
         editFechaImportacion = findViewById(R.id.editFechaImportacion)
         btnInsertar = findViewById(R.id.btnInsertarImportacion)
         btnLimpiar = findViewById(R.id.btnLimpiarImportacion)
+
+        cargarImportadores()
+
+        editFechaImportacion.setOnClickListener {
+            mostrarDatePicker()
+        }
 
         btnInsertar.setOnClickListener {
             insertarImportacion()
@@ -42,23 +55,37 @@ class ImportacionInsertarActivity : AppCompatActivity() {
         }
     }
 
+    private fun cargarImportadores() {
+        listaImportadores = importadorHandler.obtenerTodos()
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, listaImportadores.map { "${it.nui} - ${it.nombre}" })
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerImportador.adapter = adapter
+    }
+
+    private fun mostrarDatePicker() {
+        val c = Calendar.getInstance()
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar.MONTH)
+        val day = c.get(Calendar.DAY_OF_MONTH)
+
+        DatePickerDialog(this, { _, y, m, d ->
+            val formattedDate = String.format(Locale.US, "%04d-%02d-%02d", y, m + 1, d)
+            editFechaImportacion.setText(formattedDate)
+        }, year, month, day).show()
+    }
+
     private fun insertarImportacion() {
         val idStr = editIdImportacion.text.toString()
-        val idImportador = editIdImportador.text.toString()
+        val posImp = spinnerImportador.selectedItemPosition
         val cantidadStr = editCantidadVehiculos.text.toString()
         val fecha = editFechaImportacion.text.toString()
 
-        if (idStr.isEmpty() || idImportador.isEmpty() || cantidadStr.isEmpty() || fecha.isEmpty()) {
-            Toast.makeText(this, "Por favor complete todos los campos", Toast.LENGTH_SHORT).show()
+        if (idStr.isEmpty() || posImp == -1 || cantidadStr.isEmpty() || fecha.isEmpty()) {
+            Toast.makeText(this, getString(R.string.fill_fields), Toast.LENGTH_SHORT).show()
             return
         }
 
-        // Verificar si el importador existe
-        val importador = importadorHandler.buscar(idImportador)
-        if (importador == null) {
-            Toast.makeText(this, "El importador con NUI $idImportador no existe", Toast.LENGTH_LONG).show()
-            return
-        }
+        val idImportador = listaImportadores[posImp].nui
 
         val importacion = Importacion(
             idImportacion = idStr.toInt(),
@@ -70,16 +97,15 @@ class ImportacionInsertarActivity : AppCompatActivity() {
         val resultado = handler.insertar(importacion)
 
         if (resultado != -1L) {
-            Toast.makeText(this, "Importación insertada con éxito", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.msg_importacion_saved), Toast.LENGTH_SHORT).show()
             limpiarCampos()
         } else {
-            Toast.makeText(this, "Error al insertar importación", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.msg_importacion_error_save), Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun limpiarCampos() {
         editIdImportacion.setText("")
-        editIdImportador.setText("")
         editCantidadVehiculos.setText("")
         editFechaImportacion.setText("")
     }

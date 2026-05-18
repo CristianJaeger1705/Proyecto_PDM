@@ -297,4 +297,48 @@
     <string name="label_status">STATUS:</string>
     <string name="status_authorized">AUTHORIZED</string>
     <string name="status_pending">PENDING AUTHORIZATION</string>
+    <string name="btn_save_venta">SAVE SALE</string>
+    <string name="btn_save_record">SAVE RECORD</string>
+
+    <!-- Importation -->
+    <string name="title_insert_importacion">Insert Importation</string>
+    <string name="title_consult_importacion">Consult Importation</string>
+    <string name="title_update_importacion">Update Importation</string>
+    <string name="title_delete_importacion">Delete Importation</string>
+    <string name="label_cantidad_vehiculos">Number of Vehicles</string>
+    <string name="hint_id_importacion_search">Importation ID to search</string>
+    <string name="label_importacion_to_delete">Importation ID to delete:</string>
+
+    <!-- Vehicle Condition -->
+    <string name="title_estado_vehicular">Vehicle Condition</string>
+    <string name="label_vin">1. Select Vehicle (VIN)</string>
+    <string name="label_historial_estados">2. Condition History (by date)</string>
+    <string name="label_desc_estado">Condition Description</string>
+    <string name="label_fecha_registro">Registration Date</string>
+    <string name="label_fotografia">Photograph</string>
+    <string name="btn_change_image">CHANGE IMAGE</string>
+    <string name="btn_insert_new">INSERT NEW</string>
+    <string name="btn_reload">RELOAD</string>
+
+    <!-- Additional Messages -->
+    <string name="msg_importacion_saved">Importation saved successfully</string>
+    <string name="msg_importacion_error_save">Error inserting importation</string>
+    <string name="msg_importacion_not_found">Importation not found</string>
+    <string name="msg_importacion_updated">Importation updated successfully</string>
+    <string name="msg_importacion_deleted">Importation deleted successfully</string>
+    <string name="msg_importacion_error_delete">Error: Importation not found or could not be deleted</string>
+    <string name="label_new_record">--- NEW RECORD ---</string>
+    <string name="msg_select_new_record_insert">Select \'NEW RECORD\' to insert</string>
+    <string name="msg_condition_saved">Condition saved successfully</string>
+    <string name="msg_select_history_update">Select a condition from history to update</string>
+    <string name="msg_condition_updated">Updated successfully</string>
+    <string name="msg_select_history_delete">Select a condition from history to delete</string>
+    <string name="msg_condition_deleted">Deleted successfully</string>
+    <string name="msg_sale_reparacion_error">Vehicle is UNDER REPAIR. It must be marked as READY FOR SALE in the Repairs module first.</string>
+    <string name="msg_sale_success">Sale registered successfully</string>
+    <string name="msg_sale_id_exists">Error: Sale ID already exists</string>
+    <string name="msg_workshop_saved">Workshop saved (ID: %1$d)</string>
+    <string name="msg_workshop_name_required">Name is required</string>
+    <string name="msg_repair_saved">Repair saved (ID: %1$d)</string>
+    <string name="msg_select_workshop_vehicle">You must select a workshop and a vehicle</string>
 </resources>

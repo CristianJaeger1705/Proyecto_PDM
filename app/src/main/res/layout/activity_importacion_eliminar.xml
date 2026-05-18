@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
@@ -7,12 +8,13 @@
     android:orientation="vertical"
     android:padding="24dp"
     android:gravity="center_horizontal"
+    android:background="@color/white"
     tools:context=".importacion.ImportacionEliminarActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Eliminar Importación"
+        android:text="@string/title_delete_importacion"
         android:textSize="28sp"
         android:textStyle="bold"
         android:layout_marginBottom="40dp"/>
@@ -20,31 +22,30 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ID de la Importación a eliminar:"
+        android:text="@string/label_importacion_to_delete"
         android:layout_marginBottom="8dp"/>
 
-    <EditText
-        android:id="@+id/editEliminarIdImportacion"
+    <Spinner
+        android:id="@+id/spinnerEliminarIdImportacion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Ingrese ID"
-        android:inputType="number"
+        android:minHeight="48dp"
         android:layout_marginBottom="32dp"/>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnEliminarImportacion"
+        style="@style/AutoImportButton"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="ELIMINAR"
-        android:backgroundTint="#FF5252"
-        android:textColor="#FFFFFF"
-        android:layout_marginBottom="16dp"/>
+        android:text="@string/btn_delete"
+        android:backgroundTint="#FF5252"/>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnLimpiarEliminar"
+        style="@style/AutoImportButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="LIMPIAR"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+        android:text="@string/btn_clean"
+        android:backgroundTint="#888888"/>
 
 </LinearLayout>

@@ -65,4 +65,22 @@ class ImportacionHandler(context: Context) {
             arrayOf(id.toString())
         )
     }
+
+    fun obtenerTodas(): List<Importacion> {
+        val lista = mutableListOf<Importacion>()
+        val db = dbHelper.readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM ${DatabaseContract.ImportacionEntry.TABLE_NAME}", null)
+        if (cursor.moveToFirst()) {
+            do {
+                lista.add(Importacion(
+                    idImportacion = cursor.getInt(0),
+                    idImportador = cursor.getString(1),
+                    cantidadVehiculos = cursor.getInt(2),
+                    fecha = cursor.getString(3)
+                ))
+            } while (cursor.moveToNext())
+        }
+        cursor.close()
+        return lista
+    }
 }

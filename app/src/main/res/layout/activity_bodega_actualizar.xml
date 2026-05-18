@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:id="@+id/main"
-    android:background="@color/app_background"
+    android:padding="24dp"
+    android:background="@color/white"
     tools:context=".bodega.BodegaActualizarActivity">
 
     <TextView
@@ -16,85 +17,101 @@
         android:textSize="24sp"
         android:textStyle="bold"
         android:gravity="center"
-        android:textColor="@color/auto_import_text_dark"
-        android:layout_marginBottom="24dp"/>
+        android:textColor="@color/auto_import_dark"
+        android:layout_marginBottom="32dp"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/label_id_bodega"
+        android:textStyle="bold"
+        android:layout_marginBottom="4dp"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginBottom="16dp">
+        android:gravity="center_vertical"
+        android:layout_marginBottom="24dp">
 
-        <EditText
-            android:id="@+id/editActualizarIdBodega"
+        <Spinner
+            android:id="@+id/spinnerActualizarBodegaId"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="@string/label_id_bodega"
-            android:inputType="number"
-            android:textColor="@color/auto_import_text_dark"
-            android:textColorHint="@color/auto_import_hint"
-            android:autofillHints="none"/>
+            android:minHeight="48dp"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCargarBodega"
+            style="@style/AutoImportButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/btn_load"
-            android:backgroundTint="@color/auto_import_dark"
-            android:textColor="@color/white"/>
+            android:layout_marginStart="8dp"/>
     </LinearLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/label_nombre_bodega"
+        android:textStyle="bold"
+        android:layout_marginBottom="4dp"/>
     <EditText
         android:id="@+id/editActualizarNombreBodega"
+        style="@style/AutoImportEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/label_nombre_bodega"
-        android:inputType="text"
-        android:textColor="@color/auto_import_text_dark"
-        android:textColorHint="@color/auto_import_hint"
-        android:layout_marginBottom="12dp"
-        android:autofillHints="name"/>
+        android:inputType="text"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/label_departamento"
+        android:textStyle="bold"
+        android:layout_marginBottom="4dp"/>
     <EditText
         android:id="@+id/editActualizarDepartamento"
+        style="@style/AutoImportEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/label_departamento"
-        android:inputType="text"
-        android:textColor="@color/auto_import_text_dark"
-        android:textColorHint="@color/auto_import_hint"
-        android:layout_marginBottom="12dp"
-        android:autofillHints="postalAddress"/>
+        android:inputType="text"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/label_direccion"
+        android:textStyle="bold"
+        android:layout_marginBottom="4dp"/>
     <EditText
         android:id="@+id/editActualizarDireccion"
+        style="@style/AutoImportEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/label_direccion"
-        android:inputType="text"
-        android:textColor="@color/auto_import_text_dark"
-        android:textColorHint="@color/auto_import_hint"
-        android:layout_marginBottom="12dp"
-        android:autofillHints="streetAddress"/>
+        android:inputType="text"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/label_capacidad_secciones"
+        android:textStyle="bold"
+        android:layout_marginBottom="4dp"/>
     <EditText
         android:id="@+id/editActualizarCapacidad"
+        style="@style/AutoImportEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/label_capacidad_secciones"
         android:inputType="number"
-        android:textColor="@color/auto_import_text_dark"
-        android:textColorHint="@color/auto_import_hint"
-        android:layout_marginBottom="24dp"
-        android:autofillHints="none"/>
+        android:enabled="false"/>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnActualizarBodega"
+        style="@style/AutoImportButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_save"
-        android:backgroundTint="@color/auto_import_dark"
-        android:textColor="@color/white"/>
+        android:layout_height="60dp"
+        android:text="@string/btn_save_changes"
+        android:layout_marginTop="16dp"/>
 
 </LinearLayout>

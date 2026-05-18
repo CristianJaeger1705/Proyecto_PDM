@@ -141,7 +141,7 @@ class EstadoVehicularGestionActivity : BaseActivity() {
 
     private fun cargarHistorial(idVehiculo: Int) {
         listaEstadosActuales = handler.obtenerEstadosPorVehiculo(idVehiculo)
-        val opciones = mutableListOf("--- NUEVO REGISTRO ---")
+        val opciones = mutableListOf(getString(R.string.label_new_record))
         opciones.addAll(listaEstadosActuales.map { it.fecha ?: "Sin fecha" })
         
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, opciones)
@@ -162,7 +162,7 @@ class EstadoVehicularGestionActivity : BaseActivity() {
 
     private fun insertar() {
         if (spinnerHistorial.selectedItemPosition != 0) {
-            Toast.makeText(this, "Seleccione 'NUEVO REGISTRO' para insertar", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.msg_select_new_record_insert), Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -171,7 +171,7 @@ class EstadoVehicularGestionActivity : BaseActivity() {
         val posVeh = spinnerVehiculo.selectedItemPosition
 
         if (descripcion.isEmpty() || fecha.isEmpty() || posVeh == -1) {
-            Toast.makeText(this, "Complete descripción y fecha", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.fill_fields), Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -184,14 +184,14 @@ class EstadoVehicularGestionActivity : BaseActivity() {
 
         val res = handler.insertar(estado)
         if (res != -1L) {
-            Toast.makeText(this, "Estado guardado correctamente", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.msg_condition_saved), Toast.LENGTH_SHORT).show()
             cargarHistorial(listaVehiculos[posVeh].idVehiculo!!)
         }
     }
 
     private fun actualizar() {
         if (estadoSeleccionado == null) {
-            Toast.makeText(this, "Seleccione un estado del historial para actualizar", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.msg_select_history_update), Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -203,20 +203,20 @@ class EstadoVehicularGestionActivity : BaseActivity() {
 
         val res = handler.actualizar(estadoSeleccionado!!)
         if (res > 0) {
-            Toast.makeText(this, "Actualizado con éxito", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.msg_condition_updated), Toast.LENGTH_SHORT).show()
             cargarHistorial(listaVehiculos[spinnerVehiculo.selectedItemPosition].idVehiculo!!)
         }
     }
 
     private fun eliminar() {
         if (estadoSeleccionado == null) {
-            Toast.makeText(this, "Seleccione un estado del historial para eliminar", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.msg_select_history_delete), Toast.LENGTH_SHORT).show()
             return
         }
 
         val res = handler.eliminar(estadoSeleccionado!!.idEstado!!)
         if (res > 0) {
-            Toast.makeText(this, "Eliminado con éxito", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.msg_condition_deleted), Toast.LENGTH_SHORT).show()
             cargarHistorial(listaVehiculos[spinnerVehiculo.selectedItemPosition].idVehiculo!!)
         }
     }
