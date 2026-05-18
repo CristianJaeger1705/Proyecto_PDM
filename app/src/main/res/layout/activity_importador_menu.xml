@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
@@ -7,6 +8,7 @@
     android:orientation="vertical"
     android:padding="24dp"
     android:gravity="center"
+    android:background="@color/white"
     tools:context=".importador.ImportadorMenuActivity">
 
     <TextView
@@ -15,48 +17,54 @@
         android:text="@string/title_importadores_menu"
         android:textSize="28sp"
         android:textStyle="bold"
+        android:textColor="@color/auto_import_dark"
         android:layout_marginBottom="40dp"/>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnImportadorInsertar"
+        style="@style/AutoImportButton"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="@string/btn_insert_importador"
         android:layout_marginBottom="12dp"/>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnImportadorConsultar"
+        style="@style/AutoImportButton"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="@string/btn_consult_importador"
         android:layout_marginBottom="12dp"/>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnImportadorActualizar"
+        style="@style/AutoImportButton"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="@string/btn_update_importador"
         android:layout_marginBottom="12dp"/>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnImportadorEliminar"
+        style="@style/AutoImportButton"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="@string/btn_delete_importador"
-        android:backgroundTint="#FF5252"
-        android:textColor="#FFFFFF"/>
+        android:backgroundTint="#FF5252"/>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#CCCCCC"
+        android:background="@color/auto_import_border_grey"
         android:layout_marginVertical="16dp"/>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnTelefonosImportador"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="@string/btn_manage_phones"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:textColor="@color/auto_import_dark"
+        app:strokeColor="@color/auto_import_dark"/>
 
 </LinearLayout>

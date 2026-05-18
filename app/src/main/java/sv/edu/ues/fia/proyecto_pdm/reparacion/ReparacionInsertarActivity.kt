@@ -83,13 +83,13 @@ class ReparacionInsertarActivity : AppCompatActivity() {
                 
                 val resultado = handler.insertar(reparacion)
                 if (resultado != -1L) {
-                    Toast.makeText(this, "Reparación guardada (ID: $resultado)", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.msg_repair_saved, resultado), Toast.LENGTH_SHORT).show()
                     limpiar()
                 } else {
-                    Toast.makeText(this, "Error al insertar.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.insert_error), Toast.LENGTH_SHORT).show()
                 }
             } else {
-                Toast.makeText(this, "Debe seleccionar un taller y un vehículo", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.msg_select_workshop_vehicle), Toast.LENGTH_SHORT).show()
             }
         }
 

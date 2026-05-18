@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".importacion.ImportacionConsultarActivity">
 
     <LinearLayout
@@ -15,7 +17,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Consultar Importación"
+            android:text="@string/title_consult_importacion"
             android:textSize="24sp"
             android:textStyle="bold"
             android:gravity="center"
@@ -25,31 +27,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:gravity="center_vertical"
             android:layout_marginBottom="16dp">
-            <EditText
-                android:id="@+id/editConsultarIdImportacion"
+            <Spinner
+                android:id="@+id/spinnerConsultarIdImportacion"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="ID Importación"
-                android:inputType="number"/>
-            <Button
+                android:minHeight="48dp"/>
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnConsultarImportacion"
+                style="@style/AutoImportButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Consultar"/>
+                android:text="@string/btn_search"/>
         </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ID Importador (NUI)"
+            android:text="@string/label_nui_importador"
             android:textStyle="bold"/>
         <EditText
             android:id="@+id/editConsultarIdImportador"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="NUI del Importador"
+            android:hint="@string/label_nui_importador"
             android:inputType="text"
             android:layout_marginBottom="12dp"
             android:enabled="false"/>
@@ -57,13 +60,13 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cantidad de Vehículos"
+            android:text="@string/label_cantidad_vehiculos"
             android:textStyle="bold"/>
         <EditText
             android:id="@+id/editConsultarCantidadVehiculos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Cantidad"
+            android:hint="@string/label_cantidad_vehiculos"
             android:inputType="number"
             android:layout_marginBottom="12dp"
             android:enabled="false"/>
@@ -71,7 +74,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Fecha"
+            android:text="@string/label_fecha"
             android:textStyle="bold"/>
         <EditText
             android:id="@+id/editConsultarFecha"
@@ -82,12 +85,13 @@
             android:layout_marginBottom="24dp"
             android:enabled="false"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnLimpiarConsultar"
+            style="@style/AutoImportButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="LIMPIAR"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+            android:text="@string/btn_clean"
+            android:backgroundTint="#888888"/>
 
     </LinearLayout>
 </ScrollView>

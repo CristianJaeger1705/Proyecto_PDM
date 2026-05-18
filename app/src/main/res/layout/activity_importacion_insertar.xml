@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".importacion.ImportacionInsertarActivity">
 
     <LinearLayout
@@ -15,7 +16,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Insertar Importación"
+            android:text="@string/title_insert_importacion"
             android:textSize="24sp"
             android:textStyle="bold"
             android:gravity="center"
@@ -24,68 +25,69 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ID Importación"
+            android:text="@string/label_id_importacion"
             android:textStyle="bold"/>
         <EditText
             android:id="@+id/editIdImportacion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ingrese ID"
+            android:hint="@string/hint_enter_id"
             android:inputType="number"
             android:layout_marginBottom="12dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ID Importador (NUI)"
+            android:text="@string/label_nui_importador"
             android:textStyle="bold"/>
-        <EditText
-            android:id="@+id/editIdImportador"
+        <Spinner
+            android:id="@+id/spinnerInsertNUI"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ingrese NUI del Importador"
-            android:inputType="text"
+            android:minHeight="48dp"
             android:layout_marginBottom="12dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cantidad de Vehículos"
+            android:text="@string/label_cantidad_vehiculos"
             android:textStyle="bold"/>
         <EditText
             android:id="@+id/editCantidadVehiculos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ingrese cantidad"
+            android:hint="@string/label_cantidad_vehiculos"
             android:inputType="number"
             android:layout_marginBottom="12dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Fecha"
+            android:text="@string/label_fecha"
             android:textStyle="bold"/>
         <EditText
             android:id="@+id/editFechaImportacion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="YYYY-MM-DD"
-            android:inputType="date"
+            android:hint="@string/hint_fecha_nacimiento"
+            android:focusable="false"
+            android:clickable="true"
             android:layout_marginBottom="24dp"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnInsertarImportacion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             style="@style/AutoImportButton"
-            android:text="INSERTAR IMPORTACIÓN"/>
-
-        <Button
-            android:id="@+id/btnLimpiarImportacion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="LIMPIAR"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:text="@string/btn_insertar_bodega"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnLimpiarImportacion"
+            style="@style/AutoImportButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_clean"
+            android:backgroundTint="#888888"
             android:layout_marginTop="8dp"/>
 
     </LinearLayout>

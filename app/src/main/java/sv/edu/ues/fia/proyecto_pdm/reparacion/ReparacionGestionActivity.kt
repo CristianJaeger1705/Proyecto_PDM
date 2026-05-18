@@ -30,6 +30,7 @@ class ReparacionGestionActivity : BaseActivity() {
 
     private lateinit var talleres: List<Taller>
     private lateinit var vehiculos: List<Vehiculo>
+    private lateinit var reparaciones: List<Reparacion>
 
     private var reparacionActual: Reparacion? = null
     private lateinit var adapter: ReparacionAdapter
@@ -42,7 +43,7 @@ class ReparacionGestionActivity : BaseActivity() {
         tallerHandler = TallerHandler(this)
         vehiculoHandler = VehiculoHandler(this)
 
-        val editBusquedaId = findViewById<EditText>(R.id.editBusquedaRepId)
+        val spinnerRepId = findViewById<Spinner>(R.id.spinnerGestionRepId)
         val spinnerTaller = findViewById<Spinner>(R.id.spinnerRepTaller)
         val spinnerVehiculo = findViewById<Spinner>(R.id.spinnerRepVehiculo)
         val editFechaEntrada = findViewById<EditText>(R.id.editRepFechaEntrada)
@@ -84,12 +85,14 @@ class ReparacionGestionActivity : BaseActivity() {
         adapter = ReparacionAdapter(emptyList()) { reparacion ->
             llenarCampos(reparacion, spinnerTaller, spinnerVehiculo)
             reparacionActual = reparacion
-            editBusquedaId.setText(reparacion.idReparacion.toString())
+            val index = reparaciones.indexOfFirst { it.idReparacion == reparacion.idReparacion }
+            if (index != -1) spinnerRepId.setSelection(index)
         }
         recyclerReparaciones.layoutManager = LinearLayoutManager(this)
         recyclerReparaciones.adapter = adapter
 
         actualizarLista()
+        cargarReparaciones(spinnerRepId)
 
         btnIrACrear.setOnClickListener {
             val intent = Intent(this, ReparacionInsertarActivity::class.java)
@@ -97,20 +100,11 @@ class ReparacionGestionActivity : BaseActivity() {
         }
 
         btnBuscar.setOnClickListener {
-            val idStr = editBusquedaId.text.toString()
-            if (idStr.isNotEmpty()) {
-                val id = idStr.toInt()
-                reparacionActual = handler.buscar(id)
-                
-                if (reparacionActual != null) {
-                    llenarCampos(reparacionActual!!, spinnerTaller, spinnerVehiculo)
-                    Toast.makeText(this, "Registro encontrado", Toast.LENGTH_SHORT).show()
-                } else {
-                    limpiarCampos()
-                    Toast.makeText(this, "No se encontró el ID: $id", Toast.LENGTH_SHORT).show()
-                }
-            } else {
-                Toast.makeText(this, "Ingrese un ID para buscar", Toast.LENGTH_SHORT).show()
+            val pos = spinnerRepId.selectedItemPosition
+            if (pos != -1) {
+                reparacionActual = reparaciones[pos]
+                llenarCampos(reparacionActual!!, spinnerTaller, spinnerVehiculo)
+                Toast.makeText(this, "Registro encontrado", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -139,6 +133,7 @@ class ReparacionGestionActivity : BaseActivity() {
                     if (filas > 0) {
                         Toast.makeText(this, "Actualizado correctamente", Toast.LENGTH_SHORT).show()
                         actualizarLista()
+                        cargarReparaciones(spinnerRepId)
                     } else {
                         Toast.makeText(this, "Error al actualizar", Toast.LENGTH_SHORT).show()
                     }
@@ -157,9 +152,9 @@ class ReparacionGestionActivity : BaseActivity() {
                 if (filas > 0) {
                     Toast.makeText(this, "Eliminado correctamente", Toast.LENGTH_SHORT).show()
                     limpiarCampos()
-                    editBusquedaId.text.clear()
                     reparacionActual = null
                     actualizarLista()
+                    cargarReparaciones(spinnerRepId)
                 } else {
                     Toast.makeText(this, "Error al eliminar", Toast.LENGTH_SHORT).show()
                 }
@@ -212,7 +207,14 @@ class ReparacionGestionActivity : BaseActivity() {
     }
 
     private fun actualizarLista() {
-        val reparaciones = handler.obtenerTodos()
-        adapter.updateList(reparaciones)
+        val reparacionesList = handler.obtenerTodos()
+        adapter.updateList(reparacionesList)
+    }
+
+    private fun cargarReparaciones(spinner: Spinner) {
+        reparaciones = handler.obtenerTodos()
+        val adapterSpinner = ArrayAdapter(this, android.R.layout.simple_spinner_item, reparaciones.map { "#${it.idReparacion} - Veh:${it.idVehiculo} (${it.fechaEntrada})" })
+        adapterSpinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = adapterSpinner
     }
 }

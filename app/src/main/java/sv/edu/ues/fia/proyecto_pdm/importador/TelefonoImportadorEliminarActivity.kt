@@ -1,8 +1,10 @@
 package sv.edu.ues.fia.proyecto_pdm.importador
 
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
@@ -14,6 +16,7 @@ import sv.edu.ues.fia.proyecto_pdm.R
 class TelefonoImportadorEliminarActivity : AppCompatActivity() {
 
     private lateinit var handler: TelefonoImportadorHandler
+    private lateinit var listaTelefonos: List<TelefonoImportador>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,21 +30,17 @@ class TelefonoImportadorEliminarActivity : AppCompatActivity() {
 
         handler = TelefonoImportadorHandler(this)
 
-        val editId = findViewById<EditText>(R.id.editEliminarTelefonoId)
+        val spinnerId = findViewById<Spinner>(R.id.spinnerEliminarTelefonoId)
         val btnEliminar = findViewById<Button>(R.id.btnEliminarTelefono)
 
-        btnEliminar.setOnClickListener {
-            val id = editId.text.toString().trim().toIntOrNull()
-            if (id == null) {
-                Toast.makeText(this, getString(R.string.msg_enter_valid_id), Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
+        cargarTelefonos(spinnerId)
 
-            val telefono = handler.buscar(id)
-            if (telefono == null) {
-                Toast.makeText(this, getString(R.string.msg_phone_not_found_id, id), Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
+        btnEliminar.setOnClickListener {
+            val pos = spinnerId.selectedItemPosition
+            if (pos == -1) return@setOnClickListener
+
+            val telefono = listaTelefonos[pos]
+            val id = telefono.idTelefono!!
 
             AlertDialog.Builder(this)
                 .setTitle(getString(R.string.title_confirm_delete))
@@ -50,7 +49,7 @@ class TelefonoImportadorEliminarActivity : AppCompatActivity() {
                     val resultado = handler.eliminar(id)
                     if (resultado > 0) {
                         Toast.makeText(this, getString(R.string.msg_deleted_success), Toast.LENGTH_SHORT).show()
-                        editId.setText("")
+                        cargarTelefonos(spinnerId)
                     } else {
                         Toast.makeText(this, getString(R.string.msg_deleted_error), Toast.LENGTH_SHORT).show()
                     }
@@ -58,5 +57,12 @@ class TelefonoImportadorEliminarActivity : AppCompatActivity() {
                 .setNegativeButton(getString(R.string.btn_cancel), null)
                 .show()
         }
+    }
+
+    private fun cargarTelefonos(spinner: Spinner) {
+        listaTelefonos = handler.obtenerTodos()
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, listaTelefonos.map { "ID:${it.idTelefono} - ${it.nui} (${it.numero})" })
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = adapter
     }
 }

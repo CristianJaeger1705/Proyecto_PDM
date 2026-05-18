@@ -104,6 +104,27 @@ class MovimientoHandler(context: Context) {
         )
     }
 
+    fun obtenerTodos(): List<Movimiento> {
+        val lista = mutableListOf<Movimiento>()
+        val db = dbHelper.readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM ${DatabaseContract.MovimientoEntry.TABLE_NAME}", null)
+        if (cursor.moveToFirst()) {
+            do {
+                lista.add(Movimiento(
+                    cursor.getInt(0),
+                    cursor.getInt(1),
+                    cursor.getString(2),
+                    cursor.getString(3),
+                    cursor.getString(4),
+                    cursor.getString(5),
+                    cursor.getInt(6)
+                ))
+            } while (cursor.moveToNext())
+        }
+        cursor.close()
+        return lista
+    }
+
     fun eliminar(id: Int): Int {
         val db = dbHelper.writableDatabase
         return db.delete(

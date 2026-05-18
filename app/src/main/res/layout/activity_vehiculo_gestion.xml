@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".vehiculo.VehiculoGestionActivity">
 
     <LinearLayout
@@ -25,13 +27,14 @@
             android:layout_height="wrap_content"
             android:text="@string/label_id_vehiculo"
             android:textStyle="bold"/>
-        <EditText
-            android:id="@+id/editIdVehiculo"
+        <AutoCompleteTextView
+            android:id="@+id/autoIdVehiculo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/label_id_vehiculo"
             android:inputType="number"
-            android:layout_marginBottom="12dp"/>
+            android:layout_marginBottom="12dp"
+            android:completionThreshold="1"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -77,12 +80,11 @@
             android:layout_height="wrap_content"
             android:text="@string/label_id_importacion"
             android:textStyle="bold"/>
-        <EditText
-            android:id="@+id/editIdImportacionVehiculo"
+        <Spinner
+            android:id="@+id/spinnerIdImportacionVehiculo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/label_id_importacion"
-            android:inputType="number"
+            android:minHeight="48dp"
             android:layout_marginBottom="24dp"/>
 
         <GridLayout
@@ -91,57 +93,61 @@
             android:columnCount="2"
             android:rowCount="2">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnInsertarVehiculo"
+                style="@style/AutoImportButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
                 android:text="@string/btn_save"
                 android:layout_margin="4dp"/>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnConsultarVehiculo"
+                style="@style/AutoImportButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
                 android:text="@string/btn_search"
                 android:layout_margin="4dp"/>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnActualizarVehiculo"
+                style="@style/AutoImportButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
                 android:text="@string/btn_update"
                 android:layout_margin="4dp"/>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnEliminarVehiculo"
+                style="@style/AutoImportButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
                 android:text="@string/btn_delete"
                 android:backgroundTint="#FF5252"
-                android:textColor="#FFFFFF"
                 android:layout_margin="4dp"/>
         </GridLayout>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnLimpiarVehiculo"
+            style="@style/AutoImportButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_clean"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:backgroundTint="#888888"
             android:layout_marginTop="12dp"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnIrAEstadoVehicular"
+            style="@style/AutoImportButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_estado_vehicular"
             android:layout_marginTop="12dp"
-            android:backgroundTint="#4CAF50"
-            android:textColor="#FFFFFF"/>
+            android:backgroundTint="#4CAF50"/>
 
     </LinearLayout>
 </ScrollView>

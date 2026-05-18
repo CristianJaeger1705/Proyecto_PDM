@@ -33,13 +33,12 @@
             android:text="@string/mov_id_label"
             android:textStyle="bold"
             android:layout_marginBottom="4dp"/>
-        <EditText
-            android:id="@+id/editMovId"
-            style="@style/AutoImportEditText"
+        <Spinner
+            android:id="@+id/spinnerGestionMovId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"
-            android:autofillHints="none" />
+            android:minHeight="48dp"
+            android:layout_marginBottom="16dp" />
 
         <Button
             android:id="@+id/btnBuscarMov"

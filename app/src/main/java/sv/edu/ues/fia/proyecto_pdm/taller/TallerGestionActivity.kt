@@ -3,9 +3,11 @@ package sv.edu.ues.fia.proyecto_pdm.taller
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,6 +20,7 @@ class TallerGestionActivity : BaseActivity() {
     private lateinit var handler: TallerHandler
     private var tallerActual: Taller? = null
     private lateinit var adapter: TallerAdapter
+    private lateinit var talleres: List<Taller>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +28,7 @@ class TallerGestionActivity : BaseActivity() {
 
         handler = TallerHandler(this)
 
-        val editBusquedaId = findViewById<EditText>(R.id.editBusquedaId)
+        val spinnerTalleres = findViewById<Spinner>(R.id.spinnerGestionTallerId)
         val editNombre = findViewById<EditText>(R.id.editNombre)
         val editDireccion = findViewById<EditText>(R.id.editDireccion)
         val editTelefono = findViewById<EditText>(R.id.editTelefono)
@@ -47,12 +50,14 @@ class TallerGestionActivity : BaseActivity() {
         adapter = TallerAdapter(emptyList()) { taller ->
             llenarCampos(taller)
             tallerActual = taller
-            editBusquedaId.setText(taller.idTaller.toString())
+            val index = talleres.indexOfFirst { it.idTaller == taller.idTaller }
+            if (index != -1) spinnerTalleres.setSelection(index)
         }
         recyclerTalleres.layoutManager = LinearLayoutManager(this)
         recyclerTalleres.adapter = adapter
 
         actualizarLista()
+        cargarTalleres(spinnerTalleres)
 
         btnIrACrear.setOnClickListener {
             val intent = Intent(this, TallerInsertarActivity::class.java)
@@ -60,23 +65,11 @@ class TallerGestionActivity : BaseActivity() {
         }
 
         btnBuscar.setOnClickListener {
-            val idStr = editBusquedaId.text.toString()
-            if (idStr.isNotEmpty()) {
-                val id = idStr.toInt()
-                tallerActual = handler.buscar(id)
-                
-                if (tallerActual != null) {
-                    editNombre.setText(tallerActual?.nombreTaller)
-                    editDireccion.setText(tallerActual?.direccion)
-                    editTelefono.setText(tallerActual?.telefono)
-                    checkAutorizado.isChecked = tallerActual?.autorizado?.trim()?.uppercase() == "S"
-                    Toast.makeText(this, "Registro encontrado", Toast.LENGTH_SHORT).show()
-                } else {
-                    limpiarCampos()
-                    Toast.makeText(this, "No se encontró el ID: $id", Toast.LENGTH_SHORT).show()
-                }
-            } else {
-                Toast.makeText(this, "Ingrese un ID para buscar", Toast.LENGTH_SHORT).show()
+            val pos = spinnerTalleres.selectedItemPosition
+            if (pos != -1) {
+                tallerActual = talleres[pos]
+                llenarCampos(tallerActual!!)
+                Toast.makeText(this, "Registro encontrado", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -99,6 +92,7 @@ class TallerGestionActivity : BaseActivity() {
                     if (filasAfectadas > 0) {
                         Toast.makeText(this, "Actualizado correctamente", Toast.LENGTH_SHORT).show()
                         actualizarLista()
+                        cargarTalleres(spinnerTalleres)
                     } else {
                         Toast.makeText(this, "Error al actualizar", Toast.LENGTH_SHORT).show()
                     }
@@ -117,9 +111,9 @@ class TallerGestionActivity : BaseActivity() {
                 if (filasEliminadas > 0) {
                     Toast.makeText(this, "Eliminado correctamente", Toast.LENGTH_SHORT).show()
                     limpiarCampos()
-                    editBusquedaId.text.clear()
                     tallerActual = null
                     actualizarLista()
+                    cargarTalleres(spinnerTalleres)
                 } else {
                     Toast.makeText(this, "Error al eliminar", Toast.LENGTH_SHORT).show()
                 }
@@ -149,7 +143,14 @@ class TallerGestionActivity : BaseActivity() {
     }
 
     private fun actualizarLista() {
-        val talleres = handler.obtenerTodos()
-        adapter.updateList(talleres)
+        val talleresList = handler.obtenerTodos()
+        adapter.updateList(talleresList)
+    }
+
+    private fun cargarTalleres(spinner: Spinner) {
+        talleres = handler.obtenerTodos()
+        val adapterSpinner = ArrayAdapter(this, android.R.layout.simple_spinner_item, talleres.map { "${it.idTaller} - ${it.nombreTaller}" })
+        adapterSpinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = adapterSpinner
     }
 }

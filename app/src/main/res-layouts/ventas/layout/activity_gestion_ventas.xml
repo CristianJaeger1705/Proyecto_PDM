@@ -33,12 +33,12 @@
             android:text="@string/label_id_venta"
             android:textStyle="bold"
             android:layout_marginBottom="4dp"/>
-        <EditText
-            android:id="@+id/editVentaId"
-            style="@style/AutoImportEditText"
+        <Spinner
+            android:id="@+id/spinnerGestionVentaId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number" />
+            android:minHeight="48dp"
+            android:layout_marginBottom="16dp" />
 
         <Button
             android:id="@+id/btnBuscarVenta"
@@ -59,12 +59,12 @@
             android:text="@string/label_vehiculo"
             android:textStyle="bold"
             android:layout_marginBottom="4dp"/>
-        <EditText
-            android:id="@+id/editVentaVehId"
-            style="@style/AutoImportEditText"
+        <Spinner
+            android:id="@+id/spinnerGestionVentaVehiculo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:enabled="false" />
+            android:minHeight="48dp"
+            android:layout_marginBottom="16dp" />
 
         <TextView
             android:layout_width="match_parent"

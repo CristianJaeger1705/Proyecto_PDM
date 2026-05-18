@@ -24,6 +24,8 @@ class GestionVentasActivity : BaseActivity() {
     private lateinit var vehiculoHandler: VehiculoHandler
     private lateinit var importadorHandler: ImportadorHandler
     private lateinit var importadores: List<Importador>
+    private lateinit var vehiculos: List<sv.edu.ues.fia.proyecto_pdm.Vehiculo>
+    private lateinit var ventas: List<Venta>
     private var ventaActual: Venta? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,8 +37,8 @@ class GestionVentasActivity : BaseActivity() {
         importadorHandler = ImportadorHandler(this)
 
         val btnIrAInsertar = findViewById<Button>(R.id.btnIrAInsertarVenta)
-        val editId = findViewById<EditText>(R.id.editVentaId)
-        val editVehId = findViewById<EditText>(R.id.editVentaVehId)
+        val spinnerVentas = findViewById<Spinner>(R.id.spinnerGestionVentaId)
+        val spinnerVehiculos = findViewById<Spinner>(R.id.spinnerGestionVentaVehiculo)
         val editPrecio = findViewById<EditText>(R.id.editVentaPrecio)
         val spinnerImportadores = findViewById<Spinner>(R.id.spinnerVentaImportadores)
         val editFecha = findViewById<EditText>(R.id.editVentaFecha)
@@ -54,9 +56,17 @@ class GestionVentasActivity : BaseActivity() {
 
         // Cargar Importadores
         importadores = importadorHandler.obtenerTodos()
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, importadores.map { it.nombre })
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinnerImportadores.adapter = adapter
+        val adapterImp = ArrayAdapter(this, android.R.layout.simple_spinner_item, importadores.map { it.nombre })
+        adapterImp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerImportadores.adapter = adapterImp
+
+        // Cargar Vehículos
+        vehiculos = vehiculoHandler.obtenerTodos()
+        val adapterVeh = ArrayAdapter(this, android.R.layout.simple_spinner_item, vehiculos.map { "${it.idVehiculo} - ${it.marca} ${it.modelo}" })
+        adapterVeh.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerVehiculos.adapter = adapterVeh
+
+        cargarVentas(spinnerVentas)
 
         // DatePicker
         editFecha.setOnClickListener {
@@ -72,39 +82,39 @@ class GestionVentasActivity : BaseActivity() {
         }
 
         btnBuscar.setOnClickListener {
-            val idStr = editId.text.toString()
-            if (idStr.isNotEmpty()) {
-                val id = idStr.toInt()
-                ventaActual = ventaHandler.buscarVenta(id)
-                if (ventaActual != null) {
-                    editVehId.setText(ventaActual?.idVehiculo.toString())
-                    editPrecio.setText(ventaActual?.precioVenta.toString())
-                    editFecha.setText(ventaActual?.fechaVenta)
-                    
-                    // Seleccionar importador en spinner
-                    val index = importadores.indexOfFirst { it.nui == ventaActual?.nuiImportador }
-                    if (index != -1) spinnerImportadores.setSelection(index)
-                    
-                    val veh = vehiculoHandler.consultar(ventaActual!!.idVehiculo)
-                    val imp = importadorHandler.buscar(ventaActual!!.nuiImportador)
-                    txtEstado.text = "Vehículo: ${veh?.marca} | Importador: ${imp?.nombre} | Estado: ${veh?.estado}"
-                    Toast.makeText(this, "Venta encontrada", Toast.LENGTH_SHORT).show()
-                } else {
-                    txtEstado.text = ""
-                    Toast.makeText(this, "No existe esa venta", Toast.LENGTH_SHORT).show()
-                }
+            val pos = spinnerVentas.selectedItemPosition
+            if (pos != -1) {
+                ventaActual = ventas[pos]
+                
+                // Seleccionar vehículo en spinner
+                val indexVeh = vehiculos.indexOfFirst { it.idVehiculo == ventaActual?.idVehiculo }
+                if (indexVeh != -1) spinnerVehiculos.setSelection(indexVeh)
+
+                editPrecio.setText(ventaActual?.precioVenta.toString())
+                editFecha.setText(ventaActual?.fechaVenta)
+                
+                // Seleccionar importador en spinner
+                val indexImp = importadores.indexOfFirst { it.nui == ventaActual?.nuiImportador }
+                if (indexImp != -1) spinnerImportadores.setSelection(indexImp)
+                
+                val veh = vehiculos.find { it.idVehiculo == ventaActual!!.idVehiculo }
+                val imp = importadores.find { it.nui == ventaActual!!.nuiImportador }
+                txtEstado.text = "Vehículo: ${veh?.marca} | Importador: ${imp?.nombre} | Estado: ${veh?.estado}"
+                Toast.makeText(this, "Venta encontrada", Toast.LENGTH_SHORT).show()
             }
         }
 
         btnActualizar.setOnClickListener {
             if (ventaActual != null) {
+                val posVeh = spinnerVehiculos.selectedItemPosition
                 val precio = editPrecio.text.toString().toDoubleOrNull()
                 val posImp = spinnerImportadores.selectedItemPosition
-                if (precio != null && posImp != -1) {
+                if (precio != null && posImp != -1 && posVeh != -1) {
                     val nui = importadores[posImp].nui
+                    val idVeh = vehiculos[posVeh].idVehiculo!!
                     val editada = Venta(
                         ventaActual!!.idVenta,
-                        ventaActual!!.idVehiculo,
+                        idVeh,
                         precio,
                         nui,
                         editFecha.text.toString()
@@ -120,9 +130,30 @@ class GestionVentasActivity : BaseActivity() {
                 val res = ventaHandler.eliminarVenta(ventaActual!!.idVenta)
                 if (res > 0) {
                     Toast.makeText(this, "Venta eliminada y stock restaurado", Toast.LENGTH_SHORT).show()
-                    finish()
+                    cargarVentas(spinnerVentas)
+                    limpiarCampos()
                 }
             }
         }
+    }
+
+    private fun cargarVentas(spinner: Spinner) {
+        ventas = ventaHandler.obtenerTodas()
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, ventas.map { "#${it.idVenta} - Veh:${it.idVehiculo} ($${it.precioVenta})" })
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = adapter
+    }
+
+    private fun limpiarCampos() {
+        ventaActual = null
+        findViewById<EditText>(R.id.editVentaPrecio).text.clear()
+        findViewById<EditText>(R.id.editVentaFecha).text.clear()
+        findViewById<TextView>(R.id.txtEstadoVehiculo).text = ""
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val spinnerVentas = findViewById<Spinner>(R.id.spinnerGestionVentaId)
+        cargarVentas(spinnerVentas)
     }
 }

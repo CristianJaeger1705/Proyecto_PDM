@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".estadovehicular.EstadoVehicularGestionActivity">
 
     <LinearLayout
@@ -14,7 +16,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Estado Vehicular"
+            android:text="@string/title_estado_vehicular"
             android:textSize="24sp"
             android:textStyle="bold"
             android:gravity="center"
@@ -23,7 +25,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="1. Seleccione Vehículo (VIN)"
+            android:text="@string/label_vin"
             android:textStyle="bold"/>
         <Spinner
             android:id="@+id/spinnerVehiculoEstado"
@@ -34,7 +36,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="2. Historial de Estados (por fecha)"
+            android:text="@string/label_historial_estados"
             android:textStyle="bold"/>
         <Spinner
             android:id="@+id/spinnerHistorialEstados"
@@ -51,26 +53,26 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Descripción del Estado"
+            android:text="@string/label_desc_estado"
             android:textStyle="bold"/>
         <EditText
             android:id="@+id/editDescripcionEstado"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ej. Abolladura en puerta"
+            android:hint="@string/label_desc_estado"
             android:inputType="textMultiLine"
             android:layout_marginBottom="12dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Fecha del Registro"
+            android:text="@string/label_fecha_registro"
             android:textStyle="bold"/>
         <EditText
             android:id="@+id/editFechaEstado"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Seleccione Fecha"
+            android:hint="@string/hint_fecha_nacimiento"
             android:focusable="false"
             android:clickable="true"
             android:layout_marginBottom="12dp"/>
@@ -78,7 +80,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Fotografía"
+            android:text="@string/label_fotografia"
             android:textStyle="bold"
             android:layout_marginBottom="8dp"/>
 
@@ -89,15 +91,16 @@
             android:background="#EEEEEE"
             android:scaleType="centerInside"
             android:layout_marginBottom="8dp"
-            android:contentDescription="Imagen del estado"/>
+            android:contentDescription="@string/label_fotografia"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSeleccionarImagen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="CAMBIAR IMAGEN"
+            android:text="@string/btn_change_image"
             style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:layout_marginBottom="24dp"/>
+            android:layout_marginBottom="24dp"
+            android:textColor="@color/auto_import_dark"/>
 
         <GridLayout
             android:layout_width="match_parent"
@@ -105,48 +108,52 @@
             android:columnCount="2"
             android:rowCount="2">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnInsertarEstado"
+                style="@style/AutoImportButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:text="INSERTAR NUEVO"
+                android:text="@string/btn_insert_new"
                 android:layout_margin="4dp"/>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnConsultarEstado"
+                style="@style/AutoImportButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:text="RECARGAR"
+                android:text="@string/btn_reload"
                 android:layout_margin="4dp"
                 android:visibility="gone"/>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnActualizarEstado"
+                style="@style/AutoImportButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:text="ACTUALIZAR"
+                android:text="@string/btn_update"
                 android:layout_margin="4dp"/>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnEliminarEstado"
+                style="@style/AutoImportButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:text="ELIMINAR"
+                android:text="@string/btn_delete"
                 android:backgroundTint="#FF5252"
-                android:textColor="#FFFFFF"
                 android:layout_margin="4dp"/>
         </GridLayout>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnLimpiarEstado"
+            style="@style/AutoImportButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="LIMPIAR CAMPOS"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:text="@string/btn_clean"
+            android:backgroundTint="#888888"
             android:layout_marginTop="12dp"/>
 
     </LinearLayout>

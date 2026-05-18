@@ -13,7 +13,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="NUEVO TALLER"
+            android:text="@string/btn_new_taller"
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="@color/auto_import_dark"
@@ -22,7 +22,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="NOMBRE TALLER"
+            android:text="@string/label_nombre_taller"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:layout_marginBottom="4dp"/>
@@ -35,7 +35,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="DIRECCIÓN"
+            android:text="@string/label_direccion"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:layout_marginBottom="4dp"/>
@@ -48,7 +48,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TELÉFONO"
+            android:text="@string/label_telefono"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:layout_marginBottom="4dp"/>
@@ -63,7 +63,7 @@
             android:id="@+id/checkAutorizado"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TALLER AUTORIZADO"
+            android:text="@string/label_autorizado"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:layout_marginBottom="12dp"/>
@@ -73,7 +73,7 @@
             style="@style/AutoImportButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="GUARDAR REGISTRO"
+            android:text="@string/btn_save_record"
             android:layout_marginTop="16dp"/>
 
         <Button
@@ -81,7 +81,7 @@
             style="@style/AutoImportButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="LIMPIAR"
+            android:text="@string/btn_clean"
             android:backgroundTint="#888888"
             android:layout_marginTop="8dp"/>
 

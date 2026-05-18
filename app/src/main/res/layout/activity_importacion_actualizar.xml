@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".importacion.ImportacionActualizarActivity">
 
     <LinearLayout
@@ -15,7 +16,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Actualizar Importación"
+            android:text="@string/title_update_importacion"
             android:textSize="24sp"
             android:textStyle="bold"
             android:gravity="center"
@@ -25,31 +26,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:gravity="center_vertical"
             android:layout_marginBottom="16dp">
-            <EditText
-                android:id="@+id/editActualizarIdImportacion"
+            <Spinner
+                android:id="@+id/spinnerActualizarIdImportacion"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="ID Importación a buscar"
-                android:inputType="number"/>
-            <Button
+                android:minHeight="48dp"/>
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnCargarActualizar"
+                style="@style/AutoImportButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cargar"/>
+                android:text="@string/btn_load"/>
         </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ID Importador (NUI)"
+            android:text="@string/label_nui_importador"
             android:textStyle="bold"/>
         <EditText
             android:id="@+id/editActualizarIdImportador"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="NUI del Importador"
+            android:hint="@string/label_nui_importador"
             android:inputType="text"
             android:layout_marginBottom="12dp"
             android:enabled="false"/>
@@ -57,13 +59,13 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cantidad de Vehículos"
+            android:text="@string/label_cantidad_vehiculos"
             android:textStyle="bold"/>
         <EditText
             android:id="@+id/editActualizarCantidadVehiculos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Cantidad"
+            android:hint="@string/label_cantidad_vehiculos"
             android:inputType="number"
             android:layout_marginBottom="12dp"
             android:enabled="false"/>
@@ -71,7 +73,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Fecha"
+            android:text="@string/label_fecha"
             android:textStyle="bold"/>
         <EditText
             android:id="@+id/editActualizarFecha"
@@ -82,19 +84,21 @@
             android:layout_marginBottom="24dp"
             android:enabled="false"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnActualizarImportacion"
+            style="@style/AutoImportButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="GUARDAR CAMBIOS"
+            android:text="@string/btn_save_changes"
             android:enabled="false"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnLimpiarActualizar"
+            style="@style/AutoImportButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="LIMPIAR"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:text="@string/btn_clean"
+            android:backgroundTint="#888888"
             android:layout_marginTop="8dp"/>
 
     </LinearLayout>
