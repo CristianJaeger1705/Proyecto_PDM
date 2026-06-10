@@ -162,6 +162,9 @@
             android:name=".vehiculo.VehiculoGestionActivity"
             android:exported="false" />
         <activity
+            android:name=".vehiculo.VehiculosWebActivity"
+            android:exported="false" />
+        <activity
             android:name=".estadovehicular.EstadoVehicularGestionActivity"
             android:exported="false" />
         <activity

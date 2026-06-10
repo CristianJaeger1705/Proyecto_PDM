@@ -29,6 +29,7 @@ class VehiculoGestionActivity : BaseActivity() {
     private lateinit var btnEliminar: Button
     private lateinit var btnLimpiar: Button
     private lateinit var btnIrAEstado: Button
+    private lateinit var btnVerVehiculosWeb: Button
 
     private lateinit var vehiculoHandler: VehiculoHandler
     private lateinit var importacionHandler: ImportacionHandler
@@ -55,6 +56,7 @@ class VehiculoGestionActivity : BaseActivity() {
         btnEliminar = findViewById(R.id.btnEliminarVehiculo)
         btnLimpiar = findViewById(R.id.btnLimpiarVehiculo)
         btnIrAEstado = findViewById(R.id.btnIrAEstadoVehicular)
+        btnVerVehiculosWeb = findViewById(R.id.btnVerVehiculosWeb)
 
         cargarSugerencias()
         cargarImportaciones()
@@ -73,6 +75,9 @@ class VehiculoGestionActivity : BaseActivity() {
         btnIrAEstado.setOnClickListener {
             val intent = android.content.Intent(this, sv.edu.ues.fia.proyecto_pdm.estadovehicular.EstadoVehicularGestionActivity::class.java)
             startActivity(intent)
+        }
+        btnVerVehiculosWeb.setOnClickListener {
+            startActivity(android.content.Intent(this, VehiculosWebActivity::class.java))
         }
     }
 

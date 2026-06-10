@@ -149,5 +149,14 @@
             android:layout_marginTop="12dp"
             android:backgroundTint="#4CAF50"/>
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnVerVehiculosWeb"
+            style="@style/AutoImportButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ver Vehiculos Web"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="@color/auto_import_dark"/>
+
     </LinearLayout>
 </ScrollView>
