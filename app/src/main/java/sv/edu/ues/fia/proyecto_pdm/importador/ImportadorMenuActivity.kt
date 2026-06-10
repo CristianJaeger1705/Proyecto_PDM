@@ -51,5 +51,11 @@ class ImportadorMenuActivity : BaseActivity() {
         findViewById<Button>(R.id.btnTelefonosImportador).setOnClickListener {
             startActivity(Intent(this, TelefonoImportadorMenuActivity::class.java))
         }
+        findViewById<Button>(R.id.btnWebImportadores).setOnClickListener {
+            startActivity(Intent(this, WebImportadoresActivity::class.java))
+        }
+        findViewById<Button>(R.id.btnWebImportacion).setOnClickListener {
+            startActivity(Intent(this, WebImportacionActivity::class.java))
+        }
     }
 }

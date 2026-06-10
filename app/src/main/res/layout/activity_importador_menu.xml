@@ -67,4 +67,16 @@
         android:textColor="@color/auto_import_dark"
         app:strokeColor="@color/auto_import_dark"/>
 
+    <Button
+        android:id="@+id/btnWebImportadores"
+        android:text="Ver Importadores Web"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btnWebImportacion"
+        android:text="Nueva Importación Web"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
 </LinearLayout>

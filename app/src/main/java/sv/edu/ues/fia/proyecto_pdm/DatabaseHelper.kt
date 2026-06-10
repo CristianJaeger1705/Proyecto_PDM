@@ -326,7 +326,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         """.trimIndent()
         db.execSQL(trLiberarReparacion)
 
-        // TRIGGER 11: Restringir antigüedad de vehículos (Gpo06 - Máximo 5 años)
+        // TRIGGER 11: Restringir antigüedad de vehícu  los (Gpo06 - Máximo 5 años)
         val trRestringirAnio = """
             CREATE TRIGGER tr_validar_anio_vehiculo BEFORE INSERT ON ${DatabaseContract.VehiculoEntry.TABLE_NAME}
             BEGIN
