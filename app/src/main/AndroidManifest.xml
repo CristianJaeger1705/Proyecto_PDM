@@ -165,6 +165,9 @@
             android:name=".vehiculo.VehiculosWebActivity"
             android:exported="false" />
         <activity
+            android:name=".vehiculo.WebAgregarVehiculoActivity"
+            android:exported="false" />
+        <activity
             android:name=".estadovehicular.EstadoVehicularGestionActivity"
             android:exported="false" />
         <activity

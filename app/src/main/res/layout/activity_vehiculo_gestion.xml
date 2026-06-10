@@ -158,5 +158,14 @@
             android:layout_marginTop="12dp"
             android:backgroundTint="@color/auto_import_dark"/>
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAgregarVehiculosWeb"
+            style="@style/AutoImportButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Agregar Vehiculos Web"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="@color/auto_import_dark"/>
+
     </LinearLayout>
 </ScrollView>

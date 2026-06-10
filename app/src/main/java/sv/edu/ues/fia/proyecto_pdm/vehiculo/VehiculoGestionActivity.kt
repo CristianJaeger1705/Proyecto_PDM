@@ -30,6 +30,7 @@ class VehiculoGestionActivity : BaseActivity() {
     private lateinit var btnLimpiar: Button
     private lateinit var btnIrAEstado: Button
     private lateinit var btnVerVehiculosWeb: Button
+    private lateinit var btnAgregarVehiculosWeb: Button
 
     private lateinit var vehiculoHandler: VehiculoHandler
     private lateinit var importacionHandler: ImportacionHandler
@@ -57,6 +58,7 @@ class VehiculoGestionActivity : BaseActivity() {
         btnLimpiar = findViewById(R.id.btnLimpiarVehiculo)
         btnIrAEstado = findViewById(R.id.btnIrAEstadoVehicular)
         btnVerVehiculosWeb = findViewById(R.id.btnVerVehiculosWeb)
+        btnAgregarVehiculosWeb = findViewById(R.id.btnAgregarVehiculosWeb)
 
         cargarSugerencias()
         cargarImportaciones()
@@ -78,6 +80,9 @@ class VehiculoGestionActivity : BaseActivity() {
         }
         btnVerVehiculosWeb.setOnClickListener {
             startActivity(android.content.Intent(this, VehiculosWebActivity::class.java))
+        }
+        btnAgregarVehiculosWeb.setOnClickListener {
+            startActivity(android.content.Intent(this, WebAgregarVehiculoActivity::class.java))
         }
     }
 
