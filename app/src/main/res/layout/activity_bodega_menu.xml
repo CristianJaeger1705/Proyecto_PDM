@@ -76,6 +76,24 @@
         android:layout_height="60dp"
         android:text="@string/title_asignacion_ubicaciones"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:textColor="@color/auto_import_dark"
+        android:layout_marginBottom="12dp"/>
+
+    <Button
+        android:id="@+id/btnBodegasWeb"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="BODEGAS EN LA NUBE"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:textColor="@color/auto_import_dark"
+        android:layout_marginBottom="12dp"/>
+
+    <Button
+        android:id="@+id/btnDisponibilidadWeb"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="VER DISPONIBILIDAD (WEB)"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:textColor="@color/auto_import_dark"/>
 
 </LinearLayout>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/app_background">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bodegas en el Servidor"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="@color/auto_import_text_dark"
+        android:layout_marginBottom="24dp"/>
+
+    <Button
+        android:id="@+id/btnCargarBodegasWeb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CARGAR DESDE LA NUBE"
+        android:backgroundTint="@color/auto_import_dark"
+        android:textColor="@color/white"
+        android:layout_marginBottom="16dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/txtResultadosBodegasWeb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Los resultados aparecerán aquí..."
+            android:textColor="@color/auto_import_text_dark"
+            android:textSize="16sp"/>
+    </ScrollView>
+
+</LinearLayout>

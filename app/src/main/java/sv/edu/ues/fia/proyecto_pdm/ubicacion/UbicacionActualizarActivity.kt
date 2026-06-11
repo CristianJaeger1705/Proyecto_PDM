@@ -133,8 +133,12 @@ class UbicacionActualizarActivity : BaseActivity() {
             val idNueva = ubicacionHandler.insertar(nuevaUbicacion)
 
             if (idNueva != -1L) {
-                // 3. Actualizar el puntero en el vehículo
+                // 3. Actualizar el puntero en el vehículo local
                 vehiculoHandler.asignarUbicacion(vehiculoSel.idVehiculo!!, idNueva.toInt())
+                
+                // 4. NUEVO: Sincronizar movimiento con el Servidor (Servicio de tu compañero)
+                sincronizarMovimientoWeb(vehiculoSel.idVehiculo!!, seccionSel.idSeccion, fechaStr)
+
                 Toast.makeText(this, "Vehículo movido con éxito", Toast.LENGTH_LONG).show()
                 finish()
             } else {
@@ -143,5 +147,21 @@ class UbicacionActualizarActivity : BaseActivity() {
         } catch (e: Exception) {
             Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_LONG).show()
         }
+    }
+
+    private fun sincronizarMovimientoWeb(idVehiculo: Int, idSeccion: Int, fecha: String) {
+        val apiService = sv.edu.ues.fia.proyecto_pdm.RetrofitClient.instance.create(UbicacionApiService::class.java)
+        val request = UbicacionWebRequest(idVehiculo, idSeccion, fecha)
+        
+        apiService.actualizarUbicacionWeb(request).enqueue(object : retrofit2.Callback<UbicacionWebResponse> {
+            override fun onResponse(call: retrofit2.Call<UbicacionWebResponse>, response: retrofit2.Response<UbicacionWebResponse>) {
+                if (response.isSuccessful) {
+                    // Sincronización exitosa en segundo plano
+                }
+            }
+            override fun onFailure(call: retrofit2.Call<UbicacionWebResponse>, t: Throwable) {
+                // Fallo silencioso o log
+            }
+        })
     }
 }

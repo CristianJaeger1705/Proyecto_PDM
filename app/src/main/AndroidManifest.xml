@@ -90,6 +90,12 @@
             android:name=".bodega.BodegaMenuActivity"
             android:exported="false" />
         <activity
+            android:name=".bodega.WebBodegasActivity"
+            android:exported="false" />
+        <activity
+            android:name=".bodega.WebDisponibilidadActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity

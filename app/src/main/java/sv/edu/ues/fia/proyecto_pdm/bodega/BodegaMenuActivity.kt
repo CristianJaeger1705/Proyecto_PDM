@@ -58,5 +58,13 @@ class BodegaMenuActivity : BaseActivity() {
         findViewById<Button>(R.id.btnGestionUbicaciones).setOnClickListener {
             startActivity(Intent(this, sv.edu.ues.fia.proyecto_pdm.ubicacion.UbicacionMenuActivity::class.java))
         }
+
+        findViewById<Button>(R.id.btnBodegasWeb).setOnClickListener {
+            startActivity(Intent(this, WebBodegasActivity::class.java))
+        }
+
+        findViewById<Button>(R.id.btnDisponibilidadWeb).setOnClickListener {
+            startActivity(Intent(this, WebDisponibilidadActivity::class.java))
+        }
     }
 }

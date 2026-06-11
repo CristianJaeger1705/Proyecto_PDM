@@ -1,6 +1,7 @@
 package sv.edu.ues.fia.proyecto_pdm.bodega
 
 import android.os.Bundle
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
@@ -18,6 +19,7 @@ class BodegaConsultarActivity : BaseActivity() {
     private lateinit var spinnerBodegas: Spinner
     private lateinit var textResultado: TextView
     private lateinit var btnConsultar: Button
+    private lateinit var btnSubirWeb: Button
     private lateinit var listaBodegas: List<Bodega>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,10 +36,12 @@ class BodegaConsultarActivity : BaseActivity() {
         spinnerBodegas = findViewById(R.id.spinnerConsultarBodegas)
         textResultado = findViewById(R.id.textResultadoBodega)
         btnConsultar = findViewById(R.id.btnConsultarBodegaDetalle)
+        btnSubirWeb = findViewById(R.id.btnEnviarBodegaWeb)
 
         cargarBodegas()
 
         btnConsultar.setOnClickListener { mostrarInformacion() }
+        btnSubirWeb.setOnClickListener { subirBodegaWeb() }
     }
 
     private fun cargarBodegas() {
@@ -67,5 +71,35 @@ class BodegaConsultarActivity : BaseActivity() {
         res.append("🚗 Vehículos almacenados: $conteoVehiculos")
         
         textResultado.text = res.toString()
+        btnSubirWeb.visibility = View.VISIBLE
+    }
+
+    private fun subirBodegaWeb() {
+        val bodega = listaBodegas[spinnerBodegas.selectedItemPosition]
+        val apiService = sv.edu.ues.fia.proyecto_pdm.RetrofitClient.instance.create(BodegaApiService::class.java)
+
+        btnSubirWeb.isEnabled = false
+        apiService.insertarBodega(
+            bodega.idBodega,
+            bodega.nombreBodega,
+            bodega.departamento,
+            bodega.direccion,
+            bodega.capacidadSecciones
+        ).enqueue(object : retrofit2.Callback<BodegaWebResponse> {
+            override fun onResponse(call: retrofit2.Call<BodegaWebResponse>, response: retrofit2.Response<BodegaWebResponse>) {
+                btnSubirWeb.isEnabled = true
+                if (response.isSuccessful && response.body() != null) {
+                    val res = response.body()!!
+                    Toast.makeText(this@BodegaConsultarActivity, res.mensaje, Toast.LENGTH_LONG).show()
+                } else {
+                    Toast.makeText(this@BodegaConsultarActivity, "Error en el servidor", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: retrofit2.Call<BodegaWebResponse>, t: Throwable) {
+                btnSubirWeb.isEnabled = true
+                Toast.makeText(this@BodegaConsultarActivity, "Fallo conexión: ${t.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 }
