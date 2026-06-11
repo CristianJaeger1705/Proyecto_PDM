@@ -39,6 +39,7 @@ class GestionMovimientosActivity : BaseActivity() {
         medioHandler = MedioTransporteHandler(this)
 
         val btnIrAInsertar = findViewById<Button>(R.id.btnIrAInsertarMov)
+        val btnIrAInsertarWeb = findViewById<Button>(R.id.btnIrAInsertarWebMov)
         val spinnerMovimientos = findViewById<Spinner>(R.id.spinnerGestionMovId)
         val spinnerMedios = findViewById<Spinner>(R.id.spinnerGestionMedios)
         val spinnerTipo = findViewById<Spinner>(R.id.spinnerGestionMovTipo)
@@ -54,7 +55,10 @@ class GestionMovimientosActivity : BaseActivity() {
         val btnEliminar = findViewById<Button>(R.id.btnEliminarMov)
 
         // Validar permisos (Prefix 11)
-        if (!tienePermiso("111")) btnIrAInsertar.visibility = View.GONE
+        if (!tienePermiso("111")) {
+            btnIrAInsertar.visibility = View.GONE
+            btnIrAInsertarWeb.visibility = View.GONE
+        }
         if (!tienePermiso("112")) btnActualizar.visibility = View.GONE
         if (!tienePermiso("113")) btnBuscar.visibility = View.GONE
         if (!tienePermiso("114")) btnEliminar.visibility = View.GONE
@@ -95,6 +99,11 @@ class GestionMovimientosActivity : BaseActivity() {
 
         btnIrAInsertar.setOnClickListener {
             val intent = Intent(this, InsertarMovimientoActivity::class.java)
+            startActivity(intent)
+        }
+
+        btnIrAInsertarWeb.setOnClickListener {
+            val intent = Intent(this, WebMovimientoActivity::class.java)
             startActivity(intent)
         }
 

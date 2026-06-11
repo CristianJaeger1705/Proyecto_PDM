@@ -25,6 +25,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_new_movimiento"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/btnIrAInsertarWebMov"
+            style="@style/AutoImportButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Insertar en Servidor"
+            android:backgroundTint="@color/auto_import_red"
             android:layout_marginBottom="32dp"/>
 
         <TextView

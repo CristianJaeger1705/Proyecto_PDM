@@ -8,6 +8,12 @@
 
     <style name="Theme.Proyecto_PDM" parent="Base.Theme.Proyecto_PDM" />
 
+    <style name="Theme.WebMovimiento" parent="Theme.Proyecto_PDM">
+        <!-- Color del Checkbox (Material 2/3 compatibility) -->
+        <item name="colorControlActivated">@color/auto_import_red</item>
+        <item name="colorSecondary">@color/auto_import_red</item>
+    </style>
+
     <!-- Custom Styles -->
     <style name="AutoImportEditText">
         <item name="android:background">@drawable/bg_edittext_rounded</item>
