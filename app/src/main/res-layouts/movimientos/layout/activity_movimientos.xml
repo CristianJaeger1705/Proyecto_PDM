@@ -81,6 +81,29 @@
                 android:layout_marginTop="8dp"/>
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_margin="8dp">
+            <ImageButton
+                android:id="@+id/btnOpcionHistorial"
+                style="@style/HubIconButton"
+                android:src="@drawable/ic_movimientos"
+                android:contentDescription="Historial"
+                app:tint="@color/auto_import_dark" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Historial"
+                android:textStyle="bold"
+                android:textSize="11sp"
+                android:textColor="@color/auto_import_text_dark"
+                android:layout_marginTop="8dp"/>
+        </LinearLayout>
+
     </GridLayout>
 
     <!-- Lista de Movimientos Pendientes de Autorizar (Solo Admin) -->

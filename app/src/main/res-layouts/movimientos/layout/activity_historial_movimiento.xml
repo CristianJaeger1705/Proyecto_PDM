@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/white">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Historial de Movimientos"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/auto_import_dark"
+        android:layout_marginBottom="24dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seleccione un Vehículo:"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"/>
+
+    <Spinner
+        android:id="@+id/spinnerVehiculosHistorial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/btnConsultarHistorial"
+        style="@style/AutoImportButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Consultar Historial"
+        android:layout_marginBottom="16dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/auto_import_border_grey"
+        android:layout_marginBottom="16dp"/>
+
+    <ListView
+        android:id="@+id/listHistorialMovimientos"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="@color/auto_import_grey"
+        android:dividerHeight="1dp" />
+
+</LinearLayout>
