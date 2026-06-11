@@ -121,6 +121,9 @@
             android:exported="false"
             android:theme="@style/Theme.WebMovimiento" />
         <activity
+            android:name=".movimientos.HistorialMovimientoActivity"
+            android:exported="false" />
+        <activity
             android:name=".taller.TallerGestionActivity"
             android:exported="false" />
         <activity

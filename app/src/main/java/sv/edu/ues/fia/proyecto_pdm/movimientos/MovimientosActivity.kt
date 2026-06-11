@@ -33,6 +33,7 @@ class MovimientosActivity : BaseActivity() {
 
         val btnOpcionMedios = findViewById<ImageButton>(R.id.btnOpcionMedios)
         val btnOpcionMovimientos = findViewById<ImageButton>(R.id.btnOpcionMovimientos)
+        val btnOpcionHistorial = findViewById<ImageButton>(R.id.btnOpcionHistorial)
 
         btnOpcionMedios.setOnClickListener {
             val intent = Intent(this, GestionTransporteActivity::class.java)
@@ -41,6 +42,11 @@ class MovimientosActivity : BaseActivity() {
 
         btnOpcionMovimientos.setOnClickListener {
             val intent = Intent(this, GestionMovimientosActivity::class.java)
+            startActivity(intent)
+        }
+
+        btnOpcionHistorial.setOnClickListener {
+            val intent = Intent(this, HistorialMovimientoActivity::class.java)
             startActivity(intent)
         }
 

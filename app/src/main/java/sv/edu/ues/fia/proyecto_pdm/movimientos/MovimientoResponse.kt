@@ -16,3 +16,17 @@ data class MovimientoResponse(
     @SerializedName("IdMovimiento") val idMovimiento: Int?,
     val mensaje: String
 )
+
+data class HistorialVehiculoResponse(
+    val success: Boolean,
+    val data: List<MovimientoDetalle>
+)
+
+data class MovimientoDetalle(
+    @SerializedName("IdMovimiento") val idMovimiento: Int,
+    @SerializedName("TipoMovimiento") val tipoMovimiento: String,
+    @SerializedName("Fecha") val fecha: String,
+    @SerializedName("Hora") val hora: String,
+    @SerializedName("Observaciones") val observaciones: String,
+    @SerializedName("Medio") val medio: String?
+)
