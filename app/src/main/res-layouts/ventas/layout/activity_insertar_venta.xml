@@ -93,5 +93,14 @@
             android:text="@string/btn_save_venta"
             android:layout_marginTop="16dp" />
 
+        <Button
+            android:id="@+id/btnGuardarVentaWeb"
+            style="@style/AutoImportButton"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="GUARDAR EN WEB"
+            android:backgroundTint="@color/auto_import_dark"
+            android:layout_marginTop="16dp" />
+
     </LinearLayout>
 </ScrollView>

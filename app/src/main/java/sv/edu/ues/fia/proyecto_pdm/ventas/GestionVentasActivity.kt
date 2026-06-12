@@ -37,6 +37,7 @@ class GestionVentasActivity : BaseActivity() {
         importadorHandler = ImportadorHandler(this)
 
         val btnIrAInsertar = findViewById<Button>(R.id.btnIrAInsertarVenta)
+        val btnIrAWeb = findViewById<Button>(R.id.btnIrAVentasWeb)
         val spinnerVentas = findViewById<Spinner>(R.id.spinnerGestionVentaId)
         val spinnerVehiculos = findViewById<Spinner>(R.id.spinnerGestionVentaVehiculo)
         val editPrecio = findViewById<EditText>(R.id.editVentaPrecio)
@@ -78,6 +79,11 @@ class GestionVentasActivity : BaseActivity() {
 
         btnIrAInsertar.setOnClickListener {
             val intent = Intent(this, InsertarVentaActivity::class.java)
+            startActivity(intent)
+        }
+
+        btnIrAWeb.setOnClickListener {
+            val intent = Intent(this, WebVentasActivity::class.java)
             startActivity(intent)
         }
 
