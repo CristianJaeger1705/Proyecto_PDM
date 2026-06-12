@@ -114,6 +114,9 @@
             android:name=".ventas.InsertarVentaActivity"
             android:exported="false" />
         <activity
+            android:name=".ventas.WebVentasActivity"
+            android:exported="false" />
+        <activity
             android:name=".movimientos.InsertarMovimientoActivity"
             android:exported="false" />
         <activity

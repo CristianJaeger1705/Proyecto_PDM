@@ -37,6 +37,7 @@ class InsertarVentaActivity : BaseActivity() {
         val spinnerImportadores = findViewById<Spinner>(R.id.spinnerImportadores)
         val editFecha = findViewById<EditText>(R.id.editNewVentaFecha)
         val btnGuardar = findViewById<Button>(R.id.btnGuardarVenta)
+        val btnGuardarWeb = findViewById<Button>(R.id.btnGuardarVentaWeb)
 
         // Cargar Importadores en el Spinner
         importadores = importadorHandler.obtenerTodos()
@@ -85,6 +86,35 @@ class InsertarVentaActivity : BaseActivity() {
                 } else {
                     Toast.makeText(this, getString(R.string.msg_not_found), Toast.LENGTH_SHORT).show()
                 }
+            } else {
+                Toast.makeText(this, getString(R.string.fill_fields), Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        btnGuardarWeb.setOnClickListener {
+            val idVenta = editId.text.toString().toIntOrNull()
+            val posVeh = spinnerVehiculos.selectedItemPosition
+            val precio = editPrecio.text.toString().toDoubleOrNull()
+            val fecha = editFecha.text.toString()
+            val posImp = spinnerImportadores.selectedItemPosition
+
+            if (idVenta != null && posVeh != -1 && precio != null && posImp != -1 && fecha.isNotEmpty()) {
+                val venta = Venta(idVenta, vehiculos[posVeh].idVehiculo!!, precio, importadores[posImp].nui, fecha)
+                val apiService = sv.edu.ues.fia.proyecto_pdm.RetrofitClient.instance.create(VentaApiService::class.java)
+                
+                apiService.registrarVenta(venta).enqueue(object : retrofit2.Callback<VentaResponse> {
+                    override fun onResponse(call: retrofit2.Call<VentaResponse>, response: retrofit2.Response<VentaResponse>) {
+                        if (response.isSuccessful && response.body()?.success == true) {
+                            Toast.makeText(this@InsertarVentaActivity, "Venta registrada en WEB con éxito", Toast.LENGTH_SHORT).show()
+                            finish()
+                        } else {
+                            Toast.makeText(this@InsertarVentaActivity, "Error en WEB: ${response.body()?.mensaje}", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                    override fun onFailure(call: retrofit2.Call<VentaResponse>, t: Throwable) {
+                        Toast.makeText(this@InsertarVentaActivity, "Fallo de conexión WEB: ${t.message}", Toast.LENGTH_SHORT).show()
+                    }
+                })
             } else {
                 Toast.makeText(this, getString(R.string.fill_fields), Toast.LENGTH_SHORT).show()
             }
