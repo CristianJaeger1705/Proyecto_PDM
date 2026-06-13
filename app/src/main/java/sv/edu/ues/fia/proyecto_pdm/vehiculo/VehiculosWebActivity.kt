@@ -10,10 +10,11 @@ import androidx.appcompat.app.AppCompatActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import sv.edu.ues.fia.proyecto_pdm.BaseActivity
 import sv.edu.ues.fia.proyecto_pdm.R
 import sv.edu.ues.fia.proyecto_pdm.RetrofitClient
 
-class VehiculosWebActivity : AppCompatActivity() {
+class VehiculosWebActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,10 +33,10 @@ class VehiculosWebActivity : AppCompatActivity() {
         val apiService = RetrofitClient.instance.create(VehiculoApiService::class.java)
 
         btnCargar.setOnClickListener {
-            txtResultados.text = "Cargando..."
+            txtResultados.text = getString(R.string.btn_load) + "..."
 
             val seleccion = spinnerFiltro.selectedItem.toString()
-            val estadoQuery = if (seleccion == "Todos") null else seleccion
+            val estadoQuery = if (seleccion == "Todos" || seleccion == "All") null else seleccion
 
             apiService.getVehiculos(estadoQuery).enqueue(object : Callback<VehiculoListResponse> {
                 override fun onResponse(
@@ -48,24 +49,23 @@ class VehiculosWebActivity : AppCompatActivity() {
                             val sb = StringBuilder()
                             for (veh in body.data) {
                                 sb.append("ID: ${veh.idVehiculo}\n")
-                                sb.append("Marca: ${veh.marca}\n")
-                                sb.append("Modelo: ${veh.modelo}\n")
-                                sb.append("Año: ${veh.anio}\n")
-                                sb.append("Estado: ${veh.estado}\n")
+                                sb.append("Marca/Make: ${veh.marca}\n")
+                                sb.append("Modelo/Model: ${veh.modelo}\n")
+                                sb.append("Año/Year: ${veh.anio}\n")
+                                sb.append("Estado/Status: ${veh.estado}\n")
                                 sb.append("─────────────────\n")
                             }
                             txtResultados.text = sb.toString()
                         } else {
-                            txtResultados.text = "No se encontraron vehículos"
+                            txtResultados.text = getString(R.string.msg_not_found)
                         }
                     } else {
-                        txtResultados.text = "Error en la respuesta del servidor"
+                        txtResultados.text = getString(R.string.msg_server_error_code, response.code())
                     }
                 }
 
                 override fun onFailure(call: Call<VehiculoListResponse>, t: Throwable) {
-                    txtResultados.text = "Error de conexión: ${t.message}"
-                    Toast.makeText(this@VehiculosWebActivity, "Error de conexión", Toast.LENGTH_SHORT).show()
+                    txtResultados.text = getString(R.string.msg_connection_failure)
                 }
             })
         }

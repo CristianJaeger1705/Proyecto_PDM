@@ -8,10 +8,11 @@ import androidx.appcompat.app.AppCompatActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import sv.edu.ues.fia.proyecto_pdm.BaseActivity
 import sv.edu.ues.fia.proyecto_pdm.R
 import sv.edu.ues.fia.proyecto_pdm.RetrofitClient
 
-class WebAgregarVehiculoActivity : AppCompatActivity() {
+class WebAgregarVehiculoActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +37,7 @@ class WebAgregarVehiculoActivity : AppCompatActivity() {
             val importacion = editImportacion.text.toString()
 
             if (id.isEmpty() || marca.isEmpty() || modelo.isEmpty() || anio.isEmpty() || ubicacion.isEmpty() || importacion.isEmpty()) {
-                Toast.makeText(this, "Por favor complete todos los campos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.fill_fields), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -63,13 +64,13 @@ class WebAgregarVehiculoActivity : AppCompatActivity() {
                             finish() // Regresar si fue exitoso
                         }
                     } else {
-                        Toast.makeText(this@WebAgregarVehiculoActivity, "Error en el servidor", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@WebAgregarVehiculoActivity, getString(R.string.msg_server_error_code, response.code()), Toast.LENGTH_SHORT).show()
                     }
                 }
 
                 override fun onFailure(call: Call<VehiculoInsertResponse>, t: Throwable) {
                     btnGuardar.isEnabled = true
-                    Toast.makeText(this@WebAgregarVehiculoActivity, "Error de conexión: ${t.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@WebAgregarVehiculoActivity, getString(R.string.msg_connection_failure), Toast.LENGTH_SHORT).show()
                 }
             })
         }

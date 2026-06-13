@@ -341,4 +341,32 @@
     <string name="msg_workshop_name_required">Name is required</string>
     <string name="msg_repair_saved">Repair saved (ID: %1$d)</string>
     <string name="msg_select_workshop_vehicle">You must select a workshop and a vehicle</string>
+    <!-- Bodegas Web -->
+    <string name="title_web_bodegas">Warehouses on Server</string>
+    <string name="btn_load_from_cloud">LOAD FROM CLOUD</string>
+    <string name="text_wait_results">Results will appear here...</string>
+    <string name="btn_bodegas_web">WAREHOUSES IN CLOUD</string>
+    <string name="btn_disponibilidad_web">VIEW AVAILABILITY (WEB)</string>
+    <string name="btn_upload_php">UPLOAD TO PHP SERVER</string>
+    <string name="msg_calculating_dispo">Calculating real-time availability...</string>
+    <string name="msg_server_connected_empty">Connected to server: No warehouses currently registered.</string>
+    <string name="msg_server_error_code">Error %1$d: The server could not process the request.</string>
+    <string name="msg_connection_failure">Connection failure</string>
+    <!-- Importing Agents Web -->
+    <string name="title_web_importadores">Importing Agents from Server</string>
+    <string name="btn_load_importadores">LOAD IMPORTING AGENTS</string>
+    <string name="title_web_importacion">New Importation (Server)</string>
+    <string name="btn_register_importacion">REGISTER IMPORTATION</string>
+
+    <!-- Vehicles Web -->
+    <string name="title_web_vehiculos">Web Vehicles</string>
+    <string name="label_filter_status">Filter by status:</string>
+    <string name="btn_load_vehiculos">LOAD VEHICLES</string>
+    <string name="title_web_add_vehiculo">Add Web Vehicle</string>
+    <string name="label_brand">Brand:</string>
+    <string name="label_model">Model:</string>
+    <string name="label_year">Year:</string>
+    <string name="label_id_location_exists">Location ID (Existing):</string>
+    <string name="label_id_importation_exists">Importation ID (Existing):</string>
+    <string name="btn_register_server">REGISTER ON SERVER</string>
 </resources>

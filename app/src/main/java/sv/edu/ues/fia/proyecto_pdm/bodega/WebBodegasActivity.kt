@@ -32,7 +32,7 @@ class WebBodegasActivity : BaseActivity() {
         val apiService = RetrofitClient.instance.create(BodegaApiService::class.java)
 
         btnCargar.setOnClickListener {
-            txtResultados.text = "Cargando desde el servidor..."
+            txtResultados.text = getString(R.string.btn_load) + "..."
 
             apiService.getBodegas().enqueue(object : Callback<BodegaListResponse> {
                 override fun onResponse(call: Call<BodegaListResponse>, response: Response<BodegaListResponse>) {
@@ -50,16 +50,16 @@ class WebBodegasActivity : BaseActivity() {
                             }
                             txtResultados.text = sb.toString()
                         } else {
-                            txtResultados.text = "No hay bodegas en el servidor"
+                            txtResultados.text = getString(R.string.msg_server_connected_empty)
                         }
                     } else {
                         val code = response.code()
-                        txtResultados.text = "Error $code: No se pudo obtener la lista de bodegas. Asegúrese de que el archivo 'get_bodegas.php' exista en el servidor."
+                        txtResultados.text = getString(R.string.msg_server_error_code, code)
                     }
                 }
 
                 override fun onFailure(call: Call<BodegaListResponse>, t: Throwable) {
-                    txtResultados.text = "Fallo de red: ${t.message}. Verifique que el servidor Wamp esté en el puerto 80 y sea accesible."
+                    txtResultados.text = getString(R.string.msg_connection_failure)
                 }
             })
         }

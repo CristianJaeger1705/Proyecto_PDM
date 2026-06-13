@@ -9,10 +9,11 @@ import androidx.appcompat.app.AppCompatActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import sv.edu.ues.fia.proyecto_pdm.BaseActivity
 import sv.edu.ues.fia.proyecto_pdm.R
 import sv.edu.ues.fia.proyecto_pdm.RetrofitClient
 
-class WebImportacionActivity : AppCompatActivity() {
+class WebImportacionActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,13 +33,13 @@ class WebImportacionActivity : AppCompatActivity() {
             val fecha = editFecha.text.toString()
 
             if (nui.isEmpty() || cantidadStr.isEmpty() || fecha.isEmpty()) {
-                Toast.makeText(this, "Complete todos los campos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.fill_fields), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             val cantidad = cantidadStr.toIntOrNull()
             if (cantidad == null) {
-                Toast.makeText(this, "La cantidad debe ser un número", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Debe ser un número", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -52,7 +53,7 @@ class WebImportacionActivity : AppCompatActivity() {
                     if (response.isSuccessful && response.body() != null) {
                         val body = response.body()!!
                         if (body.success) {
-                            txtResultado.text = "✅ ${body.mensaje}\nID generado: ${body.IdImportacion}"
+                            txtResultado.text = "✅ ${body.mensaje}\nID: ${body.IdImportacion}"
                             editNUI.text.clear()
                             editCantidad.text.clear()
                             editFecha.text.clear()
@@ -60,17 +61,12 @@ class WebImportacionActivity : AppCompatActivity() {
                             txtResultado.text = "❌ ${body.mensaje}"
                         }
                     } else {
-                        txtResultado.text = "Error en la respuesta del servidor"
+                        txtResultado.text = getString(R.string.msg_server_error_code, response.code())
                     }
                 }
 
                 override fun onFailure(call: Call<ImportacionResponse>, t: Throwable) {
-                    txtResultado.text = "Error de conexión: ${t.message}"
-                    Toast.makeText(
-                        this@WebImportacionActivity,
-                        "No se pudo conectar al servidor",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    txtResultado.text = getString(R.string.msg_connection_failure)
                 }
             })
         }

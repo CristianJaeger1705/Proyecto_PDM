@@ -1,43 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@color/app_background">
 
     <TextView
-        android:text="Nueva Importación (Servidor)"
-        android:textSize="18sp"
+        android:text="@string/title_web_importacion"
+        android:textSize="24sp"
         android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="@color/auto_import_text_dark"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="24dp"/>
 
     <EditText
         android:id="@+id/editNUIImportador"
-        android:hint="NUI del Importador"
+        android:hint="@string/label_nui"
+        android:textColorHint="@color/auto_import_hint"
+        android:textColor="@color/auto_import_text_dark"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"/>
+        android:layout_marginBottom="12dp"
+        android:autofillHints="none"/>
 
     <EditText
         android:id="@+id/editCantidadVehiculos"
-        android:hint="Cantidad de Vehículos"
+        android:hint="@string/label_cantidad_vehiculos"
+        android:textColorHint="@color/auto_import_hint"
+        android:textColor="@color/auto_import_text_dark"
         android:inputType="number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"/>
+        android:layout_marginBottom="12dp"
+        android:autofillHints="none"/>
 
     <EditText
         android:id="@+id/editFechaImportacion"
-        android:hint="Fecha (YYYY-MM-DD)"
+        android:hint="@string/label_fecha"
+        android:textColorHint="@color/auto_import_hint"
+        android:textColor="@color/auto_import_text_dark"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="24dp"
+        android:autofillHints="none"
+        android:inputType="date"/>
 
     <Button
         android:id="@+id/btnRegistrarImportacion"
-        android:text="Registrar Importación"
+        android:text="@string/btn_register_importacion"
+        android:backgroundTint="@color/auto_import_dark"
+        android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"/>
@@ -46,7 +62,10 @@
         android:id="@+id/txtResultadoImportacion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:hint="El resultado aparecerá aquí"/>
+        android:textSize="16sp"
+        android:textColor="@color/auto_import_text_dark"
+        android:text="@string/label_result"
+        android:background="@color/white"
+        android:padding="8dp"/>
 
 </LinearLayout>

@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Bodegas en el Servidor"
+        android:text="@string/title_web_bodegas"
         android:textSize="24sp"
         android:textStyle="bold"
         android:gravity="center"
@@ -21,7 +21,7 @@
         android:id="@+id/btnCargarBodegasWeb"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="CARGAR DESDE LA NUBE"
+        android:text="@string/btn_load_from_cloud"
         android:backgroundTint="@color/auto_import_dark"
         android:textColor="@color/white"
         android:layout_marginBottom="16dp"/>
@@ -37,7 +37,7 @@
             android:id="@+id/txtResultadosBodegasWeb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Los resultados aparecerán aquí..."
+            android:text="@string/text_wait_results"
             android:textColor="@color/auto_import_text_dark"
             android:textSize="16sp"/>
     </ScrollView>

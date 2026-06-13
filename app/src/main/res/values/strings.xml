@@ -341,4 +341,32 @@
     <string name="msg_workshop_name_required">El nombre es obligatorio</string>
     <string name="msg_repair_saved">Reparación guardada (ID: %1$d)</string>
     <string name="msg_select_workshop_vehicle">Debe seleccionar un taller y un vehículo</string>
+    <!-- Bodegas Web -->
+    <string name="title_web_bodegas">Bodegas en el Servidor</string>
+    <string name="btn_load_from_cloud">CARGAR DESDE LA NUBE</string>
+    <string name="text_wait_results">Los resultados aparecerán aquí...</string>
+    <string name="btn_bodegas_web">BODEGAS EN LA NUBE</string>
+    <string name="btn_disponibilidad_web">VER DISPONIBILIDAD (WEB)</string>
+    <string name="btn_upload_php">SUBIR AL SERVIDOR PHP</string>
+    <string name="msg_calculating_dispo">Calculando disponibilidad en tiempo real...</string>
+    <string name="msg_server_connected_empty">Conectado al servidor: No hay bodegas registradas actualmente.</string>
+    <string name="msg_server_error_code">Error %1$d: El servidor no pudo procesar la solicitud.</string>
+    <string name="msg_connection_failure">Fallo de conexión</string>
+    <!-- Importadores Web -->
+    <string name="title_web_importadores">Importadores desde Servidor</string>
+    <string name="btn_load_importadores">CARGAR IMPORTADORES</string>
+    <string name="title_web_importacion">Nueva Importación (Servidor)</string>
+    <string name="btn_register_importacion">REGISTRAR IMPORTACIÓN</string>
+
+    <!-- Vehiculos Web -->
+    <string name="title_web_vehiculos">Vehículos Web</string>
+    <string name="label_filter_status">Filtrar por estado:</string>
+    <string name="btn_load_vehiculos">CARGAR VEHÍCULOS</string>
+    <string name="title_web_add_vehiculo">Agregar Vehículo Web</string>
+    <string name="label_brand">Marca:</string>
+    <string name="label_model">Modelo:</string>
+    <string name="label_year">Año:</string>
+    <string name="label_id_location_exists">ID Ubicación (Existente):</string>
+    <string name="label_id_importation_exists">ID Importación (Existente):</string>
+    <string name="btn_register_server">REGISTRAR EN SERVIDOR</string>
 </resources>
