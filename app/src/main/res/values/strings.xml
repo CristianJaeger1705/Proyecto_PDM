@@ -133,7 +133,7 @@
     <string name="btn_search">BUSCAR</string>
     <string name="btn_load">CARGAR</string>
     <string name="btn_clean">LIMPIAR</string>
-    <string name="label_result">Resultado...</string>
+    <string name="label_result">Resultado&#8230;</string>
     <string name="hint_enter_id">Ingrese ID</string>
 
     <!-- Bodegas -->
@@ -270,7 +270,7 @@
     <string name="label_nui_importador">NUI del Importador*</string>
     <string name="label_phone_number">Número de Teléfono*</string>
     <string name="label_phone_type">Tipo de Teléfono</string>
-    <string name="hint_phone_example">Ej: 7777-8888</string>
+    <string name="hint_phone_example">Ej: 7777&#8211;8888</string>
     <string name="title_consult_phone">Consultar Teléfono</string>
     <string name="title_update_phone">Actualizar Teléfono</string>
     <string name="title_delete_phone">Eliminar Teléfono</string>
@@ -348,11 +348,11 @@
     <!-- Bodegas Web -->
     <string name="title_web_bodegas">Bodegas en el Servidor</string>
     <string name="btn_load_from_cloud">CARGAR DESDE LA NUBE</string>
-    <string name="text_wait_results">Los resultados aparecerán aquí...</string>
+    <string name="text_wait_results">Los resultados aparecerán aquí&#8230;</string>
     <string name="btn_bodegas_web">BODEGAS EN LA NUBE</string>
     <string name="btn_disponibilidad_web">VER DISPONIBILIDAD (WEB)</string>
     <string name="btn_upload_php">SUBIR AL SERVIDOR PHP</string>
-    <string name="msg_calculating_dispo">Calculando disponibilidad en tiempo real...</string>
+    <string name="msg_calculating_dispo">Calculando disponibilidad en tiempo real&#8230;</string>
     <string name="msg_server_connected_empty">Conectado al servidor: No hay bodegas registradas actualmente.</string>
     <string name="msg_server_error_code">Error %1$d: El servidor no pudo procesar la solicitud.</string>
     <string name="msg_connection_failure">Fallo de conexión</string>

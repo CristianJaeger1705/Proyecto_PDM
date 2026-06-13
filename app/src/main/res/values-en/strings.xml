@@ -133,7 +133,7 @@
     <string name="btn_search">SEARCH</string>
     <string name="btn_load">LOAD</string>
     <string name="btn_clean">CLEAN</string>
-    <string name="label_result">Result...</string>
+    <string name="label_result">Result&#8230;</string>
     <string name="hint_enter_id">Enter ID</string>
 
     <!-- Warehouses -->
@@ -270,7 +270,7 @@
     <string name="label_nui_importador">Importing Agent NUI*</string>
     <string name="label_phone_number">Phone Number*</string>
     <string name="label_phone_type">Phone Type</string>
-    <string name="hint_phone_example">Eg: 7777-8888</string>
+    <string name="hint_phone_example">Eg: 7777&#8211;8888</string>
     <string name="title_consult_phone">Consult Phone</string>
     <string name="title_update_phone">Update Phone</string>
     <string name="title_delete_phone">Delete Phone</string>
@@ -346,15 +346,15 @@
     <string name="btn_view_web">VIEW WEB WORKSHOPS</string>
     <string name="title_web_talleres">WORKSHOPS ON THE WEB</string>
     <string name="placeholder_workshop_name">Workshop Name</string>
-</resources>
+
     <!-- Bodegas Web -->
     <string name="title_web_bodegas">Warehouses on Server</string>
     <string name="btn_load_from_cloud">LOAD FROM CLOUD</string>
-    <string name="text_wait_results">Results will appear here...</string>
+    <string name="text_wait_results">Results will appear here&#8230;</string>
     <string name="btn_bodegas_web">WAREHOUSES IN CLOUD</string>
     <string name="btn_disponibilidad_web">VIEW AVAILABILITY (WEB)</string>
     <string name="btn_upload_php">UPLOAD TO PHP SERVER</string>
-    <string name="msg_calculating_dispo">Calculating real-time availability...</string>
+    <string name="msg_calculating_dispo">Calculating real-time availability&#8230;</string>
     <string name="msg_server_connected_empty">Connected to server: No warehouses currently registered.</string>
     <string name="msg_server_error_code">Error %1$d: The server could not process the request.</string>
     <string name="msg_connection_failure">Connection failure</string>
