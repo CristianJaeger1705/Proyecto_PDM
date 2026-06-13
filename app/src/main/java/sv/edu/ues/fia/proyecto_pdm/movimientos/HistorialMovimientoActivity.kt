@@ -71,8 +71,13 @@ class HistorialMovimientoActivity : AppCompatActivity() {
                 val text1 = view.findViewById<TextView>(android.R.id.text1)
                 val text2 = view.findViewById<TextView>(android.R.id.text2)
 
-                text1.text = "${item.tipoMovimiento} - ${item.fecha} ${item.hora}"
-                text2.text = "Medio: ${item.medio ?: "N/A"}\nObs: ${item.observaciones}"
+                val tipoTraducido = when(item.tipoMovimiento.uppercase()) {
+                    "ENTRADA" -> getString(R.string.mov_type_in)
+                    "SALIDA" -> getString(R.string.mov_type_out)
+                    else -> item.tipoMovimiento
+                }
+                text1.text = "$tipoTraducido - ${item.fecha} ${item.hora}"
+                text2.text = "${getString(R.string.label_medium)}: ${item.medio ?: getString(R.string.label_na)}\n${getString(R.string.label_obs_short)}: ${item.observaciones}"
                 
                 return view
             }

@@ -60,6 +60,7 @@
     <string name="movimientos_menu_title">MOVEMENTS MENU</string>
     <string name="menu_transportes">TRANSPORT</string>
     <string name="menu_gestion">MANAGEMENT</string>
+    <string name="menu_historial">HISTORY</string>
     <string name="gestion_movimientos_title">MOVEMENTS MANAGEMENT</string>
     <string name="btn_new_movimiento">NEW MOVEMENT</string>
     <string name="mov_id_label">MOVEMENT ID</string>
@@ -387,5 +388,12 @@
     <string name="btn_consult_history">CONSULT HISTORY</string>
     <string name="hint_optional">Optional</string>
     <string name="msg_movement_registered">Movement registered. ID: %1$d</string>
+    <string name="btn_insert_server">Insert on Server</string>
+    <string name="label_medium">Medium</string>
+    <string name="label_obs_short">Obs</string>
+    <string name="msg_error">Error</string>
     <string name="msg_no_history">No history</string>
+    <string name="mov_type_in">IN</string>
+    <string name="mov_type_out">OUT</string>
+    <string name="label_na">N/A</string>
 </resources>

@@ -24,7 +24,6 @@ class WebMovimientoActivity : AppCompatActivity() {
     private lateinit var vehiculoHandler: VehiculoHandler
     private lateinit var medios: List<MedioTransporte>
     private lateinit var vehiculos: List<Vehiculo>
-    private val tiposMovimiento = arrayOf("ENTRADA", "SALIDA")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +47,7 @@ class WebMovimientoActivity : AppCompatActivity() {
         spinnerMedios.adapter = adapterMedios
 
         // Cargar Tipos
-        val adapterTipos = ArrayAdapter(this, android.R.layout.simple_spinner_item, tiposMovimiento)
+        val adapterTipos = ArrayAdapter(this, android.R.layout.simple_spinner_item, arrayOf(getString(R.string.mov_type_in), getString(R.string.mov_type_out)))
         adapterTipos.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerTipo.adapter = adapterTipos
 
@@ -76,7 +75,10 @@ class WebMovimientoActivity : AppCompatActivity() {
 
         btnEnviar.setOnClickListener {
             val posMedio = spinnerMedios.selectedItemPosition
-            val tipo = spinnerTipo.selectedItem.toString()
+            val tipoUI = spinnerTipo.selectedItem.toString()
+            // Convertir de vuelta a valor de BD (siempre ENTRADA/SALIDA para el servidor)
+            val tipoBD = if (tipoUI == getString(R.string.mov_type_in)) "ENTRADA" else "SALIDA"
+
             val fecha = editFecha.text.toString()
             val hora = editHora.text.toString()
             val obs = editObs.text.toString()
@@ -97,7 +99,7 @@ class WebMovimientoActivity : AppCompatActivity() {
 
             val request = MovimientoRequest(
                 idMedio = medios[posMedio].idMedio ?: 0,
-                tipoMovimiento = tipo,
+                tipoMovimiento = tipoBD,
                 fecha = fecha,
                 hora = hora,
                 observaciones = obs,
@@ -111,7 +113,7 @@ class WebMovimientoActivity : AppCompatActivity() {
                         val msg = if (body.success) {
                             getString(R.string.msg_movement_registered, body.idMovimiento)
                         } else {
-                            "Error: ${body.mensaje}"
+                            "${getString(R.string.msg_error)}: ${body.mensaje}"
                         }
                         Toast.makeText(this@WebMovimientoActivity, msg, Toast.LENGTH_LONG).show()
                         if (body.success) editObs.text.clear()

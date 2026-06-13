@@ -32,7 +32,7 @@
             style="@style/AutoImportButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Insertar en Servidor"
+            android:text="@string/btn_insert_server"
             android:backgroundTint="@color/auto_import_red"
             android:layout_marginBottom="32dp"/>
 

@@ -92,12 +92,12 @@
                 android:id="@+id/btnOpcionHistorial"
                 style="@style/HubIconButton"
                 android:src="@drawable/ic_movimientos"
-                android:contentDescription="Historial"
+                android:contentDescription="@string/menu_historial"
                 app:tint="@color/auto_import_dark" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Historial"
+                android:text="@string/menu_historial"
                 android:textStyle="bold"
                 android:textSize="11sp"
                 android:textColor="@color/auto_import_text_dark"
