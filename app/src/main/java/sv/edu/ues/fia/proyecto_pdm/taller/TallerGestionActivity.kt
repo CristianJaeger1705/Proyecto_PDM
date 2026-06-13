@@ -35,6 +35,7 @@ class TallerGestionActivity : BaseActivity() {
         val checkAutorizado = findViewById<CheckBox>(R.id.checkAutorizado)
 
         val btnIrACrear = findViewById<Button>(R.id.btnIrACrear)
+        val btnIrATalleresWeb = findViewById<Button>(R.id.btnIrATalleresWeb)
         val btnBuscar = findViewById<Button>(R.id.btnBuscar)
         val btnActualizar = findViewById<Button>(R.id.btnActualizar)
         val btnEliminar = findViewById<Button>(R.id.btnEliminar)
@@ -61,6 +62,11 @@ class TallerGestionActivity : BaseActivity() {
 
         btnIrACrear.setOnClickListener {
             val intent = Intent(this, TallerInsertarActivity::class.java)
+            startActivity(intent)
+        }
+
+        btnIrATalleresWeb.setOnClickListener {
+            val intent = Intent(this, WebTalleresActivity::class.java)
             startActivity(intent)
         }
 
@@ -139,7 +145,7 @@ class TallerGestionActivity : BaseActivity() {
         findViewById<EditText>(R.id.editNombre).setText(taller.nombreTaller)
         findViewById<EditText>(R.id.editDireccion).setText(taller.direccion)
         findViewById<EditText>(R.id.editTelefono).setText(taller.telefono)
-        findViewById<CheckBox>(R.id.checkAutorizado).isChecked = taller.autorizado.trim().uppercase() == "S"
+        findViewById<CheckBox>(R.id.checkAutorizado).isChecked = taller.autorizado?.trim()?.uppercase() == "S"
     }
 
     private fun actualizarLista() {

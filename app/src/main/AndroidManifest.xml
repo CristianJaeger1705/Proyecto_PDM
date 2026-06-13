@@ -136,6 +136,9 @@
             android:name=".taller.TallerInsertarActivity"
             android:exported="false" />
         <activity
+            android:name=".taller.WebTalleresActivity"
+            android:exported="false" />
+        <activity
             android:name=".reparacion.ReparacionGestionActivity"
             android:exported="false" />
         <activity

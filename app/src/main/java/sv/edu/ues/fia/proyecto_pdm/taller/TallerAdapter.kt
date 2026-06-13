@@ -32,7 +32,7 @@ class TallerAdapter(
         holder.txtDireccion.text = taller.direccion
         holder.txtTelefono.text = taller.telefono
 
-        if (taller.autorizado.trim().uppercase() == "S") {
+        if (taller.autorizado?.trim()?.uppercase() == "S") {
             holder.txtAutorizado.visibility = View.VISIBLE
         } else {
             holder.txtAutorizado.visibility = View.GONE
