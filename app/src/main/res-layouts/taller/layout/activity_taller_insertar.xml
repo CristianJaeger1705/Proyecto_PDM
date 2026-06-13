@@ -77,6 +77,15 @@
             android:layout_marginTop="16dp"/>
 
         <Button
+            android:id="@+id/btnGuardarWeb"
+            style="@style/AutoImportButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_save_web"
+            android:backgroundTint="@color/auto_import_dark"
+            android:layout_marginTop="8dp"/>
+
+        <Button
             android:id="@+id/btnLimpiar"
             style="@style/AutoImportButton"
             android:layout_width="match_parent"

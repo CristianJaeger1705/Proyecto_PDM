@@ -114,9 +114,6 @@
             android:name=".ventas.InsertarVentaActivity"
             android:exported="false" />
         <activity
-            android:name=".ventas.WebVentasActivity"
-            android:exported="false" />
-        <activity
             android:name=".movimientos.InsertarMovimientoActivity"
             android:exported="false" />
         <activity
@@ -137,6 +134,9 @@
             android:exported="false" />
         <activity
             android:name=".taller.TallerInsertarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".taller.WebTalleresActivity"
             android:exported="false" />
         <activity
             android:name=".reparacion.ReparacionGestionActivity"

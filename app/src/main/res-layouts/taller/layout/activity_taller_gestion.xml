@@ -25,6 +25,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_new_taller"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/btnIrATalleresWeb"
+            style="@style/AutoImportButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_view_web"
+            android:backgroundTint="@color/auto_import_dark"
             android:layout_marginBottom="32dp"/>
 
         <TextView

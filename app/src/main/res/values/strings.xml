@@ -341,6 +341,10 @@
     <string name="msg_workshop_name_required">El nombre es obligatorio</string>
     <string name="msg_repair_saved">Reparación guardada (ID: %1$d)</string>
     <string name="msg_select_workshop_vehicle">Debe seleccionar un taller y un vehículo</string>
+    <string name="btn_save_web">GUARDAR EN WEB</string>
+    <string name="btn_view_web">VER TALLERES WEB</string>
+    <string name="title_web_talleres">TALLERES EN LA WEB</string>
+    <string name="placeholder_workshop_name">Nombre del Taller</string>
     <!-- Bodegas Web -->
     <string name="title_web_bodegas">Bodegas en el Servidor</string>
     <string name="btn_load_from_cloud">CARGAR DESDE LA NUBE</string>

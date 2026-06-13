@@ -17,7 +17,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Nombre del Taller"
+            android:text="@string/placeholder_workshop_name"
             android:textStyle="bold"
             android:textColor="@color/auto_import_dark"
             android:textSize="16sp"/>
@@ -35,7 +35,7 @@
         android:id="@+id/txtItemDireccion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Dirección"
+        android:text="@string/label_direccion"
         android:textColor="@color/auto_import_text_dark"
         android:layout_marginTop="4dp"/>
 
@@ -43,7 +43,7 @@
         android:id="@+id/txtItemTelefono"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Teléfono"
+        android:text="@string/label_telefono"
         android:textColor="@color/auto_import_text_dark"
         android:textSize="12sp"/>
 
