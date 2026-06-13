@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="@color/white">
+    android:background="@color/app_background">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Vehículos Web"
+        android:text="@string/title_web_vehiculos"
         android:textSize="24sp"
         android:textStyle="bold"
         android:gravity="center"
@@ -19,7 +20,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Filtrar por estado:"
+        android:text="@string/label_filter_status"
         android:textStyle="bold"
         android:layout_marginBottom="8dp"
         android:textColor="@color/auto_import_text_dark"/>
@@ -27,32 +28,33 @@
     <Spinner
         android:id="@+id/spinnerFiltroEstado"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="48dp"
+        android:layout_height="48dp"
+        android:background="@color/white"
+        android:padding="8dp"
         android:layout_marginBottom="16dp"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnCargarVehiculos"
-        style="@style/AutoImportButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cargar Vehículos"
+        android:text="@string/btn_load_vehiculos"
         android:backgroundTint="@color/auto_import_dark"
+        android:textColor="@color/white"
         android:layout_marginBottom="16dp"/>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/auto_import_grey"
+        android:background="@color/white"
         android:padding="8dp">
 
         <TextView
             android:id="@+id/txtResultadosVehiculos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:textColor="@color/auto_import_text_dark"
-            android:hint="Los resultados aparecerán aquí"
+            android:text="@string/text_wait_results"
             android:lineSpacingExtra="4dp"/>
 
     </ScrollView>

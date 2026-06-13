@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/app_background">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Agregar Vehículo Web"
+            android:text="@string/title_web_add_vehiculo"
             android:textSize="24sp"
             android:textStyle="bold"
             android:gravity="center"
@@ -24,21 +24,24 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ID Vehículo:"
+            android:text="@string/label_id_vehiculo"
             android:textStyle="bold"
             android:textColor="@color/auto_import_text_dark"/>
         <EditText
             android:id="@+id/editWebIdVehiculo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ingrese ID"
+            android:hint="@string/hint_enter_id"
+            android:textColorHint="@color/auto_import_hint"
+            android:textColor="@color/auto_import_text_dark"
             android:inputType="number"
-            android:layout_marginBottom="12dp"/>
+            android:layout_marginBottom="12dp"
+            android:autofillHints="none"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Marca:"
+            android:text="@string/label_brand"
             android:textStyle="bold"
             android:textColor="@color/auto_import_text_dark"/>
         <EditText
@@ -46,13 +49,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Ej. Toyota"
+            android:textColorHint="@color/auto_import_hint"
+            android:textColor="@color/auto_import_text_dark"
             android:inputType="text"
-            android:layout_marginBottom="12dp"/>
+            android:layout_marginBottom="12dp"
+            android:autofillHints="none"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Modelo:"
+            android:text="@string/label_model"
             android:textStyle="bold"
             android:textColor="@color/auto_import_text_dark"/>
         <EditText
@@ -60,13 +66,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Ej. Corolla"
+            android:textColorHint="@color/auto_import_hint"
+            android:textColor="@color/auto_import_text_dark"
             android:inputType="text"
-            android:layout_marginBottom="12dp"/>
+            android:layout_marginBottom="12dp"
+            android:autofillHints="none"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Año:"
+            android:text="@string/label_year"
             android:textStyle="bold"
             android:textColor="@color/auto_import_text_dark"/>
         <EditText
@@ -74,44 +83,53 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Ej. 2023"
+            android:textColorHint="@color/auto_import_hint"
+            android:textColor="@color/auto_import_text_dark"
             android:inputType="number"
-            android:layout_marginBottom="12dp"/>
+            android:layout_marginBottom="12dp"
+            android:autofillHints="none"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ID Ubicación (Existente):"
+            android:text="@string/label_id_location_exists"
             android:textStyle="bold"
             android:textColor="@color/auto_import_text_dark"/>
         <EditText
             android:id="@+id/editWebIdUbicacion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ingrese ID de ubicación"
+            android:hint="@string/hint_enter_id"
+            android:textColorHint="@color/auto_import_hint"
+            android:textColor="@color/auto_import_text_dark"
             android:inputType="number"
-            android:layout_marginBottom="12dp"/>
+            android:layout_marginBottom="12dp"
+            android:autofillHints="none"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ID Importación (Existente):"
+            android:text="@string/label_id_importation_exists"
             android:textStyle="bold"
             android:textColor="@color/auto_import_text_dark"/>
         <EditText
             android:id="@+id/editWebIdImportacion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ingrese ID de importación"
+            android:hint="@string/hint_enter_id"
+            android:textColorHint="@color/auto_import_hint"
+            android:textColor="@color/auto_import_text_dark"
             android:inputType="number"
-            android:layout_marginBottom="24dp"/>
+            android:layout_marginBottom="24dp"
+            android:autofillHints="none"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnWebGuardarVehiculo"
-            style="@style/AutoImportButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Registrar en Servidor"
+            android:text="@string/btn_register_server"
             android:backgroundTint="@color/auto_import_dark"
+            android:textColor="@color/white"
             android:layout_marginBottom="16dp"/>
 
     </LinearLayout>

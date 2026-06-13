@@ -33,14 +33,14 @@ class WebDisponibilidadActivity : BaseActivity() {
         val apiService = RetrofitClient.instance.create(BodegaApiService::class.java)
 
         btnCargar.setOnClickListener {
-            txtResultados.text = "Calculando disponibilidad en tiempo real..."
+            txtResultados.text = getString(R.string.msg_calculating_dispo)
 
             apiService.getBodegasDisponibilidad().enqueue(object : Callback<BodegaDisponibilidadListResponse> {
                 override fun onResponse(call: Call<BodegaDisponibilidadListResponse>, response: Response<BodegaDisponibilidadListResponse>) {
                     if (response.isSuccessful && response.body() != null) {
                         val res = response.body()!!
                         if (res.data.isEmpty()) {
-                            txtResultados.text = "Conectado al servidor: No hay bodegas registradas actualmente."
+                            txtResultados.text = getString(R.string.msg_server_connected_empty)
                             return
                         }
                         val sb = StringBuilder()
@@ -59,12 +59,12 @@ class WebDisponibilidadActivity : BaseActivity() {
                         txtResultados.text = sb.toString()
                     } else {
                         val code = response.code()
-                        txtResultados.text = "Error $code: El servidor no pudo procesar la solicitud. Verifique que el archivo PHP exista y la base de datos esté activa."
+                        txtResultados.text = getString(R.string.msg_server_error_code, code)
                     }
                 }
 
                 override fun onFailure(call: Call<BodegaDisponibilidadListResponse>, t: Throwable) {
-                    txtResultados.text = "Fallo de conexión"
+                    txtResultados.text = getString(R.string.msg_connection_failure)
                 }
             })
         }

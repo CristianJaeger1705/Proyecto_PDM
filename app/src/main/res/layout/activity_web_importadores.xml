@@ -1,35 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@color/app_background">
 
     <TextView
-        android:text="Importadores desde Servidor"
-        android:textSize="18sp"
+        android:text="@string/title_web_importadores"
+        android:textSize="24sp"
         android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="@color/auto_import_text_dark"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="24dp"/>
 
     <Button
         android:id="@+id/btnCargarImportadores"
-        android:text="Cargar Importadores"
+        android:text="@string/btn_load_importadores"
+        android:backgroundTint="@color/auto_import_dark"
+        android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"/>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:padding="8dp">
 
         <TextView
             android:id="@+id/txtResultados"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:hint="Los resultados aparecerán aquí"/>
+            android:textSize="16sp"
+            android:textColor="@color/auto_import_text_dark"
+            android:text="@string/text_wait_results"/>
 
     </ScrollView>
 
