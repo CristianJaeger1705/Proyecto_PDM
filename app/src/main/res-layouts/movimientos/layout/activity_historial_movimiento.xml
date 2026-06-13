@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Historial de Movimientos"
+        android:text="@string/title_movement_history"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="@color/auto_import_dark"
@@ -18,7 +18,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Seleccione un Vehículo:"
+        android:text="@string/label_select_vehicle"
         android:textStyle="bold"
         android:layout_marginBottom="8dp"/>
 
@@ -34,7 +34,7 @@
         style="@style/AutoImportButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Consultar Historial"
+        android:text="@string/btn_consult_history"
         android:layout_marginBottom="16dp"/>
 
     <View

@@ -373,4 +373,17 @@
     <string name="label_id_location_exists">ID Ubicación (Existente):</string>
     <string name="label_id_importation_exists">ID Importación (Existente):</string>
     <string name="btn_register_server">REGISTRAR EN SERVIDOR</string>
+
+    <!-- Movimientos Web -->
+    <string name="title_web_new_movement">Nuevo Movimiento (Servidor)</string>
+    <string name="label_transport_media">Medio de Transporte</string>
+    <string name="label_movement_type">Tipo de Movimiento</string>
+    <string name="label_select_vehicles">Seleccione Vehículos:</string>
+    <string name="btn_send_server">ENVIAR AL SERVIDOR</string>
+    <string name="title_movement_history">Historial de Movimientos</string>
+    <string name="label_select_vehicle">Seleccione un Vehículo:</string>
+    <string name="btn_consult_history">CONSULTAR HISTORIAL</string>
+    <string name="hint_optional">Opcional</string>
+    <string name="msg_movement_registered">Movimiento registrado. ID: %1$d</string>
+    <string name="msg_no_history">Sin historial</string>
 </resources>

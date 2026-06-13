@@ -91,7 +91,7 @@ class WebMovimientoActivity : AppCompatActivity() {
             }
 
             if (posMedio == -1 || fecha.isEmpty() || hora.isEmpty() || selectedVehiculosIds.isEmpty()) {
-                Toast.makeText(this, "Complete los campos y seleccione al menos un vehículo", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.required_fields), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -109,19 +109,19 @@ class WebMovimientoActivity : AppCompatActivity() {
                     if (response.isSuccessful && response.body() != null) {
                         val body = response.body()!!
                         val msg = if (body.success) {
-                            "Movimiento registrado. ID: ${body.idMovimiento}"
+                            getString(R.string.msg_movement_registered, body.idMovimiento)
                         } else {
                             "Error: ${body.mensaje}"
                         }
                         Toast.makeText(this@WebMovimientoActivity, msg, Toast.LENGTH_LONG).show()
                         if (body.success) editObs.text.clear()
                     } else {
-                        Toast.makeText(this@WebMovimientoActivity, "Error en el servidor: ${response.code()}", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@WebMovimientoActivity, getString(R.string.msg_server_error_code, response.code()), Toast.LENGTH_LONG).show()
                     }
                 }
 
                 override fun onFailure(call: Call<MovimientoResponse>, t: Throwable) {
-                    Toast.makeText(this@WebMovimientoActivity, "Error de conexión: ${t.message}", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@WebMovimientoActivity, "${getString(R.string.msg_connection_failure)}: ${t.message}", Toast.LENGTH_LONG).show()
                 }
             })
         }

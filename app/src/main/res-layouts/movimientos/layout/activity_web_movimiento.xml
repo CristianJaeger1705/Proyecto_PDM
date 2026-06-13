@@ -13,7 +13,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nuevo Movimiento (Servidor)"
+            android:text="@string/title_web_new_movement"
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="@color/auto_import_dark"
@@ -22,7 +22,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Medio de Transporte"
+            android:text="@string/label_transport_media"
             android:textStyle="bold"
             android:layout_marginBottom="4dp"/>
         <Spinner
@@ -35,7 +35,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tipo de Movimiento"
+            android:text="@string/label_movement_type"
             android:textStyle="bold"
             android:layout_marginBottom="4dp"/>
         <Spinner
@@ -48,7 +48,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Fecha"
+            android:text="@string/date_label"
             android:textStyle="bold"
             android:layout_marginBottom="4dp"/>
         <EditText
@@ -63,7 +63,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hora"
+            android:text="@string/time_label"
             android:textStyle="bold"
             android:layout_marginBottom="4dp"/>
         <EditText
@@ -78,7 +78,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Observaciones"
+            android:text="@string/obs_label"
             android:textStyle="bold"
             android:layout_marginBottom="4dp"/>
         <EditText
@@ -86,12 +86,12 @@
             style="@style/AutoImportEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Opcional" />
+            android:hint="@string/hint_optional" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Seleccione Vehículos:"
+            android:text="@string/label_select_vehicles"
             android:textStyle="bold"
             android:textColor="@color/auto_import_red"
             android:layout_marginTop="16dp"
@@ -110,7 +110,7 @@
             style="@style/AutoImportButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Enviar al Servidor" />
+            android:text="@string/btn_send_server" />
 
     </LinearLayout>
 </ScrollView>

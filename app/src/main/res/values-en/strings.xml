@@ -375,4 +375,17 @@
     <string name="label_id_location_exists">Location ID (Existing):</string>
     <string name="label_id_importation_exists">Importation ID (Existing):</string>
     <string name="btn_register_server">REGISTER ON SERVER</string>
+
+    <!-- Movements Web -->
+    <string name="title_web_new_movement">New Movement (Server)</string>
+    <string name="label_transport_media">Transport Media</string>
+    <string name="label_movement_type">Movement Type</string>
+    <string name="label_select_vehicles">Select Vehicles:</string>
+    <string name="btn_send_server">SEND TO SERVER</string>
+    <string name="title_movement_history">Movement History</string>
+    <string name="label_select_vehicle">Select a Vehicle:</string>
+    <string name="btn_consult_history">CONSULT HISTORY</string>
+    <string name="hint_optional">Optional</string>
+    <string name="msg_movement_registered">Movement registered. ID: %1$d</string>
+    <string name="msg_no_history">No history</string>
 </resources>

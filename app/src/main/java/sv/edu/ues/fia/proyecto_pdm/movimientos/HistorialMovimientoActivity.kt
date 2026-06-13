@@ -49,14 +49,14 @@ class HistorialMovimientoActivity : AppCompatActivity() {
                             if (body.success) {
                                 mostrarHistorial(body.data)
                             } else {
-                                Toast.makeText(this@HistorialMovimientoActivity, "Sin historial", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this@HistorialMovimientoActivity, getString(R.string.msg_no_history), Toast.LENGTH_SHORT).show()
                                 mostrarHistorial(emptyList())
                             }
                         }
                     }
 
                     override fun onFailure(call: Call<HistorialVehiculoResponse>, t: Throwable) {
-                        Toast.makeText(this@HistorialMovimientoActivity, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@HistorialMovimientoActivity, "${getString(R.string.msg_connection_failure)}: ${t.message}", Toast.LENGTH_SHORT).show()
                     }
                 })
             }
