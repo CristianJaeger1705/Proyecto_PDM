@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TALLERES EN LA WEB"
+        android:text="@string/title_web_talleres"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="@color/auto_import_dark"

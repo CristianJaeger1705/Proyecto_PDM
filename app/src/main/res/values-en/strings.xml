@@ -341,4 +341,8 @@
     <string name="msg_workshop_name_required">Name is required</string>
     <string name="msg_repair_saved">Repair saved (ID: %1$d)</string>
     <string name="msg_select_workshop_vehicle">You must select a workshop and a vehicle</string>
+    <string name="btn_save_web">SAVE TO WEB</string>
+    <string name="btn_view_web">VIEW WEB WORKSHOPS</string>
+    <string name="title_web_talleres">WORKSHOPS ON THE WEB</string>
+    <string name="placeholder_workshop_name">Workshop Name</string>
 </resources>
